@@ -481,14 +481,14 @@
     dims.appendChild(answerBar("Entrepreneurial", pc.A, "a"));
     dims.appendChild(answerBar("Healthy corporate", pc.B, "b"));
     dims.appendChild(answerBar("Bureaucratic", pc.C, "c"));
-    dims.appendChild(answerBar("Corporate BS", pc.D, "d"));
+    dims.appendChild(answerBar("Self-protective", pc.D, "d"));
     dims.appendChild(answerBar("It varies", pc.N, "n"));
     s3.appendChild(dims);
     var vShare = Math.round((pc.A + pc.B + pc.N * 0.5) * 100), pShare = 100 - vShare;
     var motive = (weakest.length && a.pN[weakest[0]] >= 4) ? P[weakest[0]].motive : "";
     if (pShare >= 25 && motive) s3.appendChild(h("p", "fine tendency", "Strongest protective tendency: " + motive + "."));
     add(s3, h("h3", "sub small-sub", "Structure and culture are different problems"), h("p", "fine", "Friction is slow structure: approvals, process, hierarchy. Toxicity is self-protection, blame and politics. A company can have either, both or neither."), axisGrid(pc.C, pc.D));
-    if (pc.D >= 0.3 && a.cnt.D >= 3 && a.score < 45) s3.appendChild(h("p", "pattern", "Pattern: " + a.cnt.D + " of your " + played + " answers were Corporate BS. That is not one bad experience. It repeats."));
+    if (pc.D >= 0.3 && a.cnt.D >= 3 && a.score < 45) s3.appendChild(h("p", "pattern", "Pattern: " + a.cnt.D + " of your " + played + " answers were Self-protective. That is not one bad experience. It repeats."));
     else if (pc.A >= 0.4 && a.cnt.A >= 3 && a.score >= 65) s3.appendChild(h("p", "pattern good", "Pattern: " + a.cnt.A + " of your " + played + " answers were Entrepreneurial. That is a habit of the place, not a lucky quarter."));
     if (a.pN.excellence >= 3 && a.pN.speed >= 3 && a.pN.courage >= 3 && a.pN.focus >= 3 && a.pN.human >= 3) {
       var drive = Math.round((a.pAvg.excellence + a.pAvg.speed + a.pAvg.courage + a.pAvg.focus) / 4), hum = a.pAvg.human;
@@ -571,12 +571,12 @@
     ["Answer type", "Situations", "Percent"].forEach(function (x) { trh.appendChild(h("th", null, x)); });
     thead.appendChild(trh); tbl.appendChild(thead);
     var tb = h("tbody");
-    [["Entrepreneurial", "A"], ["Healthy corporate", "B"], ["Bureaucratic", "C"], ["Corporate BS", "D"], ["It varies", "N"]].forEach(function (r) {
+    [["Entrepreneurial", "A"], ["Healthy corporate", "B"], ["Bureaucratic", "C"], ["Self-protective", "D"], ["It varies", "N"]].forEach(function (r) {
       var tr = h("tr"); add(tr, h("th", null, r[0]), h("td", null, String(a.cnt[r[1]])), h("td", "mute", Math.round(pc[r[1]] * 100) + "%")); tb.appendChild(tr);
     });
     tbl.appendChild(tb);
     add(more, tbl,
-      h("p", "fine", "Each answer is scored by how well it fits the stakes of the situation. Low stakes: Entrepreneurial 100, Healthy corporate 75, Bureaucratic 40, Corporate BS 5. High stakes (money, safety, privacy, law): Healthy corporate 100, Entrepreneurial 50, Bureaucratic 55, Corporate BS 5. Medium stakes: both fast and proportionate answers score about 95, nudged slightly by the industry setting. In heavily regulated industries, seven named situations are treated as higher stakes. It varies scores 50, and not seen is left out. Every principle counts equally in the overall score. Situations you could not see from where you sit count 0.7."),
+      h("p", "fine", "Each answer is scored by how well it fits the stakes of the situation. Low stakes: Entrepreneurial 100, Healthy corporate 75, Bureaucratic 40, Self-protective 5. High stakes (money, safety, privacy, law): Healthy corporate 100, Entrepreneurial 50, Bureaucratic 55, Self-protective 5. Medium stakes: both fast and proportionate answers score about 95, nudged slightly by the industry setting. In heavily regulated industries, seven named situations are treated as higher stakes. It varies scores 50, and not seen is left out. Every principle counts equally in the overall score. Situations you could not see from where you sit count 0.7."),
       h("p", "fine", "The classification comes from the pattern: how much of what you described was slow structure, how much was toxic behavior, and how consistent it was. It is not read off the score alone."));
     more.appendChild(h("h3", "sub", "What this can and cannot tell you"));
     var can = h("ul", "flag-list plain");

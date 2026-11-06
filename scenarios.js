@@ -3,7 +3,7 @@ window.BSD = {
     A: { name: "Entrepreneurial", line: "People are empowered, decisions move, and results matter.", h: 100, v: [3, 1, 0, 0] },
     B: { name: "Healthy corporate", line: "Real controls with a real purpose, and people can still get things done.", h: 72, v: [2, 3, 1, 0] },
     C: { name: "Bureaucratic", line: "Approvals, meetings and hierarchy are slowing the work.", h: 52, v: [0, 1, 3, 1] },
-    D: { name: "Corporate BS", line: "Self-protection and politics are outranking results.", h: 10, v: [0, 0, 1, 3] },
+    D: { name: "Self-protective", line: "Self-protection and politics are outranking results.", h: 10, v: [0, 0, 1, 3] },
     N: { name: "It varies", line: "It depends on the team or the day. That is a finding in itself: the culture is inconsistent.", h: 55, v: [1, 1, 1, 1] },
     U: { name: "Not seen", line: "Not scored. Not having seen this is fine, and worth noticing: it can mean the answer is not visible from where you sit.", h: null, v: null }
   },

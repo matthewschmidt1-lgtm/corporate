@@ -1,6 +1,6 @@
-# Corporate BS Detector
+# Corporate Detector
 
-A funny, honest card game about whether a company is built for the customer or for itself.
+A lighthearted card game about whether a company is built for the customer or for itself.
 Real workplace scenarios, a culture type, and specific things to do on Monday.
 
 **Privacy:** it is a static site. Nothing you answer is sent, saved or tracked. See `privacy.html`.

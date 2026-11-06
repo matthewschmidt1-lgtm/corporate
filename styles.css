@@ -357,7 +357,7 @@ button.btn { border: 0; font: inherit; font-size: 17px; cursor: pointer; }
   .bar-row { grid-template-columns: 110px 1fr 30px; }
 }
 
-/* ---------- Corporate BS Detector ---------- */
+/* ---------- Corporate Detector ---------- */
 :root { --brick: #9B4A3C; --ochre: #A9803F; --sage: #86906B; }
 .eyebrow.warn { color: var(--brick); }
 .as-link { background: none; border: 0; padding: 0; font: inherit; font-size: 17px; color: var(--clay); cursor: pointer; }
