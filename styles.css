@@ -933,3 +933,56 @@ main:focus { outline: none; }
 .pr-all > summary:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
 .pr-all .pr-list { margin-top: 12px; }
 .final-lessons { margin: 16px 0 0; }
+
+/* the blueprint chain */
+.chain { margin-top: 28px; max-width: 760px; }
+.chain:focus-visible { outline: 3px solid var(--clay); outline-offset: 4px; }
+.chain-bar { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-bottom: 14px; }
+.chain-bar span { height: 6px; background: var(--line); transition: background .25s; }
+.chain-bar span.done { background: var(--clay); }
+.chain-bar span.cur { background: var(--ink); }
+.chain-stage { background: var(--dark); color: var(--dark-ink); border-radius: 3px; padding: 24px 22px 26px; border-left: 5px solid #C98F68; min-height: 340px; }
+.chain .link { display: block; margin: 0 0 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(237, 230, 216, .2); }
+.chain .link:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.chain.js .link { display: none; margin: 0; padding: 0; border: 0; }
+.chain.js .link.on { display: block; }
+.link-n { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: #C98F68; margin: 0 0 10px; }
+.link-n span { color: var(--dark-mute); font-weight: 600; }
+.chain h3 { font-size: clamp(32px, 8vw, 46px); line-height: 1.04; letter-spacing: -0.04em; margin: 0 0 14px; color: var(--dark-ink); }
+.link-q { font-size: clamp(20px, 5vw, 26px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; margin: 0 0 18px; }
+.link-b { margin: 0 0 20px; padding: 10px 14px; border-left: 3px solid #A8644A; background: rgba(237, 230, 216, .07); color: var(--dark-ink); font-size: 17px; }
+.link-b span { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: #D99A82; margin-bottom: 2px; }
+.link-hook { margin: 0; font-size: 18px; color: var(--dark-mute); }
+.link-hook::before { content: "\2192\00a0"; color: #C98F68; }
+.link-end h3 { font-size: clamp(26px, 6vw, 36px); }
+.link-cta { display: grid; gap: 8px; margin-top: 8px; }
+.chain .link-cta .ed-main { background: var(--dark-ink); color: var(--dark); border-color: var(--dark-ink); }
+.chain .link-cta .ed-main:hover { background: #fff; border-color: #fff; }
+.chain .link-cta .ed-link { color: var(--dark-ink); }
+.chain-ctl { display: flex; gap: 12px; margin-top: 14px; }
+.chain-ctl .btn { flex: 1; min-height: 56px; font-size: 18px; }
+.chain-ctl .btn:disabled { opacity: .35; cursor: default; }
+.chain-ctl .btn[hidden] { display: none; }
+.link.from-r { animation: chainR .3s cubic-bezier(.2, .8, .2, 1) both; }
+.link.from-l { animation: chainL .3s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes chainR { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+@keyframes chainL { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .link.from-r, .link.from-l { animation: none; } .chain-bar span { transition: none; } }
+.chain .link-q { color: var(--dark-ink); }
+.chain .link-n { color: #C98F68; }
+.chain .link-hook { color: var(--dark-mute); }
+
+/* chain: lighter, warmer panel */
+.chain-stage { background: #FBF8F0; color: var(--ink); border: 1px solid var(--line); border-left: 5px solid var(--clay); box-shadow: 4px 4px 0 0 #EFE8D8, 4px 4px 0 1px var(--line); }
+.chain .link { border-bottom-color: var(--line); }
+.chain .link-n { color: var(--clay); }
+.chain .link-n span { color: var(--mute); }
+.chain h3 { color: var(--ink); }
+.chain .link-q { color: var(--ink); }
+.chain .link-b { background: #F1EADB; border-left-color: #7A3E2A; color: var(--ink); }
+.chain .link-b span { color: #7A3E2A; }
+.chain .link-hook { color: var(--mute); }
+.chain .link-hook::before { color: var(--clay); }
+.chain .link-cta .ed-main { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chain .link-cta .ed-main:hover { background: var(--clay); border-color: var(--clay); }
+.chain .link-cta .ed-link { color: var(--ink); }

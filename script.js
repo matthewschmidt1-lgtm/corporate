@@ -73,6 +73,45 @@
     }, { passive: true });
   }
 
+  // The blueprint chain: one principle at a time, each leading to the next
+  var chain = document.getElementById('chain');
+  if (chain) {
+    var links = chain.querySelectorAll('.link'), bar = document.getElementById('chain-bar');
+    var ctl = document.getElementById('chain-ctl'), nb = document.getElementById('chain-next'), bb = document.getElementById('chain-back');
+    var cur = 0, reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    chain.classList.add('js');
+    bar.hidden = false; ctl.hidden = false;
+    for (var q = 0; q < links.length; q++) bar.appendChild(mk('span'));
+    var show = function (n, dir) {
+      cur = Math.max(0, Math.min(links.length - 1, n));
+      for (var m = 0; m < links.length; m++) {
+        links[m].classList.toggle('on', m === cur);
+        links[m].classList.remove('from-r', 'from-l');
+        bar.children[m].className = m < cur ? 'done' : (m === cur ? 'cur' : '');
+      }
+      if (!reduce && dir) links[cur].classList.add(dir > 0 ? 'from-r' : 'from-l');
+      bb.disabled = cur === 0;
+      nb.hidden = cur === links.length - 1;
+      bb.hidden = cur === links.length - 1 && false;
+      nb.textContent = cur === links.length - 2 ? 'Finish' : 'Next';
+    };
+    nb.addEventListener('click', function () { show(cur + 1, 1); });
+    bb.addEventListener('click', function () { show(cur - 1, -1); });
+    chain.addEventListener('keydown', function (e) {
+      if (e.target && e.target.tagName === 'A') return;
+      if (e.key === 'ArrowRight') { show(cur + 1, 1); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { show(cur - 1, -1); e.preventDefault(); }
+    });
+    var x0 = null;
+    chain.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    chain.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    }, { passive: true });
+    show(0, 0);
+  }
+
   // Scroll reveal
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
