@@ -923,3 +923,13 @@ main:focus { outline: none; }
 .pr[open] > p { margin: 0; padding: 12px 16px 16px; border-top: 1px dashed var(--line); font-size: 17px; animation: cardIn .22s cubic-bezier(.2, .8, .2, 1) both; }
 .pr[open] > p strong { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #7A3E2A; margin-bottom: 2px; }
 @media (prefers-reduced-motion: reduce) { .pr[open] > p { animation: none; } }
+
+/* home: principles live in one fold */
+.pr-all { margin-top: 20px; }
+.pr-all > summary { display: flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 0 16px; border: 1px solid var(--ink); border-radius: 3px; font-size: 18px; font-weight: 600; cursor: pointer; list-style: none; background: var(--bg); }
+.pr-all > summary::-webkit-details-marker { display: none; }
+.pr-all > summary::after { content: "+"; font-size: 24px; color: var(--clay); }
+.pr-all[open] > summary::after { content: "\2212"; }
+.pr-all > summary:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
+.pr-all .pr-list { margin-top: 12px; }
+.final-lessons { margin: 16px 0 0; }

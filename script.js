@@ -62,30 +62,6 @@
   }
 
 
-  // Sample card on the home page. Nothing is stored or sent.
-  var demo = document.getElementById('demo');
-  if (demo) {
-    var R = {
-      A: ['Entrepreneurial', 'The decision took exactly as long as the decision.'],
-      B: ['Well run', 'A week for $2,000 is fine. Nobody is hurt.'],
-      C: ['Bureaucratic', 'A decision that took a sentence, now scheduled for next month.'],
-      D: ['Self-protective', 'Nobody decides. Everybody watches.']
-    };
-    var out = document.getElementById('demo-out'), cta = document.getElementById('demo-cta');
-    var opts = demo.querySelectorAll('.d-opt');
-    opts.forEach(function (b) {
-      b.addEventListener('click', function () {
-        opts.forEach(function (o) { o.classList.remove('sel'); o.setAttribute('aria-pressed', 'false'); });
-        b.classList.add('sel'); b.setAttribute('aria-pressed', 'true');
-        var r = R[b.getAttribute('data-k')];
-        out.textContent = r[0] + '. ' + r[1];
-        out.className = 'demo-out t-' + b.getAttribute('data-k');
-        out.hidden = false; cta.hidden = false;
-        if (out.scrollIntoView) out.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      });
-    });
-  }
-
   // Swipeable comparison: keep the position counter honest
   var vs = document.getElementById('vs-list'), vc = document.getElementById('vs-count');
   if (vs && vc) {
