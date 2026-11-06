@@ -73,6 +73,42 @@
     }, { passive: true });
   }
 
+  // Five questions: each opens as you scroll to it. Tap a row to jump to it.
+  var q5 = document.querySelectorAll('.q5-d');
+  var track = document.getElementById('q5-track'), pin = document.getElementById('q5-pin');
+  if (track && pin && q5.length) {
+    var rows = [], dots = mk('div', 'q5-dots'); dots.setAttribute('aria-hidden', 'true');
+    q5.forEach(function (d) { rows.push(d.parentNode); dots.appendChild(mk('span')); });
+    pin.insertBefore(dots, pin.firstChild);
+    track.classList.add('scrolly');
+    var idx = -1, ticking = false;
+    var setIdx = function (n) {
+      if (n === idx) return; idx = n;
+      q5.forEach(function (d, i) { d.open = i === n; rows[i].classList.toggle('active', i === n); });
+      for (var m = 0; m < dots.children.length; m++) dots.children[m].className = m < n ? 'done' : (m === n ? 'cur' : '');
+    };
+    var STICKY = 64;
+    var span = function () { return Math.max(1, track.offsetHeight - pin.offsetHeight); };
+    var update = function () {
+      ticking = false;
+      var p = (STICKY - track.getBoundingClientRect().top) / span();
+      p = Math.max(0, Math.min(0.9999, p));
+      setIdx(Math.floor(p * q5.length));
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    q5.forEach(function (d, i) {
+      d.querySelector('summary').addEventListener('click', function (e) {
+        e.preventDefault();
+        var top = track.getBoundingClientRect().top + window.scrollY - STICKY;
+        var y = top + (i + 0.5) / q5.length * span();
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+    update();
+  }
+
   // The blueprint chain: one principle at a time, each leading to the next
   var chain = document.getElementById('chain');
   if (chain) {

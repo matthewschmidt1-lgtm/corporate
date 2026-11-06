@@ -986,3 +986,34 @@ main:focus { outline: none; }
 .chain .link-cta .ed-main { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .chain .link-cta .ed-main:hover { background: var(--clay); border-color: var(--clay); }
 .chain .link-cta .ed-link { color: var(--ink); }
+
+/* five questions: clear open state, one at a time */
+.q5-d summary { display: grid !important; grid-template-columns: 1fr 36px; column-gap: 12px; align-items: center; min-height: 56px; }
+.q5-d summary .q5-tag, .q5-d summary .q5-q { grid-column: 1; }
+.q5-d summary::after { float: none; grid-column: 2; grid-row: 1 / span 2; margin: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--ink); border-radius: 3px; font-size: 22px; line-height: 1; color: var(--ink); }
+.q5-d[open] summary::after { background: var(--ink); color: var(--bg); }
+.q5-d[open] .q5-tag { color: #7A3E2A; }
+.q5 li:has(.q5-d[open]) { background: #FBF8F0; border-left: 5px solid var(--clay); padding-left: 12px; padding-right: 12px; margin-left: -17px; margin-right: -12px; }
+.q5-d[open] .q5-more { margin: 12px 0 10px !important; }
+.q5-monday { margin: 0 !important; padding: 10px 12px; background: #F1EADB; border-left: 3px solid var(--clay); font-size: 16px !important; font-weight: 400 !important; letter-spacing: 0 !important; color: var(--ink); }
+.q5-monday strong { color: var(--clay); }
+
+/* five questions: scroll-driven */
+.q5-dots { display: none; }
+.q5-track.scrolly { height: 230vh; }
+.q5-track.scrolly .q5-pin { position: sticky; top: 64px; }
+.q5-track.scrolly .q5-dots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 24px 0 0; }
+.q5-dots span { height: 5px; background: var(--line); }
+.q5-dots span.done { background: var(--clay); }
+.q5-dots span.cur { background: var(--ink); }
+.q5-track.scrolly .q5 { margin-top: 10px; }
+.q5-track.scrolly .q5 li { padding: 10px 0; }
+.q5-track.scrolly .q5-icon { width: 44px; height: 44px; }
+.q5-track.scrolly .q5 li { grid-template-columns: 44px 1fr; gap: 14px; }
+.q5-track.scrolly .q5-d:not([open]) .q5-q { display: none; }
+.q5-track.scrolly .q5-d:not([open]) summary { min-height: 44px; }
+.q5-track.scrolly .q5-d:not([open]) .q5-tag { margin: 0; font-size: 14px; }
+.q5-track.scrolly .q5-d summary::after { width: 32px; height: 32px; }
+@media (max-height: 720px) { .q5-track.scrolly .q5-more { display: none; } }
+@media (prefers-reduced-motion: reduce) { .q5-track.scrolly { height: 230vh; } }
+.q5-track.scrolly .q5 li:has(.q5-d[open]) { margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; }
