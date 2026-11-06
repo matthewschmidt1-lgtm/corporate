@@ -712,3 +712,7 @@ main:focus { outline: none; }
 .hero-mark .rod { transform-origin: 32px 58px; animation: sway 1.3s ease-in-out infinite alternate; }
 @keyframes sway { from { transform: rotate(-13deg); } to { transform: rotate(13deg); } }
 @media (prefers-reduced-motion: reduce) { .hero-mark .rod { animation: none; } }
+
+/* the tagline is filled in by script; reserve its space so nothing jumps */
+.hook { min-height: 3.75em; }
+@media (min-width: 700px) { .hook { min-height: 2.5em; } }

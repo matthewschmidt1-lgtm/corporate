@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'self'; base-uri 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy | Corporate Detector</title>
 <meta name="description" content="How the Corporate Detector handles your answers: nothing is collected, saved or sent.">
@@ -23,7 +24,7 @@
 <meta name="twitter:image" content="https://corporate-production-f647.up.railway.app/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2186d10f">
 </head>
 <body class="doc-page">
 <header class="nav"><div class="nav-inner"><a class="wordmark" href="index.html">The Garage</a>
@@ -52,7 +53,7 @@
   <h2 class="doc-h">What this is not</h2>
   <p>It is a conversation tool. It is not an HR tool, a performance tool or legal evidence, and it says nothing about any individual. <a href="methodology.html">Read how scoring works.</a></p>
 
-  <p class="actions"><a class="btn" href="play.html">Back to the game</a><button type="button" class="link as-link js-clear-link" onclick="location.href='play.html'">Start fresh</button></p>
+  <p class="actions"><a class="btn" href="play.html">Back to the game</a><a class="link" href="play.html">Start fresh</a></p>
 </div></main>
 
 <footer class="footer"><div class="wrap"><p class="foot-links"><a href="index.html">The Garage</a> <a href="play.html">Corporate Detector</a> <a href="methodology.html">How scoring works</a></p>
