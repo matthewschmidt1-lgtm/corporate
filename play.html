@@ -43,11 +43,10 @@
       <p class="lead hook" id="hook"></p>
       <p class="fine pick-note">Real scenarios. Pick what actually happens where you work, not what should.</p>
       <p class="privacy-line">Nothing you answer leaves this page. No accounts, no tracking, nothing saved. <a href="privacy.html">How privacy works</a></p>
-      <p class="challenge" id="challenge" hidden></p>
 
       <form id="start-form" class="setup">
         <div class="start-main">
-          <button class="btn big-btn" type="button" id="go-staff"><span class="bb-main">Start. I work here.</span><span class="bb-sub">12 cards, about 7 minutes. What it is really like to work there.</span></button>
+          <button class="btn big-btn" type="button" id="go-staff"><span class="bb-main">Start. I work here.</span><span class="bb-sub">What it is really like to work there.</span></button>
           <button class="btn ghost big-btn" type="button" id="go-ceo"><span class="bb-main">I run this place</span><span class="bb-sub">Chief Officer Edition. Questions about what leaders can actually see.</span></button>
         </div>
 
@@ -65,9 +64,9 @@
           <div class="selects">
             <label>How many cards
               <select id="len">
-                <option value="12" selected>Quick read: 12 cards, about 7 minutes</option>
-                <option value="24">Standard: 24 cards, about 15 minutes</option>
-                <option value="999">Deep dive: every card for your edition, 45 minutes or more</option>
+                <option value="12" selected>Quick read: 12 cards</option>
+                <option value="24">Standard: 24 cards</option>
+                <option value="999">Deep dive: every card for your edition</option>
               </select></label>
             <label>When do you see feedback?
               <select id="fmode">
@@ -75,7 +74,6 @@
                 <option value="assess">At the end only, like an assessment</option>
               </select></label>
           </div>
-          <p class="actions tight"><button class="link as-link" type="button" id="goto-compare">Compare two results</button></p>
         </details>
       </form>
 
@@ -141,22 +139,6 @@
   <!-- RESULTS -->
   <section id="result" class="screen" hidden>
     <div class="wrap" id="report"></div>
-  </section>
-
-  <!-- COMPARE -->
-  <section id="compare" class="screen" hidden>
-    <div class="wrap narrow-wrap">
-      <p class="eyebrow warn">The gap</p>
-      <h2 class="verdict-big">Employees and executives rarely play the same game.</h2>
-      <p class="lead">Have each person take the detector separately. Paste any two compare codes below. The gap between them is usually more revealing than either score. Compare codes contain scores, not individual answers, and the comparison happens on this page.</p>
-      <form id="compare-form" class="cmp-form">
-        <label>First code<input id="code-a" type="text" autocomplete="off" spellcheck="false" placeholder="S..."></label>
-        <label>Second code<input id="code-b" type="text" autocomplete="off" spellcheck="false" placeholder="S..."></label>
-        <p class="actions tight"><button class="btn" type="submit">Compare</button><button class="link as-link" type="button" id="cmp-home">Back to the start</button><button class="link as-link js-clear" type="button">Clear everything</button></p>
-      </form>
-      <p class="fine" id="cmp-error" role="alert"></p>
-      <div id="cmp-out"></div>
-    </div>
   </section>
 
 </main>

@@ -203,9 +203,9 @@ window.BSD = {
 
   editions: {
     staff: { name: "Employee and Manager Edition", tag: "Discover what it is really like to work there, and whether you are part of the problem.", code: "E",
-      lens: "This is how the organization feels from where you sit. Notice which answers describe things you could change this week without asking anyone. Then ask a few chief officers to play their edition and compare codes. The gap is often the whole story." },
+      lens: "This is how the organization feels from where you sit. Notice which answers describe things you could change this week without asking anyone. Then ask yourself which of these you would change first, and what you would need from leadership to do it." },
     ceo: { name: "Chief Officer Edition", sub: "The Friction Audit", tag: "Discover whether your organization is designed to innovate or to defend itself.", code: "C",
-      lens: "You are the one person who can change the system, and often the last to see it. Hand the other edition to someone three levels down, then compare codes." }
+      lens: "You are the one person who can change the system, and often the last to see it. Ask someone three levels down how they would answer, and notice where the picture differs." }
   },
 
   // Illustrative targets for display only. They are not measured averages.
@@ -1100,7 +1100,7 @@ window.BSD = {
     "Find out which company you actually work for.",
     "The org chart is fiction. This is the nonfiction.",
     "Everyone knows. Nobody says. This says.",
-    "Sixty-six questions your engagement survey was too polite to ask."
+    "Questions your engagement survey was too polite to ask."
   ],
 
   voice: {
