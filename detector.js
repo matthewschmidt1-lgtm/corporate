@@ -27,9 +27,15 @@
   }
   function show(id) {
     ["start", "play", "result"].forEach(function (s) { $(s).hidden = s !== id; });
+    document.body.classList.toggle("playing", id === "play");
     window.scrollTo(0, 0);
   }
   // Browser Back and Forward walk through cards and screens instead of leaving the site.
+  function setPlayState(idx, push) {
+    var st = { s: "play", i: idx };
+    if (!window.history) return;
+    if (push && history.pushState) history.pushState(st, ""); else if (history.replaceState) history.replaceState(st, "");
+  }
   function pushScreen(name, idx) {
     if (window.history && history.pushState) history.pushState({ s: name, i: idx == null ? 0 : idx }, "");
   }
@@ -203,7 +209,8 @@
     return shuffle(picked.concat(rest.slice(0, Math.max(0, len - picked.length))));
   }
 
-  function start(edition, len, ctx, mode) {
+  function start(edition, len, ctx, mode, auto) {
+    state.autoctx = !!auto; state.ctxAsked = false; state.vkind = {}; state.lastKind = null;
     state.edition = edition; state.ctx = ctx; state.mode = mode; state.voice = {}; state.heard = {}; state.used = {}; state.t0 = {}; state.times = {}; state.slots = {};
     state.deck = buildDeck(len, edition);
     state.idx = 0;
@@ -215,7 +222,7 @@
     for (var i = 0; i < state.deck.length; i++) segs.appendChild(h("span"));
     show("play");
     render();
-    pushScreen("play", 0);
+    setPlayState(0, !auto);
   }
 
   function cur() { return state.deck[state.idx]; }
@@ -236,7 +243,7 @@
     var text = $("s-text"); text.textContent = "";
     c.s.split("\n").forEach(function (p) { text.appendChild(h("p", null, p)); });
 
-    $("count").textContent = (state.idx + 1) + " of " + total + ". " + c.title;
+    $("count").textContent = (state.idx + 1) + " of " + total;
     var segs = $("segs").children;
     for (var i = 0; i < segs.length; i++) {
       segs[i].className = (state.ans[state.deck[i]] ? "done " : "") + (i === state.idx ? "cur" : "");
@@ -271,6 +278,7 @@
         b.appendChild(h("em", "o-tag", typeName(c, bt)));
       }
     }
+    $("play").classList.toggle("answered", !!t);
     if (!t || assess) { fb.hidden = true; $("next").disabled = !t; setNextLabel(); return; }
     var weak = t === "C" || t === "D";
     fb.hidden = false;
@@ -278,7 +286,7 @@
     $("f-type").textContent = typeName(c, t);
     $("f-tests").textContent = "Tests: " + c.p.map(function (k) { return P[k].name; }).join(", ");
     var vo = state.voice[ci];
-    var main = vo || (weak ? wtfFor(c, t) : c.insight);
+    var main = (vo && !state.vkind[ci]) ? vo : (weak ? wtfFor(c, t) : c.insight);
     $("f-main").textContent = main;
     $("f-line").textContent = typeLine(c, t);
     var extra = main === c.insight ? "" : c.insight;
@@ -294,6 +302,7 @@
     // feedback sits directly under the chosen answer, so it never scrolls the choice away
     selBtn.parentNode.insertBefore(fb, selBtn.nextSibling);
     $("next").disabled = false;
+    $("play").classList.add("answered");
     setNextLabel();
     if (scroll && fb.scrollIntoView) fb.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
@@ -305,10 +314,11 @@
   function pickVoice(ci, t) {
     var V = B.voice, c = B.cards[ci], total = state.deck.length, n = 0, r = null;
     state.deck.forEach(function (x) { if (state.ans[x]) n++; });
-    if (n === Math.ceil(total / 2)) r = once("half", V.halfway);
+    state.lastKind = null;
+    if (n === Math.ceil(total / 2)) { r = once("half", V.halfway); if (r) state.lastKind = "half"; }
     if (!r && state.idx >= 2) {
       var w = [0, 1, 2].every(function (d) { var a2 = state.ans[state.deck[state.idx - d]]; return a2 === "C" || a2 === "D"; });
-      if (w) r = once("streak", V.streak);
+      if (w) { r = once("streak", V.streak); if (r) state.lastKind = "streak"; }
     }
     if (!r && c.cat === "decisions" && t === "C") r = once("dC", V.decisionsC);
     if (!r && c.cat === "safety" && t === "D") r = once("sD", V.safetyD);
@@ -330,7 +340,7 @@
     var ci = cur();
     var pm = $("play-msg"); if (pm) pm.hidden = true;
     if (state.times[ci] === undefined) { state.times[ci] = Date.now() - (state.t0[ci] || Date.now()); state.slots[ci] = state.perms[ci].indexOf(t); }
-    if (state.ans[ci] !== t || state.voice[ci] === undefined) { state.voice[ci] = pickVoice(ci, t) || null; state.heard[ci] = pickHeard(ci, t); }
+    if (state.ans[ci] !== t || state.voice[ci] === undefined) { state.voice[ci] = pickVoice(ci, t) || null; state.vkind[ci] = state.lastKind || null; state.heard[ci] = pickHeard(ci, t); }
     state.ans[ci] = t;
     var segs = $("segs").children; segs[state.idx].classList.add("done");
     paintFeedback(true);
@@ -339,13 +349,43 @@
 
   function next() {
     if (!state.ans[cur()]) return;
-    if (state.idx < state.deck.length - 1) { state.idx++; render(); window.scrollTo(0, 0); pushScreen("play", state.idx); return; }
+    if (state.idx < state.deck.length - 1) {
+      var ci0 = cur(), steps = [];
+      function advance() { $("play").classList.remove("interlude-on"); state.idx++; render(); window.scrollTo(0, 0); setPlayState(state.idx, false); }
+      function runSteps(i) { if (i >= steps.length) { advance(); return; } steps[i](function () { runSteps(i + 1); }); }
+      if (state.vkind[ci0]) {
+        steps.push(function (done) { interlude(state.vkind[ci0] === "half" ? "Halfway" : "Pattern spotted", state.voice[ci0], [{ label: "Keep going", fn: done }]); });
+      }
+      if (state.autoctx && !state.ctxAsked && state.idx === 2) {
+        steps.push(function (done) {
+          state.ctxAsked = true;
+          interlude("One quick question", "Is your industry heavily regulated? Think banking, health, aviation or the public sector.", [
+            { label: "Yes", fn: function () { state.ctx = 3; done(); } },
+            { label: "No", fn: function () { state.ctx = 2; done(); } },
+            { label: "Skip", fn: done, quiet: true }
+          ]);
+        });
+      }
+      runSteps(0);
+      return;
+    }
     if (!analyze(state.ans, state.ctx, state.edition)) {
       var pm = $("play-msg"); pm.textContent = "Every answer was marked as not seen, so there is nothing to score. Change at least one answer."; pm.hidden = false; return;
     }
     report(state.edition, state.ans, state.ctx, { times: state.deck.map(function (x) { return state.times[x]; }).filter(function (x) { return x !== undefined; }), slots: state.deck.map(function (x) { return state.slots[x]; }).filter(function (x) { return x !== undefined; }) });
   }
-  function back() { if (state.idx > 0) { if (window.history && history.state && history.state.s === "play") history.back(); else { state.idx--; render(); window.scrollTo(0, 0); } } }
+  function interlude(eyebrow, text, btns) {
+    $("il-eyebrow").textContent = eyebrow; $("il-text").textContent = text;
+    var box = $("il-btns"); box.textContent = "";
+    btns.forEach(function (b, i) {
+      var el = h("button", "btn" + (b.quiet ? " ghost" : ""), b.label); el.type = "button";
+      el.addEventListener("click", b.fn); box.appendChild(el);
+    });
+    $("play").classList.add("interlude-on");
+    window.scrollTo(0, 0);
+    var first = box.firstChild; if (first && first.focus) first.focus({ preventScroll: true });
+  }
+  function back() { if (state.idx > 0) { state.idx--; render(); window.scrollTo(0, 0); setPlayState(state.idx, false); } }
 
   // ---------- report ----------
   function bar(label, value, bench) {
@@ -413,32 +453,41 @@
     else if (a.score >= 45) sentence = "A company where " + weakTags.slice(0, 2).join(", and ") + (strongCats.length ? ", but " + P[strongCats[0]].strongTag + "." : ".");
     else sentence = "A company where " + weakTags.slice(0, 3).join(", ").replace(/, ([^,]*)$/, ", and $1") + ".";
     if (a.level === 0) sentence = "Too early to say. " + sentence;
-    else if (a.level === 1) sentence = "Early read: " + sentence.charAt(0).toLowerCase() + sentence.slice(1);
 
     // ----- 1. the result card -----
     add(root, h("p", "eyebrow warn", "Your report. " + ed.name + ". " + played + " situations scored."));
     var card = h("div", "result-card");
     card.appendChild(h("span", "stamp " + cls.tone, cls.stamp));
-    card.appendChild(h("h2", "verdict-big", (a.level <= 1 && a.level >= 0 && a.n >= 12 ? "Leaning: " : "") + cls.name));
-    card.appendChild(h("p", "oneline", sentence));
+    card.appendChild(h("h2", "verdict-big", cls.name));
+    card.appendChild(h("p", "oneline", cls.text));
+    card.appendChild(h("p", "sentence", sentence));
+    card.appendChild(h("p", "obsline", cls.obs));
     var big = h("div", "score-big");
     add(big, h("span", "score-num", String(a.score)), h("span", "score-of", "out of 100"));
     card.appendChild(big);
-    card.appendChild(h("p", "range", "Likely range " + a.lo + " to " + a.hi + ". Confidence: " + LEVEL_NAMES[a.level] + "."));
+    card.appendChild(h("p", "range", "Likely range " + a.lo + " to " + a.hi + (a.level <= 1 ? ", so treat it as a first read." : ".")));
     root.appendChild(card);
     if (cls.guard) root.appendChild(h("p", "pattern", "Capped: results were allowed to excuse cruelty or pressure. Speed does not buy that off."));
 
-    // ----- 2. the card is the result; only housekeeping actions below it -----
+    // ----- 2. what people said at your company (a receipt of the quotes you triggered) -----
+    var quotes = [];
+    state.deck.forEach(function (ci) { if (state.heard[ci] && quotes.length < 3 && quotes.indexOf(state.heard[ci]) < 0) quotes.push(state.heard[ci]); });
+    if (quotes.length) {
+      var rc = h("div", "receipt");
+      rc.appendChild(h("p", "receipt-h", "Overheard at your company"));
+      var rl = h("ul"); quotes.forEach(function (qq) { rl.appendChild(h("li", null, "\u201C" + qq + "\u201D")); });
+      rc.appendChild(rl);
+      root.appendChild(rc);
+    }
+
+    // housekeeping actions go at the very end
     var acts2 = h("div", "result-actions");
     var b4 = h("button", "link as-link small", "Play again"); b4.type = "button";
     var b8 = h("button", "link as-link small js-clear", "Clear everything"); b8.type = "button";
     add(acts2, b4, b8);
-    root.appendChild(acts2);
-    root.appendChild(h("p", "fine privacy-note", "Nothing on this page was sent anywhere. Clear everything wipes it from this device."));
+    var privNote = h("p", "fine privacy-note", "Nothing on this page was sent anywhere. Clear everything wipes it from this device.");
     var claim = h("p", "fine claim", "A conversation tool, not a validated assessment. It shows how one person sees the company. ");
     var cl2 = h("a", null, "How scoring works"); cl2.href = "methodology.html"; claim.appendChild(cl2);
-    root.appendChild(claim);
-    root.appendChild(h("p", "lead", cls.text));
 
     // ----- 4. do this Monday -----
     var s7 = section("Do this Monday");
@@ -521,7 +570,7 @@
     root.appendChild(sp);
 
     var fin = h("div", "final-obs");
-    add(fin, h("p", "eyebrow", "One last thing"), h("p", "pull", cls.obs), h("p", "philosophy", B.philosophy));
+    add(fin, h("p", "pull", B.philosophy));
     root.appendChild(fin);
 
     // ----- 8. everything else lives under one fold -----
@@ -602,6 +651,7 @@
       });
     }
     root.appendChild(more);
+    add(root, acts2, privNote, claim);
 
     // ----- wiring -----
     b4.addEventListener("click", function () { go_start(); });
@@ -620,7 +670,7 @@
   var hook = $("hook");
   if (hook) hook.textContent = B.taglines[Math.floor(Math.random() * B.taglines.length)];
   $("start-form").addEventListener("submit", function (e) { e.preventDefault(); });
-  function go(edition) { start(edition, parseInt($("len").value, 10), parseInt($("ctx").value, 10), $("fmode").value); }
+  function go(edition, auto) { start(edition, parseInt($("len").value, 10), parseInt($("ctx").value, 10), $("fmode").value, auto); }
   $("go-staff").addEventListener("click", function () { go("staff"); });
   $("go-ceo").addEventListener("click", function () { go("ceo"); });
   document.addEventListener("click", function (e) {
@@ -633,6 +683,9 @@
   $("restart-no").addEventListener("click", function () { $("restart-confirm").hidden = true; $("restart").hidden = false; });
   $("restart-yes").addEventListener("click", function () { $("restart-confirm").hidden = true; $("restart").hidden = false; go_start(); });
   if (window.history && history.replaceState) history.replaceState({ s: "start", i: 0 }, "");
+  // Links from the home page start a game straight away: play.html?go=staff or ?go=ceo
+  var goParam = new URLSearchParams(location.search).get("go");
+  if (goParam === "staff" || goParam === "ceo") { if (window.history && history.replaceState) history.replaceState({ s: "start", i: 0 }, "", location.pathname); go(goParam, true); }
   window.addEventListener("popstate", function (e) {
     var st = e.state || { s: "start", i: 0 };
     if (st.s === "play") {
