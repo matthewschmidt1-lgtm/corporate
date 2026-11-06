@@ -1038,3 +1038,33 @@ main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { .q5-track.scrolly .q5-d .q5-q, .q5-track.scrolly .q5-d .q5-more, .q5-track.scrolly .q5-d .q5-monday, .q5-track.scrolly .q5 li { transition: none; } }
 @media (max-width: 600px) { .q5-track.scrolly .q5-pin { min-height: 640px; } }
 @media (max-height: 720px) { .q5-track.scrolly .q5-pin { min-height: 0 !important; } }
+
+/* Startup Speed: eight scroll-driven tests */
+.q5-track.scrolly { height: 300vh; }
+.q5-track.scrolly .q5-dots { grid-template-columns: repeat(8, 1fr); gap: 3px; }
+.q5-track.scrolly .q5-pin { min-height: 0; }
+.q5-num { font-size: 14px; font-weight: 700; color: var(--clay); letter-spacing: .04em; padding-top: 12px; }
+.q5-track.scrolly .q5 li { grid-template-columns: 36px 1fr; gap: 10px; align-items: start; padding: 6px 0; }
+.q5-track.scrolly .q5 li .q5-num { padding-top: 11px; }
+.q5-track.scrolly .q5-d .q5-tag { font-size: 17px; text-transform: none; letter-spacing: -0.01em; font-weight: 600; color: var(--ink); }
+.q5-track.scrolly li.active .q5-tag { color: #7A3E2A; }
+.q5-track.scrolly .q5-d summary { min-height: 44px; }
+.q5-track.scrolly .q5-d:not([open]) .q5-tag { font-size: 17px; }
+.q5-track.scrolly .q5-d .q5-q { font-size: clamp(18px, 4.6vw, 22px); font-weight: 500; line-height: 1.3; letter-spacing: -0.02em; margin: 0 !important; }
+.q5-track.scrolly li.active .q5-q { max-height: 140px; margin: 0 0 10px !important; }
+.q5-track.scrolly li.active .q5-monday { max-height: 160px; }
+.q5-track.scrolly .q5 li.active { padding-left: 17px; margin-left: -12px; }
+.q5:not(.x) li .q5-d .q5-q { color: var(--ink); }
+@media (max-height: 760px) { .q5-track.scrolly .q5-monday { font-size: 15px !important; } .q5-track.scrolly .q5-d summary { min-height: 40px; } }
+.q5-track.scrolly .q5-pin { min-height: 600px; }
+@media (max-width: 600px) { .q5-track.scrolly .q5-pin { min-height: 726px; } }
+.q5-track.scrolly .q5 li.active { padding-left: 24px; }
+@media (max-height: 760px) {
+  .q5-track.scrolly .q5 li { padding: 3px 0; }
+  .q5-track.scrolly .q5-d summary { min-height: 36px; }
+  .q5-track.scrolly .q5-d .q5-tag { font-size: 16px; }
+  .q5-track.scrolly .q5-d .q5-q { font-size: 17px; }
+  .q5-track.scrolly .q5-monday { font-size: 14px !important; padding-top: 6px !important; padding-bottom: 6px !important; }
+  .q5-track.scrolly .q5-pin { min-height: 0 !important; }
+}
+.q5-track.scrolly .q5 li.active:has(.q5-d[open]) { margin-left: -12px; margin-right: -12px; padding-left: 24px; padding-right: 12px; }
