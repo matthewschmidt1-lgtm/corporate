@@ -179,6 +179,12 @@
     if (len >= all.length) return shuffle(all);
     var per = len >= 22 ? 3 : 1, picked = [], counts = {};
     B.principleOrder.forEach(function (k) { counts[k] = 0; });
+    // guarantee high-stakes control cards, so the control logic is always exercised
+    var hNeed = len >= 22 ? 2 : 1;
+    shuffle(all.filter(function (i) { return B.cards[i].tier === "H"; })).slice(0, hNeed).forEach(function (i) {
+      picked.push(i);
+      B.cards[i].p.forEach(function (q) { counts[q]++; });
+    });
     for (var pass = 1; pass <= per; pass++) {
       shuffle(B.principleOrder).forEach(function (k) {
         if (counts[k] >= pass) return;
@@ -224,7 +230,7 @@
     opts.classList.remove("show-all");
     opts.classList.toggle("assess", state.mode === "assess");
 
-    $("s-cat").textContent = B.cats[c.cat].name;
+    $("s-cat").textContent = B.principles[c.p[0]].name;
     $("s-num").textContent = "Exhibit " + (state.idx + 1);
     $("s-title").textContent = c.title;
     var text = $("s-text"); text.textContent = "";
