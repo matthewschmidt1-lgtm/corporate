@@ -1087,3 +1087,13 @@ main:focus { outline: none; }
   .play-top .count #restart, .play-top .count #restart-yes, .play-top .count #restart-no { min-height: 36px; padding: 0 10px; font-size: 13px !important; }
   .restart-confirm { gap: 6px; font-size: 13px; }
 }
+
+/* Startup Speed: simple static list */
+.ss-list { list-style: none; margin: 36px 0 0; padding: 0; border-top: 1px solid var(--ink); max-width: 760px; }
+.ss-card { display: grid; grid-template-columns: 52px 1fr; gap: 6px 14px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.ss-n { font-size: 15px; font-weight: 700; color: var(--clay); letter-spacing: .04em; padding-top: 8px; }
+.ss-t { font-size: clamp(24px, 6vw, 32px); line-height: 1.1; letter-spacing: -0.035em; margin: 0 0 10px; }
+.ss-q { font-size: clamp(18px, 4.6vw, 21px); line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 14px; }
+.ss-move { margin: 0; padding: 12px 14px; background: #F1EADB; border-left: 3px solid var(--clay); font-size: 17px; color: var(--ink); }
+.ss-move strong { color: var(--clay); }
+@media (max-width: 480px) { .ss-card { grid-template-columns: 34px 1fr; gap: 4px 10px; } }
