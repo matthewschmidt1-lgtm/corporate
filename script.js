@@ -134,6 +134,14 @@
       score.textContent = n;
       title.textContent = verdicts[n][0];
       text.textContent = verdicts[n][1];
+      var nx = document.getElementById('verdict-next');
+      if (nx) {
+        var a = nx.querySelector('a');
+        a.textContent = n <= 1 ? 'Protect it. Write down why you built the company, then play to find the leaks.'
+          : n <= 3 ? 'Fix the first leak now. Play to find which one costs you most.'
+          : n <= 5 ? 'Pick one priority and one approval to cut. Play to see where the rest hides.'
+          : 'Start with question one. Play to see the specifics.';
+      }
     };
     boxes.forEach(function (b) { b.addEventListener('change', update); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
