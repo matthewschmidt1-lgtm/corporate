@@ -891,3 +891,6 @@ main:focus { outline: none; }
 .challenge { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--dark-mute); max-width: 34em; }
 .challenge .eyebrow { color: var(--dark-mute); }
 .challenge-text { font-size: clamp(22px, 4.4vw, 30px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; color: var(--dark-ink); margin: 0; }
+.demo-cta a.btn { color: var(--bg); font-weight: 600; }
+.demo-cta a.btn:hover, .demo-cta a.btn:focus-visible { color: #fff; }
+.d-opt.sel { padding-left: 11px; }
