@@ -354,7 +354,7 @@
     add(top, h("span", "dim-label", label), h("span", "dim-val", String(value)));
     var track = h("div", "dim-track");
     var fill = h("span", "fill " + (value >= 60 ? "good" : (value >= 40 ? "mid" : "bad"))); fill.style.width = value + "%";
-    var tick = h("i", "tick"); tick.style.left = bench + "%"; tick.title = "Where high-performing companies land";
+    var tick = h("i", "tick"); tick.style.left = bench + "%"; tick.title = "Illustrative target, not a measured average";
     add(track, fill, tick);
     add(row, top, track);
     return row;
@@ -379,7 +379,7 @@
   }
   function axisGrid(F, T) {
     var g = h("div", "axis-grid");
-    add(g, h("span", "ag-q ag-tl", "Political but fast"), h("span", "ag-q ag-tr", "Theater of work"), h("span", "ag-q ag-bl", "Healthy"), h("span", "ag-q ag-br", "Bureaucratic but safe"));
+    add(g, h("span", "ag-q ag-tl", "Political but fast"), h("span", "ag-q ag-tr", "Theater of work"), h("span", "ag-q ag-bl", "Fast and clean"), h("span", "ag-q ag-br", "Bureaucratic but safe"));
     var dot = h("i", "ag-dot");
     dot.style.left = Math.min(F / 0.6, 1) * 100 + "%"; dot.style.bottom = Math.min(T / 0.4, 1) * 100 + "%";
     g.appendChild(dot);
@@ -426,7 +426,7 @@
     card.appendChild(big);
     card.appendChild(h("p", "range", "Likely range " + a.lo + " to " + a.hi + ". Confidence: " + LEVEL_NAMES[a.level] + "."));
     root.appendChild(card);
-    if (cls.guard) root.appendChild(h("p", "pattern", "Held back by the Human leadership guard: two or more answers described cruelty or pressure that results were allowed to excuse. Speed and results cannot buy that off."));
+    if (cls.guard) root.appendChild(h("p", "pattern", "Capped: results were allowed to excuse cruelty or pressure. Speed does not buy that off."));
 
     // ----- 2. the card is the result; only housekeeping actions below it -----
     var acts2 = h("div", "result-actions");
@@ -498,8 +498,8 @@
     else if (pc.A >= 0.4 && a.cnt.A >= 3 && a.score >= 65) s3.appendChild(h("p", "pattern good", "Pattern: " + a.cnt.A + " of your " + played + " answers were Entrepreneurial. That is a habit of the place, not a lucky quarter."));
     if (a.pN.excellence >= 3 && a.pN.speed >= 3 && a.pN.courage >= 3 && a.pN.focus >= 3 && a.pN.human >= 3) {
       var drive = Math.round((a.pAvg.excellence + a.pAvg.speed + a.pAvg.courage + a.pAvg.focus) / 4), hum = a.pAvg.human;
-      if (drive >= 65 && hum < 50) s3.appendChild(h("p", "pattern", "Balance check: ambition and standards are high, but human leadership is low. Pressure that people pay for is not excellence. Ask what the results are costing the people who produce them."));
-      else if (hum >= 70 && drive < 50) s3.appendChild(h("p", "pattern", "Balance check: people are treated well, but standards and drive are soft. Respect without a high bar is comfort, not leadership. Raise the bar and keep the respect."));
+      if (drive >= 65 && hum < 50) s3.appendChild(h("p", "pattern", "Ambition and standards are high, but human leadership is low. Pressure that people pay for is not excellence. Ask what the results are costing the people who produce them."));
+      else if (hum >= 70 && drive < 50) s3.appendChild(h("p", "pattern", "People are treated well, but standards and drive are soft. Respect without a high bar is comfort, not leadership. Raise the bar and keep the respect."));
     }
     root.appendChild(s3);
 
@@ -564,7 +564,7 @@
     }
 
     more.appendChild(h("h3", "sub", "The three situations that cost you most"));
-    if (!picks.length) more.appendChild(h("p", "fine", "Nothing you described is seriously damaging. Take that seriously and protect it."));
+    if (!picks.length) more.appendChild(h("p", "fine", "Nothing you described is seriously damaging. Protect it."));
     picks.forEach(function (x) {
       var d = h("div", "pt bad");
       add(d, h("h4", null, x.card.title + ": " + typeName(x.card, x.t)), h("p", null, "You said: " + optionText(x.card, x.t)), h("p", "mute", x.card.insight));
@@ -582,14 +582,8 @@
     });
     tbl.appendChild(tb);
     add(more, tbl,
-      h("p", "fine", "Each answer is scored by how well it fits the stakes of the situation. Low stakes: Entrepreneurial 100, Healthy corporate 75, Bureaucratic 40, Self-protective 5. High stakes (money, safety, privacy, law): Healthy corporate 100, Entrepreneurial 50, Bureaucratic 55, Self-protective 5. Medium stakes: both fast and proportionate answers score about 95, nudged slightly by the industry setting. In heavily regulated industries, seven named situations are treated as higher stakes. It varies scores 50, and not seen is left out. Every principle counts equally in the overall score. Situations you could not see from where you sit count 0.7."),
       h("p", "fine", "The classification comes from the pattern: how much of what you described was slow structure, how much was toxic behavior, and how consistent it was. It is not read off the score alone."));
-    more.appendChild(h("h3", "sub", "What this can and cannot tell you"));
-    var can = h("ul", "flag-list plain");
-    ["It describes how one person perceives recurring patterns at their workplace.", "It separates slow structure from toxic behavior.", "It shows relative strengths and weaknesses across the eleven principles for the same respondent.", "When two people in one company play it, the gap between them is informative."].forEach(function (t) { can.appendChild(h("li", null, t)); });
-    var cannot = h("ul", "flag-list plain");
-    ["It does not measure the company's real performance, or predict results.", "It cannot say one company is better than another. There are no norms.", "It is not an HR, legal or hiring tool, and says nothing about any individual.", "The eleven principles are one interpretation of a biography, not proven causes of success.", "The score is a range. At typical lengths that range is 10 to 35 points wide. This is a conversation tool, not a validated assessment."].forEach(function (t) { cannot.appendChild(h("li", null, t)); });
-    add(more, h("p", "fine", "Reasonable to conclude:"), can, h("p", "fine", "Not reasonable to conclude:"), cannot);
+    more.appendChild(h("p", "fine", "How the scoring works, and what it can and cannot tell you, is on the How scoring works page."));
     more.appendChild(h("h3", "sub", "Questions for leadership"));
     more.appendChild(h("p", "lead small", edition === "ceo" ? B.ceoLead : B.staffLead));
     var ol2 = h("ol", "plan");
