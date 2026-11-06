@@ -1017,3 +1017,24 @@ main:focus { outline: none; }
 @media (max-height: 720px) { .q5-track.scrolly .q5-more { display: none; } }
 @media (prefers-reduced-motion: reduce) { .q5-track.scrolly { height: 230vh; } }
 .q5-track.scrolly .q5 li:has(.q5-d[open]) { margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; }
+
+/* scroll-driven questions: smooth transitions, stable height, centered pin */
+.q5-track.scrolly { height: 210vh; }
+.q5-track.scrolly .q5-pin { min-height: 540px; will-change: transform; }
+.q5-track.scrolly .q5-d .q5-q,
+.q5-track.scrolly .q5-d .q5-more,
+.q5-track.scrolly .q5-d .q5-monday { display: block; overflow: hidden; max-height: 0; opacity: 0; margin: 0 !important; padding-top: 0; padding-bottom: 0; transition: max-height .5s ease, opacity .35s ease, padding .35s ease; }
+.q5-track.scrolly li.active .q5-q { max-height: 140px; opacity: 1; }
+.q5-track.scrolly li.active .q5-more { max-height: 220px; opacity: 1; margin: 10px 0 !important; }
+.q5-track.scrolly li.active .q5-monday { max-height: 140px; opacity: 1; padding-top: 10px; padding-bottom: 10px; }
+.q5-track.scrolly .q5-d .q5-tag { color: var(--clay); transition: color .3s; }
+.q5-track.scrolly li.active .q5-tag { color: #7A3E2A; }
+.q5-track.scrolly .q5-d summary::after { content: "+"; background: transparent; color: var(--ink); transition: background .3s, color .3s; }
+.q5-track.scrolly li.active .q5-d summary::after { content: "\2212"; background: var(--ink); color: var(--bg); }
+.q5-track.scrolly .q5 li:has(.q5-d[open]) { background: none; border-left: 0; margin: 0; padding: 10px 0; }
+.q5-track.scrolly .q5 li { transition: background-color .35s ease; }
+.q5-track.scrolly .q5 li.active { background: #FBF8F0; box-shadow: inset 5px 0 0 var(--clay); margin-left: -12px; margin-right: -12px; padding-left: 17px; padding-right: 12px; }
+@media (max-height: 720px) { .q5-track.scrolly .q5-more { max-height: 0 !important; margin: 0 !important; } }
+@media (prefers-reduced-motion: reduce) { .q5-track.scrolly .q5-d .q5-q, .q5-track.scrolly .q5-d .q5-more, .q5-track.scrolly .q5-d .q5-monday, .q5-track.scrolly .q5 li { transition: none; } }
+@media (max-width: 600px) { .q5-track.scrolly .q5-pin { min-height: 640px; } }
+@media (max-height: 720px) { .q5-track.scrolly .q5-pin { min-height: 0 !important; } }

@@ -81,13 +81,17 @@
     q5.forEach(function (d) { rows.push(d.parentNode); dots.appendChild(mk('span')); });
     pin.insertBefore(dots, pin.firstChild);
     track.classList.add('scrolly');
-    var idx = -1, ticking = false;
+    q5.forEach(function (d) { d.open = true; });
+    var idx = -1, ticking = false, STICKY = 64;
+    var place = function () {
+      STICKY = Math.max(64, Math.round((window.innerHeight - pin.offsetHeight) / 2));
+      pin.style.top = STICKY + 'px';
+    };
     var setIdx = function (n) {
       if (n === idx) return; idx = n;
-      q5.forEach(function (d, i) { d.open = i === n; rows[i].classList.toggle('active', i === n); });
+      rows.forEach(function (li, i) { li.classList.toggle('active', i === n); });
       for (var m = 0; m < dots.children.length; m++) dots.children[m].className = m < n ? 'done' : (m === n ? 'cur' : '');
     };
-    var STICKY = 64;
     var span = function () { return Math.max(1, track.offsetHeight - pin.offsetHeight); };
     var update = function () {
       ticking = false;
@@ -97,7 +101,8 @@
     };
     var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', function () { place(); onScroll(); });
+    place();
     q5.forEach(function (d, i) {
       d.querySelector('summary').addEventListener('click', function (e) {
         e.preventDefault();
