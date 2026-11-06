@@ -1068,3 +1068,22 @@ main:focus { outline: none; }
   .q5-track.scrolly .q5-pin { min-height: 0 !important; }
 }
 .q5-track.scrolly .q5 li.active:has(.q5-d[open]) { margin-left: -12px; margin-right: -12px; padding-left: 24px; padding-right: 12px; }
+
+/* play header: tidy the Start over control */
+.play-top .count { align-items: center; }
+.play-top .count > span:first-child { line-height: 1; }
+.play-top .count #restart, .play-top .count #restart-yes, .play-top .count #restart-no {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 36px; padding: 0 14px; margin: 0;
+  font: inherit; font-size: 14px !important; font-weight: 600; letter-spacing: 0; text-transform: none;
+  color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 3px; text-decoration: none; cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.play-top .count #restart:hover, .play-top .count #restart-no:hover { background: #E9E1D1; border-color: var(--ink); }
+.play-top .count #restart-yes { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.play-top .count #restart:focus-visible, .play-top .count #restart-yes:focus-visible, .play-top .count #restart-no:focus-visible { outline: 3px solid var(--clay); outline-offset: 2px; }
+.restart-confirm { gap: 8px; font-size: 14px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+@media (max-width: 600px) {
+  .play-top .count #restart, .play-top .count #restart-yes, .play-top .count #restart-no { min-height: 36px; padding: 0 10px; font-size: 13px !important; }
+  .restart-confirm { gap: 6px; font-size: 13px; }
+}
