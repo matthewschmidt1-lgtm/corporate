@@ -63,7 +63,7 @@
 
   // ---------- scoring v2: fit to stakes, equal-weight principles, answer shares ----------
   var LEVEL = { A: 0, B: 1, C: 2, D: 3 };
-  var LEVEL_NAMES = ["Direction only", "Low", "Moderate", "Higher"];
+  var LEVEL_NAMES = ["Direction only", "Low", "Moderate", "High"];
   var TWINS = B.twins.map(function (g) {
     return { p: g.p, titles: g.titles, idx: g.titles.map(function (t) { for (var i = 0; i < B.cards.length; i++) if (B.cards[i].title === t) return i; return -1; }) };
   });
@@ -297,7 +297,7 @@
     $("f-heard").hidden = !hd;
     $("f-more").hidden = true;
     $("f-toggle").setAttribute("aria-expanded", "false");
-    $("f-toggle").textContent = "Why it scores this way";
+    $("f-toggle").textContent = "Why";
     opts.classList.remove("show-all");
     // feedback sits directly under the chosen answer, so it never scrolls the choice away
     selBtn.parentNode.insertBefore(fb, selBtn.nextSibling);
@@ -388,14 +388,13 @@
   function back() { if (state.idx > 0) { state.idx--; render(); window.scrollTo(0, 0); setPlayState(state.idx, false); } }
 
   // ---------- report ----------
-  function bar(label, value, bench) {
+  function bar(label, value) {
     var row = h("div", "dim-row");
     var top = h("div", "dim-top");
     add(top, h("span", "dim-label", label), h("span", "dim-val", String(value)));
     var track = h("div", "dim-track");
     var fill = h("span", "fill " + (value >= 60 ? "good" : (value >= 40 ? "mid" : "bad"))); fill.style.width = value + "%";
-    var tick = h("i", "tick"); tick.style.left = bench + "%"; tick.title = "Illustrative target, not a measured average";
-    add(track, fill, tick);
+    add(track, fill);
     add(row, top, track);
     return row;
   }
@@ -403,11 +402,11 @@
   function section(title) { var s = h("section", "r-sec"); s.appendChild(h("h3", "sub", title)); return s; }
 
   var FLAG_TEXT = {
-    uniform: "Nearly every answer was the same type. Real organizations are rarely that uniform, so treat this result with caution.",
-    unknown: "A quarter or more of your answers were marked as not seen. The result rests on fewer situations than it looks.",
+    uniform: "Nearly every answer was the same. Real companies are messier.",
+    unknown: "A quarter or more of your answers were marked as not seen, so this rests on fewer cards than it looks.",
     contradictions: "Some answers about the same behavior pulled in opposite directions (listed below).",
-    speed: "Answers came very fast. Quick clicks tell us little.",
-    position: "Most answers used the same screen position. That pattern usually means clicking, not reading."
+    speed: "You answered very fast. Fast clicks say little.",
+    position: "Most answers sat in the same spot on screen. That usually means clicking, not reading."
   };
   function bandOf(v) { return v >= 75 ? "Strong" : (v >= 50 ? "Mixed" : "Weak"); }
   function answerBar(label, p, cls) {
@@ -424,7 +423,7 @@
     dot.style.left = Math.min(F / 0.6, 1) * 100 + "%"; dot.style.bottom = Math.min(T / 0.4, 1) * 100 + "%";
     g.appendChild(dot);
     var wrap = h("div", "ag-wrap");
-    add(wrap, g, h("p", "ag-x", "Structural friction, from low to high"), h("p", "ag-y", "Toxicity"));
+    add(wrap, g, h("p", "ag-x", "Slow process, from low to high"), h("p", "ag-y", "Self-protection"));
     return wrap;
   }
 
@@ -455,7 +454,7 @@
     if (a.level === 0) sentence = "Too early to say. " + sentence;
 
     // ----- 1. the result card -----
-    add(root, h("p", "eyebrow warn", "Your report. " + ed.name + ". " + played + " situations scored."));
+    add(root, h("p", "eyebrow warn", "Your report. " + ed.name + ". " + played + " cards."));
     var card = h("div", "result-card");
     card.appendChild(h("span", "stamp " + cls.tone, cls.stamp));
     card.appendChild(h("h2", "verdict-big", cls.name));
@@ -483,15 +482,15 @@
     // housekeeping actions go at the very end
     var acts2 = h("div", "result-actions");
     var b4 = h("button", "link as-link small", "Play again"); b4.type = "button";
-    var b8 = h("button", "link as-link small js-clear", "Clear everything"); b8.type = "button";
+    var b8 = h("button", "link as-link small js-clear", "Clear my answers"); b8.type = "button";
     add(acts2, b4, b8);
-    var privNote = h("p", "fine privacy-note", "Nothing on this page was sent anywhere. Clear everything wipes it from this device.");
-    var claim = h("p", "fine claim", "A conversation tool, not a validated assessment. It shows how one person sees the company. ");
+    var privNote = h("p", "fine privacy-note", "Nothing here left your device. Clear my answers wipes it.");
+    var claim = h("p", "fine claim", "One person's view, so use it to start a talk. ");
     var cl2 = h("a", null, "How scoring works"); cl2.href = "methodology.html"; claim.appendChild(cl2);
 
     // ----- 4. do this Monday -----
     var s7 = section("Do this Monday");
-    s7.appendChild(h("p", "fine", "Three specific moves, tied to the situations that cost you most. Pick one, and say the line out loud."));
+    s7.appendChild(h("p", "fine", "Three specific moves, tied to the cards that cost you most. Pick one, and say the line out loud."));
     var plan = h("ol", "monday-list");
     weakest.forEach(function (k) {
       var worst = a.items.filter(function (x) { return x.card.p.indexOf(k) >= 0 && x.h < 72; }).sort(function (x, y) { return x.h - y.h; })[0];
@@ -509,11 +508,11 @@
     // ----- 5. confidence (up front only when it matters) -----
     var cp = h("div", "conf-panel");
     cp.appendChild(h("p", "conf-level", "Confidence: " + LEVEL_NAMES[a.level]));
-    var ctext = a.level === 0 ? "Too few situations to classify or give principle scores. Read this as a direction, not a verdict."
-      : (a.level === 1 ? "A starting point. The range is wide because few situations were scored, and another set of cards could land in a neighboring band."
-      : (a.level === 2 ? "Reasonable for a conversation. Every principle has at least 3 situations behind it."
-      : "The fullest picture this game can give. Every principle has at least 4 situations behind it."));
-    cp.appendChild(h("p", "fine", ctext + " The range reflects which cards were drawn, not whether the model measures the company correctly."));
+    var ctext = a.level === 0 ? "Too few cards to classify or give principle scores. Read this as a direction."
+      : (a.level === 1 ? "A rough read. Few cards, wide range. Another draw could shift it."
+      : (a.level === 2 ? "Good enough to start a conversation. Every principle has at least 3 cards behind it."
+      : "The fullest picture this game gives. Every principle has at least 4 cards behind it."));
+    cp.appendChild(h("p", "fine", ctext + " The range reflects which cards you drew."));
     if (a.flags.length) {
       var fl = h("ul", "flag-list");
       a.flags.forEach(function (k) { fl.appendChild(h("li", null, FLAG_TEXT[k])); });
@@ -531,18 +530,18 @@
 
     // ----- 6. what you described -----
     var s3 = section("What you described");
-    add(s3, h("p", "fine", "Percent of the situations you scored, weighted by how visible each was from where you sit."));
+    add(s3, h("p", "fine", "Percent of the cards you scored, weighted by how visible each was from where you sit."));
     var dims = h("div", "dims");
     dims.appendChild(answerBar("Entrepreneurial", pc.A, "a"));
-    dims.appendChild(answerBar("Healthy corporate", pc.B, "b"));
+    dims.appendChild(answerBar("Well run", pc.B, "b"));
     dims.appendChild(answerBar("Bureaucratic", pc.C, "c"));
     dims.appendChild(answerBar("Self-protective", pc.D, "d"));
     dims.appendChild(answerBar("It varies", pc.N, "n"));
     s3.appendChild(dims);
     var vShare = Math.round((pc.A + pc.B + pc.N * 0.5) * 100), pShare = 100 - vShare;
     var motive = (weakest.length && a.pN[weakest[0]] >= 4) ? P[weakest[0]].motive : "";
-    if (pShare >= 25 && motive) s3.appendChild(h("p", "fine tendency", "Strongest protective tendency: " + motive + "."));
-    add(s3, h("h3", "sub small-sub", "Structure and culture are different problems"), h("p", "fine", "Friction is slow structure: approvals, process, hierarchy. Toxicity is self-protection, blame and politics. A company can have either, both or neither."), axisGrid(pc.C, pc.D));
+    if (pShare >= 25 && motive) s3.appendChild(h("p", "fine tendency", "What seems to drive it: " + motive + "."));
+    add(s3, h("h3", "sub small-sub", "Slow is not the same as scared"), h("p", "fine", "Friction is slow process. Self-protection is blame and politics. You can have either, both or neither."), axisGrid(pc.C, pc.D));
     if (pc.D >= 0.3 && a.cnt.D >= 3 && a.score < 45) s3.appendChild(h("p", "pattern", "Pattern: " + a.cnt.D + " of your " + played + " answers were Self-protective. That is not one bad experience. It repeats."));
     else if (pc.A >= 0.4 && a.cnt.A >= 3 && a.score >= 65) s3.appendChild(h("p", "pattern good", "Pattern: " + a.cnt.A + " of your " + played + " answers were Entrepreneurial. That is a habit of the place, not a lucky quarter."));
     if (a.pN.excellence >= 3 && a.pN.speed >= 3 && a.pN.courage >= 3 && a.pN.focus >= 3 && a.pN.human >= 3) {
@@ -556,15 +555,15 @@
     var enough = a.n >= 20 ? B.principleOrder.filter(function (k) { return a.pN[k] >= 2; }).length : 0;
     var sp = section("The eleven principles");
     if (enough < 8) {
-      sp.appendChild(h("p", "fine", "Principle scores need the standard or deep dive. This read does not have enough situations behind each principle to show them fairly."));
+      sp.appendChild(h("p", "fine", "Principle scores need the standard or deep dive. This read does not have enough cards behind each principle to show them fairly."));
     } else
-    add(sp, h("p", "fine", "Each principle counts equally. A number appears only with 4 or more situations behind it. With 2 or 3 you get a band, and with fewer, nothing."));
+    add(sp, h("p", "fine", "Each principle counts equally. A number appears only with 4 or more cards behind it. With 2 or 3 you get a band, and with fewer, nothing."));
     var pb = h("div", "dims");
     if (enough >= 8) B.principleOrder.forEach(function (k) {
       var n = a.pN[k];
-      if (n >= 4) pb.appendChild(bar(P[k].name, a.pAvg[k], B.benchmark.axis));
-      else if (n >= 2) { var row = h("div", "dim-row pband"); add(row, add(h("div", "dim-top"), h("span", "dim-label", P[k].name), h("span", "dim-val", bandOf(a.pAvg[k]))), h("p", "dim-hint", "Limited evidence: " + n + " situations")); pb.appendChild(row); }
-      else { var row2 = h("div", "dim-row pband"); add(row2, add(h("div", "dim-top"), h("span", "dim-label", P[k].name), h("span", "dim-val mute", "Not enough")), h("p", "dim-hint", n + " situation" + (n === 1 ? "" : "s"))); pb.appendChild(row2); }
+      if (n >= 4) pb.appendChild(bar(P[k].name, a.pAvg[k]));
+      else if (n >= 2) { var row = h("div", "dim-row pband"); add(row, add(h("div", "dim-top"), h("span", "dim-label", P[k].name), h("span", "dim-val", bandOf(a.pAvg[k]))), h("p", "dim-hint", "Limited evidence: " + n + " cards")); pb.appendChild(row); }
+      else { var row2 = h("div", "dim-row pband"); add(row2, add(h("div", "dim-top"), h("span", "dim-label", P[k].name), h("span", "dim-val mute", "Not enough")), h("p", "dim-hint", n + " card" + (n === 1 ? "" : "s"))); pb.appendChild(row2); }
     });
     sp.appendChild(pb);
     root.appendChild(sp);
@@ -575,9 +574,9 @@
 
     // ----- 8. everything else lives under one fold -----
     var more = h("details", "more");
-    more.appendChild(h("summary", null, "Go deeper: strengths and costs, how the score was built, what it can tell you"));
+    more.appendChild(h("summary", null, "More"));
     more.appendChild(h("p", "lens", ed.lens));
-    more.appendChild(h("p", "fine meaning", "In plain terms: " + cls.meaning + " Classified from your answer pattern, not from the score alone."));
+    more.appendChild(h("p", "fine meaning", "In plain terms: " + cls.meaning + ""));
     if (a.score !== a.scoreNeutral) more.appendChild(h("p", "fine", "Your industry setting moved the score by " + Math.abs(a.score - a.scoreNeutral) + " points. Without that adjustment it would be " + a.scoreNeutral + "."));
     if (!cautionUpFront) more.appendChild(cp);
 
@@ -603,16 +602,16 @@
         .sort(function (x, y) { return a.pAvg[x] - a.pAvg[y]; }).slice(0, 2);
       if (early.length) {
         more.appendChild(h("h3", "sub", "Early signals"));
-        more.appendChild(h("p", "fine", "Too few situations to call these strengths or dysfunctions. They are places worth a closer look."));
+        more.appendChild(h("p", "fine", "Too few cards to call these strengths or dysfunctions. They are places worth a closer look."));
         early.forEach(function (k) {
           var it = h("div", "pt");
-          add(it, h("h4", null, P[k].name + ": possibly weak (" + a.pN[k] + " situations)"), h("p", "mute", "Hint: " + P[k].flaw));
+          add(it, h("h4", null, P[k].name + ": possibly weak (" + a.pN[k] + " cards)"), h("p", "mute", "Hint: " + P[k].flaw));
           more.appendChild(it);
         });
       }
     }
 
-    more.appendChild(h("h3", "sub", "The three situations that cost you most"));
+    more.appendChild(h("h3", "sub", "The three cards that cost you most"));
     if (!picks.length) more.appendChild(h("p", "fine", "Nothing you described is seriously damaging. Protect it."));
     picks.forEach(function (x) {
       var d = h("div", "pt bad");
@@ -626,12 +625,12 @@
     ["Answer type", "Situations", "Percent"].forEach(function (x) { trh.appendChild(h("th", null, x)); });
     thead.appendChild(trh); tbl.appendChild(thead);
     var tb = h("tbody");
-    [["Entrepreneurial", "A"], ["Healthy corporate", "B"], ["Bureaucratic", "C"], ["Self-protective", "D"], ["It varies", "N"]].forEach(function (r) {
+    [["Entrepreneurial", "A"], ["Well run", "B"], ["Bureaucratic", "C"], ["Self-protective", "D"], ["It varies", "N"]].forEach(function (r) {
       var tr = h("tr"); add(tr, h("th", null, r[0]), h("td", null, String(a.cnt[r[1]])), h("td", "mute", Math.round(pc[r[1]] * 100) + "%")); tb.appendChild(tr);
     });
     tbl.appendChild(tb);
     add(more, tbl,
-      h("p", "fine", "The classification comes from the pattern: how much of what you described was slow structure, how much was toxic behavior, and how consistent it was. It is not read off the score alone."));
+      h("p", "fine", "The classification comes from the pattern: how much of what you described was slow structure, how much was self-protection, and how consistent it was."));
     more.appendChild(h("p", "fine", "How the scoring works, and what it can and cannot tell you, is on the How scoring works page."));
     more.appendChild(h("h3", "sub", "Questions for leadership"));
     more.appendChild(h("p", "lead small", edition === "ceo" ? B.ceoLead : B.staffLead));
@@ -701,7 +700,7 @@
     $("f-more").hidden = !open;
     $("options").classList.toggle("show-all", open);
     this.setAttribute("aria-expanded", open ? "true" : "false");
-    this.textContent = open ? "Hide" : "Why it scores this way";
+    this.textContent = open ? "Hide" : "Why";
   });
   document.addEventListener("keydown", function (e) {
     if ($("play").hidden) return;

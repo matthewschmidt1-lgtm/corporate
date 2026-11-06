@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'self'; base-uri 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Corporate Detector | The Garage</title>
-<meta name="description" content="Is your company designed to work for the customer, or for itself? Real workplace scenarios, no jargon, and nothing leaves your device.">
+<meta name="description" content="Is your company built for the customer, or for itself? A workplace card game. Your answers stay on your device.">
 <meta name="theme-color" content="#F3EEE4">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Corporate Detector: is it a business, or a bureaucracy pretending to be one?">
-<meta property="og:description" content="Everyday workplace scenarios and a gentle read on how your company is designed to work. Nothing leaves your device.">
+<meta property="og:title" content="Corporate Detector: is your company built for the customer, or for itself?">
+<meta property="og:description" content="Everyday workplace scenarios and a plain read on how your company works. Your answers stay on your device.">
 <meta property="og:url" content="https://corporate-production-f647.up.railway.app/play.html">
 <meta property="og:image" content="https://corporate-production-f647.up.railway.app/og-image.png">
 <meta property="og:site_name" content="The Garage">
@@ -20,7 +20,7 @@
 <meta name="twitter:image:alt" content="Corporate Detector: a dark square with three stacked bars and a copper line cutting through them, beside the title.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Corporate Detector">
-<meta name="twitter:description" content="Is it a business, or a bureaucracy pretending to be one?">
+<meta name="twitter:description" content="Is your company built for the customer, or for itself?">
 <meta name="twitter:image" content="https://corporate-production-f647.up.railway.app/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -47,19 +47,19 @@
     <div class="wrap">
       <p class="eyebrow warn">Where the org chart meets Tuesday.</p>
       <h1 class="h1-md">Corporate Detector</h1>
-      <p class="lead big-lead">Is it a business, or a bureaucracy pretending to be one?</p>
+      <p class="lead big-lead">Is your company built for the customer, or for itself?</p>
       <p class="lead hook" id="hook"></p>
-      <p class="fine pick-note">Real scenarios. Pick what actually happens where you work, not what should.</p>
-      <p class="privacy-line">Nothing you answer leaves this page. No accounts, no tracking, nothing saved. <a href="privacy.html">How privacy works</a></p>
+      <p class="fine pick-note">Pick what happens at your work, not what should.</p>
+      <p class="privacy-line">Your answers stay on your device. No accounts, no tracking. <a href="privacy.html">How privacy works</a></p>
 
       <form id="start-form" class="setup">
         <div class="start-main">
-          <button class="btn big-btn" type="button" id="go-staff"><span class="bb-main">Start. I work here.</span><span class="bb-sub">What it is really like to work there.</span></button>
-          <button class="btn ghost big-btn" type="button" id="go-ceo"><span class="bb-main">I run this place</span><span class="bb-sub">Chief Officer Edition. Questions about what leaders can actually see.</span></button>
+          <button class="btn big-btn" type="button" id="go-staff"><span class="bb-main">Start. I work here.</span><span class="bb-sub">What it is like to work here.</span></button>
+          <button class="btn ghost big-btn" type="button" id="go-ceo"><span class="bb-main">I run this place</span><span class="bb-sub">Chief Officer edition. What leaders can and cannot see.</span></button>
         </div>
 
         <div class="selects start-ctx">
-          <label>How regulated is your industry? (nudges medium-stakes cards slightly)
+          <label>How regulated is your industry?
             <select id="ctx">
               <option value="1">Lightly (software, media, retail)</option>
               <option value="2" selected>Moderately, or prefer not to say</option>
@@ -72,14 +72,14 @@
           <div class="selects">
             <label>How many cards
               <select id="len">
-                <option value="12" selected>Quick read: 12 cards</option>
-                <option value="24">Standard: 24 cards</option>
-                <option value="999">Deep dive: every card for your edition</option>
+                <option value="12" selected>12 cards</option>
+                <option value="24">24 cards</option>
+                <option value="999">All of them</option>
               </select></label>
-            <label>When do you see feedback?
+            <label>Feedback
               <select id="fmode">
-                <option value="game" selected>After each card, like a game</option>
-                <option value="assess">At the end only, like an assessment</option>
+                <option value="game" selected>After each card</option>
+                <option value="assess">At the end</option>
               </select></label>
           </div>
         </details>
@@ -89,17 +89,12 @@
         <summary>How it works</summary>
         <div class="rules-3">
           <div><span>1</span><p><strong>Answer what actually happens.</strong> Not what the handbook says.</p></div>
-          <div><span>2</span><p><strong>Pick the closest, not the nicest.</strong> Choose what wins most weeks, "it depends" if it truly varies, or "I have not seen this" if it is not visible from where you sit.</p></div>
+          <div><span>2</span><p><strong>Pick the closest, not the nicest.</strong> Unsure? Use "it depends" or "I have not seen this."</p></div>
           <div><span>3</span><p><strong>Rules are not the enemy.</strong> Good companies have controls where money, safety or the law are involved. Those score well.</p></div>
         </div>
         <h3 class="how-h">How scoring works</h3>
-        <p class="fine">Each answer is scored by how well it fits the stakes of the situation, so a careful answer on a risky decision scores well and a reckless one does not. Every principle counts equally. The report gives a range, a confidence level, and the pattern behind it: slow structure versus toxic behavior. It is a conversation tool, not a validated psychological test. <a href="methodology.html">Read the full method</a>.</p>
-        <h3 class="how-h">What it measures</h3>
-        <p class="fine">The detector asks one thing: is this company designed for the customer, or for itself? Eleven principles, drawn from the lessons of Steve Jobs's career, are tested by the cards:</p>
-        <ol class="blueprint" id="blueprint"></ol>
-        <p class="fine"><strong>Structure is not the enemy.</strong> Financial controls, safety, compliance and governance score well here. The target is structure that creates no value. We also do not reward aggression, intimidation or impossible deadlines: standards are only high when people are treated with respect.</p>
-        <p class="fine philosophy-line" id="philosophy-line"></p>
-        <p class="fine">Based on the business lessons of Steve Jobs as told in Walter Isaacson's biography. Nothing you answer leaves this page (<a href="privacy.html">privacy</a>).</p>
+        <p class="fine">Careful beats fast when the stakes are high. Fast beats careful when they are not. <a href="methodology.html">Read the full method</a>.</p>
+        <p class="fine">Inspired by Walter Isaacson's biography of Steve Jobs.</p>
       </details>
     </div>
   </section>
@@ -133,7 +128,7 @@
         <p class="f-type" id="f-type"></p>
         <p class="f-main" id="f-main"></p>
         <p class="f-heard" id="f-heard" hidden></p>
-        <button type="button" class="link as-link small" id="f-toggle" aria-expanded="false">Why it scores this way</button>
+        <button type="button" class="link as-link small" id="f-toggle" aria-expanded="false">Why</button>
         <div id="f-more" hidden>
           <p class="f-tests" id="f-tests"></p>
           <p class="f-line" id="f-line"></p>
@@ -146,7 +141,7 @@
         <button type="button" class="link as-link" id="back">Back</button>
         <button type="button" class="btn" id="next" disabled>Next card</button>
       </div>
-      <p class="fine keys">Keys: 1 to 6 to answer, Enter for next. Your answers stay on this page.</p>
+      <p class="fine keys">Keys 1 to 6 answer. Enter continues.</p>
     </div>
   </section>
 
@@ -159,13 +154,13 @@
 
 <footer class="footer">
   <div class="wrap">
-    <p class="foot-links"><a href="index.html">The Garage</a> <a href="privacy.html">Privacy</a> <a href="methodology.html">How scoring works</a> <button type="button" class="link as-link small js-clear">Clear everything</button></p>
-    <p class="fine">An independent study guide and game. Not affiliated with, endorsed by or sponsored by Apple Inc. References to Steve Jobs and to Walter Isaacson's biography are educational. A conversation tool, not a validated assessment.</p>
+    <p class="foot-links"><a href="index.html">The Garage</a> <a href="privacy.html">Privacy</a> <a href="methodology.html">How scoring works</a> <button type="button" class="link as-link small js-clear">Clear my answers</button></p>
+    <p class="fine">Independent and unofficial. Not affiliated with Apple Inc. Inspired by Walter Isaacson's biography of Steve Jobs.</p>
   </div>
 </footer>
 
-<script defer src="scenarios.js?v=15d6d3f9"></script>
-<script defer src="detector.js?v=6ed1028f"></script>
+<script defer src="scenarios.js?v=152dec49"></script>
+<script defer src="detector.js?v=6afdc979"></script>
 <script defer src="nav.js?v=c6c4f8ef"></script>
 </body>
 </html>

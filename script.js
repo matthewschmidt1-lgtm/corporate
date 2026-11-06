@@ -67,8 +67,8 @@
   if (demo) {
     var R = {
       A: ['Entrepreneurial', 'The decision took exactly as long as the decision.'],
-      B: ['Healthy corporate', 'A week for $2,000 is fine. Nobody is hurt.'],
-      C: ['Bureaucratic', 'A two minute decision, now scheduled for next month.'],
+      B: ['Well run', 'A week for $2,000 is fine. Nobody is hurt.'],
+      C: ['Bureaucratic', 'A decision that took a sentence, now scheduled for next month.'],
       D: ['Self-protective', 'Nobody decides. Everybody watches.']
     };
     var out = document.getElementById('demo-out'), cta = document.getElementById('demo-cta');

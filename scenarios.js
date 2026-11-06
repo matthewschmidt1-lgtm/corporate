@@ -1,7 +1,7 @@
 window.BSD = {
   types: {
     A: { name: "Entrepreneurial", line: "People are empowered, decisions move, and results matter.", h: 100, v: [3, 1, 0, 0] },
-    B: { name: "Healthy corporate", line: "Real controls with a real purpose, and people can still get things done.", h: 72, v: [2, 3, 1, 0] },
+    B: { name: "Well run", line: "Controls with a purpose, and the work still gets done.", h: 72, v: [2, 3, 1, 0] },
     C: { name: "Bureaucratic", line: "Approvals, meetings and hierarchy are slowing the work.", h: 52, v: [0, 1, 3, 1] },
     D: { name: "Self-protective", line: "Self-protection and politics are outranking results.", h: 10, v: [0, 0, 1, 3] },
     N: { name: "It varies", line: "It depends on the team or the day. That is the finding: there is no standard.", h: 55, v: [1, 1, 1, 1] },
@@ -50,7 +50,7 @@ window.BSD = {
   },
   // Twin cards test the same behavior. A respondent who answers A on one and D on another is flagged as a strong contradiction.
   twins: [
-    { p: "Speed", titles: ["Four Weeks of Two Minutes", "Great Idea, Wrong Door"] },
+    { p: "Speed", titles: ["The Thirty Day Trial", "Great Idea, Wrong Door"] },
     { p: "Human leadership", titles: ["Green Until It Isn't", "Challenging the Boss"] },
     { p: "Integration", titles: ["The Handoff", "Ad to Support", "Launch Day"] },
     { p: "Courage", titles: ["The Sacred Cow", "New Name, Same Project"] },
@@ -61,9 +61,9 @@ window.BSD = {
       obs: "Too early. Play more cards." },
     inconsistent: { name: "Two Companies in One Building", text: "The experience depends on the team or the day. That is the finding: there is no single standard.", meaning: "Many answers were 'it varies', or answers within a principle pulled far apart.", stamp: "IT DEPENDS", tone: "mid",
       obs: "A company that behaves differently by team has not set a standard. Setting the standard is a leadership job." },
-    mixed: { name: "Mixed Signals, Real Costs", text: "Some things work and some are costing you real time.", meaning: "Friction and toxicity are each moderate, and the overall score is below the healthy range.", stamp: "PENDING REVIEW", tone: "mid",
+    mixed: { name: "Mixed Signals, Real Costs", text: "Some things work. Some are costing you time.", meaning: "Some of it works. Some of it costs you.", stamp: "SEE ME", tone: "mid",
       obs: "Not a disaster, and not fine. Pick the two biggest costs and fix those before adding anything new." },
-    leaks: { name: "Mostly Healthy, With Leaks", text: "The basics work. A few specific places are costing you.", meaning: "Friction and toxicity are both low, but something is holding the score back.", stamp: "NOTED", tone: "good",
+    leaks: { name: "Mostly Healthy, With Leaks", text: "The basics work. A few specific places are costing you.", meaning: "Mostly sound, with a few leaks.", stamp: "NOTED", tone: "good",
       obs: "Nothing is on fire. A few small leaks are." }
   },
 
@@ -157,14 +157,12 @@ window.BSD = {
   ],
 
   editions: {
-    staff: { name: "Employee and Manager Edition", tag: "Find out what it is really like to work there.", code: "E",
+    staff: { name: "Employee edition", tag: "Find out what it is like to work here.", code: "E",
       lens: "This is how the organization feels from where you sit. Notice which answers describe things you could change this week without asking anyone." },
-    ceo: { name: "Chief Officer Edition", tag: "Discover whether your organization is designed to innovate or to defend itself.", code: "C",
+    ceo: { name: "Chief Officer edition", tag: "Find out what you can see from the top, and what you cannot.", code: "C",
       lens: "You are the one person who can change the system, and often the last to see it. Ask someone three levels down how they would answer, and notice where the picture differs." }
   },
 
-  // Illustrative targets for display only. They are not measured averages.
-  benchmark: { ent: 85, disc: 70, fric: 15, pol: 8, axis: 85 },
 
   cards: [
     // ===== DECISION-MAKING =====
@@ -176,21 +174,21 @@ window.BSD = {
            D: "The manager presents the idea as their own, and the employee hears nothing more." },
       insight: "How fast an idea gets a real answer shows whether the company treats ideas as assets or as interruptions.",
       wtf: "A $100,000 idea, converted into a calendar invite." },
-    { cat: "decisions", title: "Four Weeks of Two Minutes", tier: "L", tierHeavy: "H", p: ["speed"],
+    { cat: "decisions", title: "The Thirty Day Trial", tier: "L", tierHeavy: "H", p: ["speed"],
       s: "A team needs to choose between two tools for a 30 day trial costing $2,000. Who decides, and when?",
       o: { A: "The team lead picks that afternoon and tells the team why.",
            B: "The lead decides within a week after a short comparison and a check with finance.",
            C: "It goes on the agenda of a committee that meets monthly.",
            D: "People wait to see which option a senior leader seems to prefer." },
       insight: "A small, reversible choice should be cheap to make. If it is not, every bigger decision is even slower.",
-      wtf: "A two minute decision, now scheduled for next month." },
+      wtf: "A decision that took a sentence, now scheduled for next month." },
     { cat: "decisions", title: "Handshake Capital", audience: "ceo", tier: "H", p: ["speed", "ownership"], nuance: true,
       s: "A manager wants to sign a $400,000 contract with a new vendor. What actually happens?",
       o: { A: "The manager signs it the same day, based on a good meeting and a handshake.",
            B: "Spending thresholds apply. Finance and legal review it within a week, and the manager remains the decision-maker.",
            C: "Every purchase gets the same five step review, so this waits in the same queue as a $200 order.",
            D: "It is approved quickly because the vendor already has a relationship with a senior leader." },
-      insight: "Big money deserves real review. The healthy move scales the control to the risk. The weak moves apply no control, identical control to everything, or the wrong control entirely.",
+      insight: "Big money deserves review. Scale the control to the risk.",
       wtf: "A $200 pen and a $400,000 contract, treated as identical twins." },
     { cat: "decisions", title: "Small Change, Large Committee", audience: "staff", tier: "H", p: ["speed", "simplicity"], nuance: true,
       s: "An engineer finds a one line bug in the code that handles customer payments. How does the fix ship?",
@@ -198,7 +196,7 @@ window.BSD = {
            B: "A peer reviews it, automated tests run, and it ships the next day with a clear record.",
            C: "It needs a change request, four approvals and the next monthly release window.",
            D: "It waits for a sign-off from someone who does not follow the code but wants to avoid blame." },
-      insight: "Payment code deserves a second pair of eyes. A good process is fast and proportionate. A bad one is slow, or absent, or built around fear.",
+      insight: "Payment code deserves a second pair of eyes. Make it fast and proportionate.",
       wtf: "A one line fix, a four person approval chain, and a customer still seeing the bug." },
     // ===== LEADERSHIP AND MANAGEMENT =====
     { cat: "leadership", title: "Everything Is Priority One", tier: "L", p: ["focus"],
@@ -798,7 +796,7 @@ window.BSD = {
     safety: { C: ["Please raise that through the proper channel.", "Can you put that in the template?"], D: ["Let us not escalate this until we have a solution.", "I am just not sure that is constructive."] },
     talent: { C: ["She is two months short of the tenure requirement.", "It will be discussed at calibration."], D: ["He has great visibility with leadership.", "We went with someone we already knew."] },
     innovation: { C: ["Great idea. Let us form a working group.", "We will need a pilot charter first."], D: ["Interesting. Let us park it.", "We tried that in 2016."] },
-    meetings: { C: ["Let us take that offline and set up a follow-up.", "Can we get thirty minutes to prep for the prep?"], D: ["I will send a recap.", "Let us make sure everyone is looking at the same deck."] },
+    meetings: { C: ["Let us take that offline and set up a follow-up.", "Can we schedule a meeting to prep for the prep?"], D: ["I will send a recap.", "Let us make sure everyone is looking at the same deck."] },
     accountability: { C: ["That one is co-owned.", "It is with the committee."], D: ["I thought you had it.", "That was before my time on the team."] },
     customer: { C: ["Per policy, that goes to a ticket.", "We have logged your feedback for review."], D: ["That is not our target customer.", "The system will not let me do that."] }
   },
