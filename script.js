@@ -117,7 +117,7 @@
   // The blueprint chain: one principle at a time, each leading to the next
   var chain = document.getElementById('chain');
   if (chain) {
-    var links = chain.querySelectorAll('.link'), bar = document.getElementById('chain-bar');
+    var links = chain.querySelectorAll('.bp'), bar = document.getElementById('chain-bar');
     var ctl = document.getElementById('chain-ctl'), nb = document.getElementById('chain-next'), bb = document.getElementById('chain-back');
     var cur = 0, reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     chain.classList.add('js');
