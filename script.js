@@ -107,7 +107,6 @@
       terms.forEach(function (b) { var on = b.getAttribute('data-k') === k; b.classList.toggle('on', on); b.setAttribute('aria-expanded', on ? 'true' : 'false'); });
       document.getElementById('eqp-k').textContent = d.k;
       document.getElementById('eqp-t').textContent = d.t;
-      document.getElementById('eqp-s').textContent = d.s;
       var a = document.getElementById('eqp-link'); a.href = d.href; a.textContent = d.label;
       document.getElementById('eqp-count').textContent = (cur + 1) + ' of ' + order.length;
       document.getElementById('eqp-next').textContent = cur === order.length - 1 ? 'Start over' : 'Next';
