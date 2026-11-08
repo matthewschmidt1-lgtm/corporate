@@ -1134,3 +1134,16 @@ main:focus { outline: none; }
 .vs p span::after { content: ":"; }
 .vs-b { color: var(--mute); } .vs-e { color: var(--ink); }
 @media (min-width: 760px) { .vs { grid-template-columns: 220px 1fr; gap: 10px 24px; } .vs-b, .vs-e { grid-column: 2; } .vs h3 { grid-row: 1 / span 2; } }
+
+/* the equation: the five lessons grouped, the result with authority */
+.op.paren { font-size: 40px; font-weight: 300; padding: 8px 2px 0; color: var(--mute); }
+.term-eq svg { width: 60px; height: 60px; margin-top: -8px; }
+.term-eq { color: var(--ink); font-weight: 700; }
+@media (max-width: 480px) { .op.paren { font-size: 34px; padding-top: 6px; } .term-eq svg { width: 52px; height: 52px; margin-top: -7px; } }
+
+/* the mark beside the wordmark */
+.wordmark { display: inline-flex; align-items: center; gap: 8px; }
+.wm { width: 20px; height: 20px; flex: none; }
+.wordmark, .nav nav a { white-space: nowrap; }
+@media (max-width: 400px) { .wm { width: 18px; height: 18px; } .wordmark { gap: 6px; font-size: 16px; } .nav-inner nav { margin-right: 8px; } .nav nav a { font-size: 12px; } }
+@media (max-width: 360px) { .nav-inner nav { display: none; } }
