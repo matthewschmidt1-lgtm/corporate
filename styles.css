@@ -1428,3 +1428,23 @@ main:focus { outline: none; }
 
 /* a copper rule never sits on a section edge */
 .rule-in { padding-top: clamp(20px, 3vw, 36px); }
+
+/* the honest version: the misses and the bill, two folds on sand */
+#mistakes .fold { background: var(--bg); }
+#mistakes .fold + .fold { margin-top: 12px; }
+#mistakes .fold > summary { background: var(--bg); }
+.misses { list-style: none; margin: 12px 0 0; padding: 6px 22px 4px; counter-reset: ms; }
+.misses li { counter-increment: ms; display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(42, 38, 33, .14); }
+.misses li::before { content: counter(ms, decimal-leading-zero); grid-row: 1 / span 3; font-size: 14px; font-weight: 700; color: var(--copper); letter-spacing: .04em; padding-top: 4px; }
+.misses .t { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+.misses .d { color: var(--mute); font-size: 16px; margin-top: 4px; }
+.misses .l { margin-top: 8px; font-size: 16px; font-weight: 600; color: var(--ink); border-left: 3px solid var(--copper); padding-left: 10px; }
+.misses-tie { margin: 14px 22px 14px; font-size: 17px; color: var(--ink); max-width: 40em; }
+.bill { list-style: none; margin: 12px 0 0; padding: 6px 22px 4px; }
+.bill li { display: grid; grid-template-columns: 1fr 28px 1fr; align-items: baseline; column-gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(42, 38, 33, .14); font-size: 18px; }
+.bill .s { font-weight: 600; letter-spacing: -0.015em; }
+.bill .arrow { color: var(--copper); text-align: center; font-weight: 500; }
+.bill .b { color: #7A3E2A; }
+.bill-note { margin: 14px 22px 14px; }
+#mistakes .pull { margin-top: 40px; }
+@media (max-width: 600px) { .misses, .bill { padding: 4px 14px 2px; } .misses-tie, .bill-note { margin-left: 14px; margin-right: 14px; } .bill li { font-size: 16px; grid-template-columns: 1fr 22px 1fr; } }
