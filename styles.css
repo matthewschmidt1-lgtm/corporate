@@ -866,10 +866,11 @@ main:focus { outline: none; }
 .hero-mark .ly { stroke-dasharray: 212; stroke-dashoffset: 212; animation: drawLy .4s ease-out forwards; }
 .hero-mark .ly2 { animation-delay: .12s; }
 .hero-mark .ly3 { animation-delay: .24s; }
-.hero-mark .rod { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawRod .45s cubic-bezier(.2, .7, .2, 1) .55s forwards; }
+.hero-mark .rod { stroke-dasharray: 100; stroke-dashoffset: 100; transform-origin: 60px 111px; animation: drawRod .45s cubic-bezier(.2, .7, .2, 1) .55s forwards, sway 1.3s ease-in-out 1.2s infinite alternate; }
 .hero-mark .rod-dot { opacity: 0; transform-origin: 60px 111px; animation: dotIn .18s ease-out 1s forwards; }
 @keyframes drawLy { to { stroke-dashoffset: 0; } }
 @keyframes drawRod { to { stroke-dashoffset: 0; } }
+@keyframes sway { from { transform: rotate(-13deg); } to { transform: rotate(13deg); } }
 @keyframes dotIn { 0% { opacity: 0; transform: scale(.4); } 60% { opacity: 1; transform: scale(1.15); } 100% { opacity: 1; transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) {
   .hero-mark .ly, .hero-mark .rod, .hero-mark .rod-dot { animation: none; stroke-dashoffset: 0; opacity: 1; }
@@ -974,3 +975,102 @@ main:focus { outline: none; }
 .strip-key li { display: inline-flex; align-items: center; gap: 7px; }
 .strip-key i { width: 12px; height: 12px; display: inline-block; }
 .strip-key strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- the lessons, in motion ---------- */
+.ml-list { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--ink); }
+.ml { display: grid; grid-template-columns: 1fr; gap: 18px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.ml-fig { margin: 0; max-width: 320px; }
+.ml-art { background: #FBF8F0; border: 1px solid var(--line); border-radius: 3px; padding: 14px; }
+.ml-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ml-cap { margin: 10px 0 0; font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.35; }
+.ml-replay { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; padding: 0; background: none; border: 0; font: inherit; font-size: 14px; color: var(--clay); cursor: pointer; }
+.ml-replay::before { content: "\21BB\00a0"; }
+.ml-replay:hover { text-decoration: underline; }
+.ml-body .q-tag { display: block; margin-bottom: 6px; }
+.ml-body h3 { font-size: clamp(22px, 3vw, 28px); margin: 0 0 14px; max-width: 20em; }
+.ml-body .monday { margin: 0 0 10px; max-width: 34em; }
+.ml-more { max-width: 34em; }
+.ml-more summary { cursor: pointer; color: var(--clay); font-size: 16px; min-height: 40px; }
+.ml-more p { font-size: 17px; color: var(--mute); margin: 8px 0; }
+.ml-more .aside { margin-top: 10px; }
+@media (min-width: 760px) {
+  .ml { grid-template-columns: 300px 1fr; column-gap: 48px; align-items: start; padding: 40px 0; }
+  .ml-fig { max-width: none; }
+}
+
+/* initial states (what you see before the panel plays) */
+.ml .f-bar { opacity: .85; transform-box: fill-box; transform-origin: center; }
+.ml .f-rod, .ml .s-rod, .ml .x-rod, .ml .i-rod1, .ml .i-rod2 { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ml .c-dot { transform: translate(100px, 0); }
+.ml .c-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.ml .s-ly { transform-box: fill-box; transform-origin: center; }
+.ml .x-front, .ml .x-back { transform-box: fill-box; transform-origin: center; }
+.ml .x-back { transform: scaleX(0); }
+.ml .i-dash, .ml .i-dot { opacity: 0; }
+
+/* 1. focus: thirteen priorities fade, two survive, the line goes through them */
+.ml.play .f-gone { animation: mlFade .35s ease forwards; }
+.ml.play .f-gone:nth-of-type(1) { animation-delay: .3s; } .ml.play .f-gone:nth-of-type(2) { animation-delay: .37s; }
+.ml.play .f-gone:nth-of-type(3) { animation-delay: .44s; } .ml.play .f-gone:nth-of-type(4) { animation-delay: .51s; }
+.ml.play .f-gone:nth-of-type(6) { animation-delay: .58s; } .ml.play .f-gone:nth-of-type(7) { animation-delay: .65s; }
+.ml.play .f-gone:nth-of-type(8) { animation-delay: .72s; } .ml.play .f-gone:nth-of-type(9) { animation-delay: .79s; }
+.ml.play .f-gone:nth-of-type(11) { animation-delay: .86s; } .ml.play .f-gone:nth-of-type(12) { animation-delay: .93s; }
+.ml.play .f-gone:nth-of-type(13) { animation-delay: 1s; } .ml.play .f-gone:nth-of-type(14) { animation-delay: 1.07s; }
+.ml.play .f-gone:nth-of-type(15) { animation-delay: 1.14s; }
+.ml.play .f-keep { animation: mlThick .5s cubic-bezier(.2, .8, .2, 1) 1.5s forwards; }
+.ml.play .f-rod { animation: mlDraw .5s ease 2.1s forwards; }
+@keyframes mlFade { to { opacity: .1; } }
+@keyframes mlThick { to { transform: scaleY(2.4); opacity: 1; } }
+@keyframes mlDraw { to { stroke-dashoffset: 0; } }
+
+/* 2. customer: the dot comes in from outside the room and lands in the middle */
+.ml.play .c-dot { animation: mlDotIn 1s cubic-bezier(.2, .8, .2, 1) .4s forwards; }
+.ml.play .c-pulse { animation: mlPulse .7s ease-out 1.4s forwards; }
+@keyframes mlDotIn { to { transform: translate(0, 0); } }
+@keyframes mlPulse { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.8); } }
+
+/* 3. simplicity: six layers lift away, one stays, the line goes through it */
+.ml.play .s-gone { animation: mlLift .4s ease forwards; }
+.ml.play .s-gone:nth-of-type(1) { animation-delay: .3s; } .ml.play .s-gone:nth-of-type(2) { animation-delay: .45s; }
+.ml.play .s-gone:nth-of-type(3) { animation-delay: .6s; } .ml.play .s-gone:nth-of-type(5) { animation-delay: .75s; }
+.ml.play .s-gone:nth-of-type(6) { animation-delay: .9s; } .ml.play .s-gone:nth-of-type(7) { animation-delay: 1.05s; }
+.ml.play .s-rod { animation: mlDraw .5s ease 1.6s forwards; }
+@keyframes mlLift { to { transform: translateY(-16px); opacity: 0; } }
+
+/* 4. excellence: the cabinet turns, and the back gets finished */
+.ml.play .x-front { animation: mlFlipOut .45s ease-in .5s forwards; }
+.ml.play .x-back { animation: mlFlipIn .45s ease-out .95s forwards; }
+.ml.play .x-rod { animation: mlDraw .8s ease 1.5s forwards; }
+@keyframes mlFlipOut { to { transform: scaleX(0); } }
+@keyframes mlFlipIn { to { transform: scaleX(1); } }
+
+/* 5. innovation: the line stops at the wall, the wall turns out to be a habit, the line goes on */
+.ml.play .i-rod1 { animation: mlDraw .5s ease .3s forwards; }
+.ml.play .i-wall { animation: mlWall .4s ease 1.3s forwards; }
+.ml.play .i-dash { animation: mlShow .4s ease 1.3s forwards; }
+.ml.play .i-rod2 { animation: mlDraw .5s ease 1.9s forwards; }
+.ml.play .i-dot { animation: mlShow .2s ease 2.4s forwards; }
+@keyframes mlWall { to { opacity: .12; } }
+@keyframes mlShow { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ml.play .f-gone, .ml.play .f-keep, .ml.play .f-rod, .ml.play .c-dot, .ml.play .c-pulse, .ml.play .s-gone, .ml.play .s-rod,
+  .ml.play .x-front, .ml.play .x-back, .ml.play .x-rod, .ml.play .i-rod1, .ml.play .i-wall, .ml.play .i-dash, .ml.play .i-rod2, .ml.play .i-dot { animation: none; }
+  .ml .f-gone { opacity: .1; } .ml .f-keep { transform: scaleY(2.4); opacity: 1; }
+  .ml .f-rod, .ml .s-rod, .ml .x-rod, .ml .i-rod1, .ml .i-rod2 { stroke-dashoffset: 0; }
+  .ml .c-dot { transform: none; } .ml .c-pulse { opacity: 0; }
+  .ml .s-gone { opacity: 0; }
+  .ml .x-front { transform: scaleX(0); } .ml .x-back { transform: none; }
+  .ml .i-wall { opacity: .12; } .ml .i-dash { opacity: 1; } .ml .i-dot { opacity: 1; }
+  .ml-replay { display: none; }
+}
+
+/* folds: long reference lists stay on the page, out of the way */
+.fold { margin-top: 28px; }
+.fold > summary { display: flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 0 16px; border: 1px solid var(--ink); border-radius: 3px; font-size: 18px; font-weight: 600; cursor: pointer; list-style: none; background: var(--bg); }
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::after { content: "+"; font-size: 24px; color: var(--clay); }
+.fold[open] > summary::after { content: "\2212"; }
+.fold > summary:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
+.fold[open] > summary { margin-bottom: 8px; }
+.fold .rules { margin-top: 16px; }

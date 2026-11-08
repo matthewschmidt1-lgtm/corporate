@@ -86,6 +86,29 @@
     items.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // The lessons, in motion: each panel plays once when it is well in view, and again on Replay
+  var mls = document.querySelectorAll('.ml');
+  if (mls.length) {
+    var playPanel = function (el) { el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); };
+    if ('IntersectionObserver' in window) {
+      var mio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('play'); mio.unobserve(e.target); }
+        });
+      }, { threshold: 0.35 });
+      mls.forEach(function (el) { mio.observe(el); });
+    } else {
+      mls.forEach(function (el) { el.classList.add('play'); });
+    }
+    var replays = document.querySelectorAll('.ml-replay');
+    for (var ri = 0; ri < replays.length; ri++) {
+      replays[ri].addEventListener('click', function () {
+        var li = this; while (li && !(li.classList && li.classList.contains('ml'))) li = li.parentNode;
+        if (li) playPanel(li);
+      });
+    }
+  }
+
   // Diagnosis
   var verdicts = [
     ['Suspiciously healthy.', 'Check again after lunch.'],
