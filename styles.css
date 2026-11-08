@@ -1074,3 +1074,7 @@ main:focus { outline: none; }
 .fold > summary:focus-visible { outline: 3px solid var(--clay); outline-offset: 3px; }
 .fold[open] > summary { margin-bottom: 8px; }
 .fold .rules { margin-top: 16px; }
+
+/* header: the same three destinations on every page, the current one marked */
+.nav nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
+.nav-panel a[aria-current="page"] { color: var(--clay); }
