@@ -1171,3 +1171,7 @@ main:focus { outline: none; }
 .ls-list a { grid-template-columns: 52px 1fr; align-items: center; padding: 12px 0; }
 .ls-g { display: block; width: 36px; height: 36px; overflow: visible; }
 #lessons .actions { margin-top: 24px; }
+
+/* the heading is an equation too */
+.eq-h { max-width: none; }
+.eq-x { color: var(--copper); font-weight: 500; padding: 0 .04em; }
