@@ -227,6 +227,17 @@
 
   function cur() { return state.deck[state.idx]; }
 
+  // the rail: each finished segment takes the color of its answer, the copper dot sits on the current card
+  function paintSegs() {
+    var segs = $("segs").children, n = segs.length;
+    for (var i = 0; i < n; i++) {
+      var t = state.ans[state.deck[i]];
+      segs[i].className = (t ? "done t-" + t + " " : "") + (i === state.idx ? "cur" : "");
+    }
+    var dot = $("rail-dot");
+    if (dot && n) dot.style.left = ((state.idx + 0.5) / n * 100) + "%";
+  }
+
   function render() {
     var ci = cur(), c = B.cards[ci];
     if (state.t0[ci] === undefined) state.t0[ci] = Date.now();
@@ -244,10 +255,7 @@
     c.s.split("\n").forEach(function (p) { text.appendChild(h("p", null, p)); });
 
     $("count").textContent = (state.idx + 1) + " of " + total;
-    var segs = $("segs").children;
-    for (var i = 0; i < segs.length; i++) {
-      segs[i].className = (state.ans[state.deck[i]] ? "done " : "") + (i === state.idx ? "cur" : "");
-    }
+    paintSegs();
 
     opts.textContent = "";
     state.perms[ci].forEach(function (t, pos) {
@@ -342,7 +350,7 @@
     if (state.times[ci] === undefined) { state.times[ci] = Date.now() - (state.t0[ci] || Date.now()); state.slots[ci] = state.perms[ci].indexOf(t); }
     if (state.ans[ci] !== t || state.voice[ci] === undefined) { state.voice[ci] = pickVoice(ci, t) || null; state.vkind[ci] = state.lastKind || null; state.heard[ci] = pickHeard(ci, t); }
     state.ans[ci] = t;
-    var segs = $("segs").children; segs[state.idx].classList.add("done");
+    paintSegs();
     paintFeedback(true);
     $("next").focus({ preventScroll: true }); // Enter now really does advance
   }
@@ -401,6 +409,27 @@
 
   function section(title) { var s = h("section", "r-sec"); s.appendChild(h("h3", "sub", title)); return s; }
 
+  // the verdict as a measurement: a 0 to 100 line, the likely range, and a dot where you landed
+  function svgEl(tag, attrs) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function scale(a) {
+    var L = 12, R = 368, Y = 34;
+    function X(v) { return L + (R - L) * v / 100; }
+    var s = svgEl("svg", { "class": "scale", viewBox: "0 0 380 64", role: "img", "aria-label": a.score + " out of 100, likely range " + a.lo + " to " + a.hi + ". Left is built for itself, right is built for the customer." });
+    s.appendChild(svgEl("line", { "class": "sc-base", x1: L, y1: Y, x2: R, y2: Y }));
+    [25, 45, 65, 80].forEach(function (v) { s.appendChild(svgEl("line", { "class": "sc-tick", x1: X(v), y1: Y - 6, x2: X(v), y2: Y + 6 })); });
+    s.appendChild(svgEl("line", { "class": "sc-band", pathLength: 1, x1: X(a.score), y1: Y, x2: X(a.lo), y2: Y }));
+    s.appendChild(svgEl("line", { "class": "sc-band", pathLength: 1, x1: X(a.score), y1: Y, x2: X(a.hi), y2: Y }));
+    s.appendChild(svgEl("circle", { "class": "sc-dot", cx: X(a.score), cy: Y, r: 6 }));
+    var num = svgEl("text", { "class": "sc-num", x: X(a.score), y: Y - 14 }); num.textContent = String(a.score); s.appendChild(num);
+    var l1 = svgEl("text", { "class": "sc-lab", x: L, y: Y + 26 }); l1.textContent = "For itself"; s.appendChild(l1);
+    var l2 = svgEl("text", { "class": "sc-lab sc-r", x: R, y: Y + 26 }); l2.textContent = "For the customer"; s.appendChild(l2);
+    return s;
+  }
+
   var FLAG_TEXT = {
     uniform: "Nearly every answer was the same. Real companies are messier.",
     unknown: "A quarter or more of your answers were marked as not seen, so this rests on fewer cards than it looks.",
@@ -409,13 +438,6 @@
     position: "Most answers sat in the same spot on screen. That usually means clicking, not reading."
   };
   function bandOf(v) { return v >= 75 ? "Strong" : (v >= 50 ? "Mixed" : "Weak"); }
-  function answerBar(label, p, cls) {
-    var row = h("div", "dim-row");
-    add(row, add(h("div", "dim-top"), h("span", "dim-label", label), h("span", "dim-val", Math.round(p * 100) + "%")));
-    var track = h("div", "dim-track"), fill = h("span", "fill " + cls); fill.style.width = Math.round(p * 100) + "%";
-    add(track, fill); row.appendChild(track);
-    return row;
-  }
   function axisGrid(F, T) {
     var g = h("div", "axis-grid");
     add(g, h("span", "ag-q ag-tl", "Political but fast"), h("span", "ag-q ag-tr", "Theater of work"), h("span", "ag-q ag-bl", "Fast and clean"), h("span", "ag-q ag-br", "Bureaucratic but safe"));
@@ -461,23 +483,15 @@
     card.appendChild(h("p", "oneline", cls.text));
     card.appendChild(h("p", "sentence", sentence));
     card.appendChild(h("p", "obsline", cls.obs));
-    var big = h("div", "score-big");
-    add(big, h("span", "score-num", String(a.score)), h("span", "score-of", "out of 100"));
-    card.appendChild(big);
-    card.appendChild(h("p", "range", "Likely range " + a.lo + " to " + a.hi + (a.level <= 1 ? ", so treat it as a first read." : ".")));
+    card.appendChild(scale(a));
+    card.appendChild(h("p", "range", a.score + " out of 100. Likely range " + a.lo + " to " + a.hi + (a.level <= 1 ? ", so treat it as a first read." : ".")));
+    if (weakest.length) {
+      var mf = h("button", "move-first", "Move this first: " + P[weakest[0]].name); mf.type = "button";
+      mf.addEventListener("click", function () { var m = $("monday"); if (m) m.scrollIntoView({ block: "start", behavior: "smooth" }); });
+      card.appendChild(mf);
+    }
     root.appendChild(card);
     if (cls.guard) root.appendChild(h("p", "pattern", "Capped: results were allowed to excuse cruelty or pressure. Speed does not buy that off."));
-
-    // ----- 2. what people said at your company (a receipt of the quotes you triggered) -----
-    var quotes = [];
-    state.deck.forEach(function (ci) { if (state.heard[ci] && quotes.length < 3 && quotes.indexOf(state.heard[ci]) < 0) quotes.push(state.heard[ci]); });
-    if (quotes.length) {
-      var rc = h("div", "receipt");
-      rc.appendChild(h("p", "receipt-h", "Overheard at your company"));
-      var rl = h("ul"); quotes.forEach(function (qq) { rl.appendChild(h("li", null, "\u201C" + qq + "\u201D")); });
-      rc.appendChild(rl);
-      root.appendChild(rc);
-    }
 
     // housekeeping actions go at the very end
     var acts2 = h("div", "result-actions");
@@ -489,7 +503,7 @@
     var cl2 = h("a", null, "How scoring works"); cl2.href = "methodology.html"; claim.appendChild(cl2);
 
     // ----- 4. do this Monday -----
-    var s7 = section("Do this Monday");
+    var s7 = section("Do this Monday"); s7.id = "monday"; s7.className = "r-sec monday-card";
     s7.appendChild(h("p", "fine", "Three specific moves, tied to the cards that cost you most. Pick one, and say the line out loud."));
     var plan = h("ol", "monday-list");
     weakest.forEach(function (k) {
@@ -504,6 +518,17 @@
     if (!weakest.length) plan.appendChild(h("li", null, "Nothing scored badly. Keep doing what you are doing, and play more cards to check."));
     s7.appendChild(plan);
     root.appendChild(s7);
+
+    // ----- what people said at your company (a receipt of the quotes you triggered) -----
+    var quotes = [];
+    state.deck.forEach(function (ci) { if (state.heard[ci] && quotes.length < 3 && quotes.indexOf(state.heard[ci]) < 0) quotes.push(state.heard[ci]); });
+    if (quotes.length) {
+      var rc = h("div", "receipt");
+      rc.appendChild(h("p", "receipt-h", "Overheard at your company"));
+      var rl = h("ul"); quotes.forEach(function (qq) { rl.appendChild(h("li", null, "“" + qq + "”")); });
+      rc.appendChild(rl);
+      root.appendChild(rc);
+    }
 
     // ----- 5. confidence (up front only when it matters) -----
     var cp = h("div", "conf-panel");
@@ -530,14 +555,15 @@
 
     // ----- 6. what you described -----
     var s3 = section("What you described");
-    add(s3, h("p", "fine", "Percent of the cards you scored, weighted by how visible each was from where you sit."));
-    var dims = h("div", "dims");
-    dims.appendChild(answerBar("Entrepreneurial", pc.A, "a"));
-    dims.appendChild(answerBar("Well run", pc.B, "b"));
-    dims.appendChild(answerBar("Bureaucratic", pc.C, "c"));
-    dims.appendChild(answerBar("Self-protective", pc.D, "d"));
-    dims.appendChild(answerBar("It varies", pc.N, "n"));
-    s3.appendChild(dims);
+    add(s3, h("p", "fine", "Your answers, in the order you played them. Percentages are weighted by how visible each card was from where you sit."));
+    var strip = h("div", "strip"); strip.setAttribute("role", "img"); strip.setAttribute("aria-label", "Your answers in play order");
+    state.deck.forEach(function (ci) { if (ans[ci]) strip.appendChild(h("span", "s-" + ans[ci])); });
+    s3.appendChild(strip);
+    var key = h("ul", "strip-key");
+    [["Entrepreneurial", "A"], ["Well run", "B"], ["Bureaucratic", "C"], ["Self-protective", "D"], ["It varies", "N"]].forEach(function (r) {
+      var li = h("li"); add(li, h("i", "s-" + r[1]), h("strong", null, r[0]), document.createTextNode(" " + Math.round(pc[r[1]] * 100) + "%")); key.appendChild(li);
+    });
+    s3.appendChild(key);
     var vShare = Math.round((pc.A + pc.B + pc.N * 0.5) * 100), pShare = 100 - vShare;
     var motive = (weakest.length && a.pN[weakest[0]] >= 4) ? P[weakest[0]].motive : "";
     if (pShare >= 25 && motive) s3.appendChild(h("p", "fine tendency", "What seems to drive it: " + motive + "."));
@@ -668,6 +694,20 @@
   if ($("philosophy-line")) $("philosophy-line").textContent = B.philosophy;
   var hook = $("hook");
   if (hook) hook.textContent = B.taglines[Math.floor(Math.random() * B.taglines.length)];
+  // one real card on the start screen, so you know what you are getting into
+  var peek = $("peek");
+  if (peek) {
+    var pool = B.cards.filter(function (c) { return c.tier === "L" && (!c.audience || c.audience === "both"); });
+    var pk = pool[Math.floor(Math.random() * pool.length)];
+    if (pk) {
+      $("pk-cat").textContent = P[pk.p[0]].name;
+      $("pk-title").textContent = pk.title;
+      var pkt = $("pk-text"); pk.s.split("\n").forEach(function (p) { pkt.appendChild(h("p", null, p)); });
+      var pko = $("pk-opts");
+      shuffle(["A", "B", "C", "D"]).forEach(function (t, i) { var li = h("li"); add(li, h("span", null, LETTERS[i]), document.createTextNode(pk.o[t])); pko.appendChild(li); });
+      peek.hidden = false;
+    }
+  }
   $("start-form").addEventListener("submit", function (e) { e.preventDefault(); });
   function go(edition, auto) { start(edition, parseInt($("len").value, 10), parseInt($("ctx").value, 10), $("fmode").value, auto); }
   $("go-staff").addEventListener("click", function () { go("staff"); });

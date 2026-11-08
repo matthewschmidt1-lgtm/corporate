@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="https://corporate-production-f647.up.railway.app/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=4af36553">
+<link rel="stylesheet" href="styles.css?v=3fcdf35e">
 </head>
 <body class="play-page bsd">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -85,6 +85,16 @@
         </details>
       </form>
 
+      <aside class="peek" id="peek" hidden>
+        <p class="peek-h">One of the cards</p>
+        <article class="scard">
+          <header class="scard-head"><span class="scard-cat" id="pk-cat"></span><span class="scard-num">Sample</span></header>
+          <h2 class="scard-title" id="pk-title"></h2>
+          <div class="scard-text" id="pk-text"></div>
+          <ol class="peek-opts" id="pk-opts"></ol>
+        </article>
+      </aside>
+
       <details class="how">
         <summary>How it works</summary>
         <div class="rules-3">
@@ -102,7 +112,7 @@
   <section id="play" class="screen" hidden>
     <div class="wrap">
       <div class="play-top">
-        <div class="segs" id="segs" aria-hidden="true"></div>
+        <div class="segs" id="segs" aria-hidden="true"></div><i class="rail-dot" id="rail-dot" aria-hidden="true"></i>
         <p class="count"><span id="count"></span><button type="button" class="link as-link small" id="restart">Start over</button><span id="restart-confirm" class="restart-confirm" hidden>Start over? <button type="button" class="link as-link small" id="restart-yes">Yes</button> <button type="button" class="link as-link small" id="restart-no">Keep playing</button></span></p>
       </div>
 
@@ -159,7 +169,7 @@
 </footer>
 
 <script defer src="scenarios.js?v=152dec49"></script>
-<script defer src="detector.js?v=6afdc979"></script>
+<script defer src="detector.js?v=a610db21"></script>
 <script defer src="nav.js?v=c6c4f8ef"></script>
 </body>
 </html>
