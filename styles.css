@@ -1146,7 +1146,6 @@ main:focus { outline: none; }
 .wm { width: 20px; height: 20px; flex: none; }
 .wordmark, .nav nav a { white-space: nowrap; }
 @media (max-width: 400px) { .wm { width: 18px; height: 18px; } .wordmark { gap: 6px; font-size: 16px; } .nav-inner nav { margin-right: 8px; } .nav nav a { font-size: 12px; } }
-@media (max-width: 360px) { .nav-inner nav { display: none; } }
 
 /* lessons: the test waits at the end, like the other pages */
 #think-differently .edition-final { margin-top: 48px; }
@@ -1276,3 +1275,27 @@ main:focus { outline: none; }
 
 /* home lessons rows are content, not links: no hover, no pointer */
 .ls-row { color: var(--mute); cursor: default; }
+
+/* phones: the header is the wordmark and the menu, nothing else */
+@media (max-width: 860px) { .nav-inner nav { display: none; } }
+
+/* the test band as a river: cards, answers, verdict, then two doors */
+#final .river-h { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.03em; margin: 0 0 6px; max-width: none; }
+.river { display: block; width: 100%; max-width: 720px; height: auto; overflow: visible; color: var(--dark-ink); margin: 0 0 10px; }
+.rv-lab { font: 600 11px/1 var(--font); letter-spacing: .08em; text-transform: uppercase; fill: var(--dark-mute); }
+.river-anim .rv-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.river-anim .rv-st { opacity: 0; }
+.river-anim.play .rv-line { animation: mlDraw 1.6s cubic-bezier(.4, 0, .2, 1) .1s forwards; }
+.river-anim.play .st1 { animation: mlShow .3s ease .5s forwards; }
+.river-anim.play .st2 { animation: mlShow .3s ease .95s forwards; }
+.river-anim.play .st3 { animation: mlShow .3s ease 1.4s forwards; }
+@media (prefers-reduced-motion: reduce) { .river-anim .rv-line { stroke-dashoffset: 0; animation: none; } .river-anim .rv-st { opacity: 1; animation: none; } }
+.river-doors { grid-template-columns: 1fr; max-width: 720px; gap: 10px; }
+@media (min-width: 700px) { .river-doors { grid-template-columns: 1fr 1fr; } }
+.river-doors .ed { grid-template-columns: 40px 1fr auto; column-gap: 12px; min-height: 60px; padding: 10px 16px; }
+.river-doors .ed strong { grid-column: 2; font-size: 19px; }
+.river-doors .ed em { grid-column: 3; grid-row: 1; font-size: 15px; }
+.door-g { grid-column: 1; grid-row: 1; width: 36px; height: 36px; display: block; }
+#final .ed-alt { color: var(--dark-ink); border-color: var(--dark-ink); }
+#final .ed-alt:hover, #final .ed-alt:focus-visible { background: var(--dark-ink); color: var(--dark); }
+@media (max-width: 600px) { .rv-lab { font-size: 17px; letter-spacing: .06em; } .river { margin-bottom: 14px; } }
