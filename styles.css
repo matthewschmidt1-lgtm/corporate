@@ -1260,3 +1260,13 @@ main:focus { outline: none; }
   .seed-anim .sd-root, .seed-anim .sd-stem, .seed-anim .sd-leaf { stroke-dashoffset: 0; animation: none; }
   .seed-anim .sd-seed { opacity: 1; animation: none; }
 }
+
+/* the difference: folded until asked, opened with copper */
+.fold-copper > summary { border-color: var(--copper); }
+.fold-copper > summary::after { color: var(--copper); }
+.fold-copper > summary::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--copper); margin-right: 14px; flex: none; }
+.fold-copper > summary { justify-content: flex-start; }
+.fold-copper > summary::after { margin-left: auto; }
+#vs-fold { margin-top: 32px; }
+#vs-fold[open] .vs-list { margin-top: 12px; }
+@media (max-width: 759px) { #vs-fold[open] .vs-list { margin-top: 16px; } }
