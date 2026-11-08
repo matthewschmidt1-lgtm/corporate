@@ -1082,7 +1082,7 @@ main:focus { outline: none; }
 /* the lessons are the spine: home pointer, and links back from the report */
 .ls-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--ink); max-width: 760px; }
 .ls-list li { border-bottom: 1px solid var(--line); }
-.ls-list a { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 16px 0; font-size: 19px; line-height: 1.35; text-decoration: none; color: var(--mute); transition: color .15s; }
+.ls-list a, .ls-row { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 16px 0; font-size: 19px; line-height: 1.35; text-decoration: none; color: var(--mute); transition: color .15s; }
 .ls-list a:hover, .ls-list a:focus-visible { color: var(--ink); }
 .ls-list strong { color: var(--ink); font-weight: 600; }
 .ls-n { font-size: 14px; font-weight: 700; color: var(--clay); letter-spacing: .04em; }
@@ -1169,7 +1169,7 @@ main:focus { outline: none; }
 .ls-list { border-top: 1px solid var(--line); margin-top: 24px; }
 .ls-list li:last-child { border-bottom: 0; }
 .ls-list::after { content: ""; display: block; height: 8px; margin-top: 6px; background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) left center / 8px 8px no-repeat; }
-.ls-list a { grid-template-columns: 52px 1fr; align-items: center; padding: 12px 0; }
+.ls-list a, .ls-row { grid-template-columns: 52px 1fr; align-items: center; padding: 12px 0; }
 .ls-g { display: block; width: 36px; height: 36px; overflow: visible; }
 #lessons .actions { margin-top: 24px; }
 
@@ -1200,11 +1200,11 @@ main:focus { outline: none; }
 /* home lessons list: larger marks and type on wide screens */
 @media (min-width: 760px) {
   .ls-list { max-width: none; }
-  .ls-list a { grid-template-columns: 84px 1fr; gap: 20px; padding: 18px 0; font-size: 22px; }
+  .ls-list a, .ls-row { grid-template-columns: 84px 1fr; gap: 20px; padding: 18px 0; font-size: 22px; }
   .ls-g { width: 60px; height: 60px; }
 }
 @media (min-width: 1000px) {
-  .ls-list a { grid-template-columns: 96px 1fr; padding: 20px 0; font-size: 23px; }
+  .ls-list a, .ls-row { grid-template-columns: 96px 1fr; padding: 20px 0; font-size: 23px; }
   .ls-g { width: 68px; height: 68px; }
 }
 
@@ -1273,3 +1273,6 @@ main:focus { outline: none; }
 
 /* the swipe hint under the differences: shown on phones (the earlier rule lost to a later one) */
 @media (max-width: 759px) { .swipe-hint { display: block; } }
+
+/* home lessons rows are content, not links: no hover, no pointer */
+.ls-row { color: var(--mute); cursor: default; }

@@ -100,7 +100,13 @@
     };
     var terms = Array.prototype.slice.call(eq.querySelectorAll('.term'));
     var order = terms.map(function (b) { return b.getAttribute('data-k'); });
-    var pop = document.getElementById('eq-pop'), cur = -1;
+    var pop = document.getElementById('eq-pop'), cur = -1, pinned = false, hideTimer = null;
+    var hidePop = function () {
+      pop.hidden = true; cur = -1; pinned = false;
+      terms.forEach(function (b) { b.classList.remove('on'); b.setAttribute('aria-expanded', 'false'); });
+    };
+    var cancelHide = function () { if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; } };
+    var scheduleHide = function () { cancelHide(); if (!pinned) hideTimer = setTimeout(function () { if (!pinned) hidePop(); }, 260); };
     var showPop = function (k, scroll) {
       var d = POP[k]; if (!d) return;
       cur = order.indexOf(k);
@@ -115,11 +121,26 @@
     };
     var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     terms.forEach(function (b) {
-      b.addEventListener('click', function () { showPop(b.getAttribute('data-k'), true); });
-      if (fine) b.addEventListener('mouseenter', function () { showPop(b.getAttribute('data-k'), false); });
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-k');
+        if (pinned && order[cur] === k) { hidePop(); return; }
+        showPop(k, true); pinned = true; cancelHide();
+      });
+      if (fine) b.addEventListener('mouseenter', function () { cancelHide(); if (!pinned) showPop(b.getAttribute('data-k'), false); });
     });
-    document.getElementById('eqp-next').addEventListener('click', function () { showPop(order[(cur + 1) % order.length], true); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) { pop.hidden = true; terms.forEach(function (b) { b.classList.remove('on'); b.setAttribute('aria-expanded', 'false'); }); } });
+    if (fine) {
+      [eq, pop].forEach(function (el) {
+        el.addEventListener('mouseleave', scheduleHide);
+        el.addEventListener('mouseenter', cancelHide);
+      });
+    }
+    document.getElementById('eqp-next').addEventListener('click', function () { showPop(order[(cur + 1) % order.length], true); pinned = true; });
+    document.addEventListener('click', function (e) {
+      if (pop.hidden) return;
+      if (eq.contains(e.target) || pop.contains(e.target)) return;
+      hidePop();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) hidePop(); });
   }
 
   // The lessons, in motion: each panel plays once when it is well in view, and again on Replay
