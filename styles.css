@@ -1312,3 +1312,13 @@ main:focus { outline: none; }
 .footer .foot-links { margin: 0 0 10px; }
 .footer .fine { margin: 0; }
 @media (max-width: 600px) { .foot-eq svg { width: 18px; height: 18px; } .foot-eq svg:last-child { width: 22px; height: 22px; } .foot-eq i { font-size: 13px; } }
+
+/* the open menu is a dark panel, so it reads against any section */
+@media (max-width: 860px) {
+  .nav-panel { background: var(--dark); border-bottom: 0; border-top: 3px solid var(--copper); padding: 10px 24px 18px; box-shadow: 0 16px 32px rgba(42, 38, 33, .22); }
+  .nav-panel a { color: var(--dark-ink); border-bottom: 1px solid rgba(237, 230, 216, .16); }
+  .nav-panel a[aria-current="page"] { color: var(--copper); }
+  .nav-panel a.panel-play { color: var(--copper); }
+  .nav-menu[open] summary { background: var(--dark); color: var(--dark-ink); border-color: var(--dark); }
+  .nav-menu[open] summary::after { color: var(--copper); }
+}
