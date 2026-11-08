@@ -1448,3 +1448,15 @@ main:focus { outline: none; }
 .bill-note { margin: 14px 22px 14px; }
 #mistakes .pull { margin-top: 40px; }
 @media (max-width: 600px) { .misses, .bill { padding: 4px 14px 2px; } .misses-tie, .bill-note { margin-left: 14px; margin-right: 14px; } .bill li { font-size: 16px; grid-template-columns: 1fr 22px 1fr; } }
+
+/* home ends on the lessons: five stations on the river, one door */
+.river-lead { margin: 0 0 6px; font-size: 16px; color: var(--dark-mute); max-width: 36em; }
+.river-5 .rv-lab { font-size: 12px; }
+.river-anim.play .st4 { animation: mlShow .3s ease 1.25s forwards; }
+.river-anim.play .st5 { animation: mlShow .3s ease 1.5s forwards; }
+.river-anim.play .river-5 .st1 { animation-delay: .35s; }
+.river-anim.play .river-5 .st2 { animation-delay: .65s; }
+.river-anim.play .river-5 .st3 { animation-delay: .95s; }
+.river-one { grid-template-columns: 1fr; max-width: 520px; }
+.coda .sec-head > div > .coda-text { margin-bottom: 0; }
+@media (max-width: 600px) { .river-5 .rv-lab { font-size: 18px; } }
