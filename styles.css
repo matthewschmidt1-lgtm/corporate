@@ -1404,7 +1404,7 @@ main:focus { outline: none; }
 @media (max-width: 600px) { .rules.ten { padding: 12px 14px 6px; } }
 
 /* symptom and cause: what you hear above the line, what is underneath */
-.sc-fig { margin: 8px 0 20px; max-width: 320px; color: var(--ink); }
+.sc-fig { margin: 8px 0 24px; max-width: 380px; color: var(--ink); }
 .sc-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
 #soul .fold + .fold { margin-top: 12px; }
 .fold-k { display: inline-block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--copper); margin-right: 12px; }
