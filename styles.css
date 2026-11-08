@@ -1392,3 +1392,13 @@ main:focus { outline: none; }
 .cat-vs p + p { margin-top: 4px; }
 .crows-2 li { border-bottom-color: rgba(42, 38, 33, .14); }
 @media (max-width: 600px) { .cat { padding: 16px 14px 18px; } .cat-vs { padding: 12px 14px; } }
+
+/* ten rules: copper rule above, copper fold, the rules on a sand panel in two columns */
+#antirules-section { padding-bottom: clamp(48px, 7vw, 80px); }
+#antirules-section h2 { margin-bottom: 20px; }
+.rules.ten { margin: 12px 0 0; padding: 18px 26px 10px; background: #EEE7D9; border: 1px solid var(--line); border-radius: 3px; border-top: 1px solid var(--line); }
+.rules.ten li { grid-template-columns: 36px 1fr; gap: 12px; padding: 14px 0; border-bottom-color: rgba(42, 38, 33, .14); break-inside: avoid; }
+.rules.ten .n { color: var(--copper); font-size: 14px; }
+.rules.ten .d { font-size: 18px; line-height: 1.35; }
+@media (min-width: 760px) { .rules.ten { columns: 2; column-gap: 40px; } }
+@media (max-width: 600px) { .rules.ten { padding: 12px 14px 6px; } }
