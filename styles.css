@@ -1344,3 +1344,25 @@ main:focus { outline: none; }
 /* the equation box: headline and Next only */
 .eq-pop-nav { justify-content: flex-end; }
 .eq-pop-t { margin-bottom: 4px; }
+
+/* game start: fewer words, copper marks */
+.pick-note { font-size: 18px; color: var(--ink); margin: 0 0 10px; }
+.privacy-line { font-weight: 500; }
+.crule { height: 8px; max-width: 560px; margin: 28px 0 4px; background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) left center / 8px 8px no-repeat; }
+.start-main { margin-top: 20px; }
+.big-btn { display: grid; grid-template-columns: 40px 1fr auto; column-gap: 14px; align-items: center; padding: 14px 18px; }
+.big-btn .door-g { grid-column: 1; grid-row: 1 / span 2; width: 36px; height: 36px; display: block; }
+.big-btn .bb-main { grid-column: 2; grid-row: 1; }
+.big-btn .bb-sub { grid-column: 2; grid-row: 2; margin-top: 2px; }
+.big-btn .bb-go { grid-column: 3; grid-row: 1 / span 2; font-size: 15px; font-weight: 600; }
+.big-btn.btn:not(.ghost) .bb-go { color: var(--copper); }
+.big-btn.ghost .bb-go { color: var(--clay); }
+.big-btn.ghost:hover .bb-go { color: var(--copper); }
+.start-ctx { margin-top: 24px; }
+.peek-h { color: var(--clay); }
+
+/* lessons: the two doors close the page */
+.doors-h { margin: 56px 0 12px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--dark-ink); }
+#think-differently .edition-final { margin-top: 0; }
+#think-differently .ed-alt { color: var(--dark-ink); border-color: var(--dark-ink); }
+#think-differently .ed-alt:hover, #think-differently .ed-alt:focus-visible { background: var(--dark-ink); color: var(--dark); }
