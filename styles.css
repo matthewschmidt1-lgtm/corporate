@@ -1460,3 +1460,18 @@ main:focus { outline: none; }
 .river-one { grid-template-columns: 1fr; max-width: 520px; }
 .coda .sec-head > div > .coda-text { margin-bottom: 0; }
 @media (max-width: 600px) { .river-5 .rv-lab { font-size: 18px; } }
+
+/* lessons opens on the river: the five questions as an index you can click */
+.hero-index { padding-bottom: clamp(36px, 5vw, 64px); }
+.hero-index h1 { margin-bottom: 24px; }
+.hero-index .lead { margin-bottom: 36px; }
+.river-index { color: var(--bg); max-width: 820px; margin: 0; }
+.river-index .rv-lab { fill: var(--mute); }
+.river-index .rv-st { cursor: pointer; outline: none; }
+.river-index .rv-st:hover .rv-lab, .river-index .rv-st:focus-visible .rv-lab { fill: var(--ink); }
+.river-index .rv-st:hover rect, .river-index .rv-st:focus-visible rect { fill: var(--clay); }
+@media (max-width: 600px) { .hero-index .lead { margin-bottom: 24px; } }
+@media (max-width: 600px) {
+  .river-5 .rv-lab { font-size: 20px; letter-spacing: .05em; }
+  .river-5 .st2 .rv-lab, .river-5 .st4 .rv-lab { transform: translateY(-86px); }
+}
