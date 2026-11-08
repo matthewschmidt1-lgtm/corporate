@@ -11,15 +11,25 @@
   var D = window.DECK;
   var catalog = document.getElementById('catalog');
   if (D && catalog) {
+    var GLYPH = {
+      decisions: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="32" height="8"/><rect x="6" y="18" width="32" height="8"/><rect x="6" y="30" width="32" height="8"/></g><line x1="22" y1="2" x2="22" y2="42" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+      leadership: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="20" width="28" height="7"/><rect x="8" y="31" width="28" height="7"/></g><circle cx="22" cy="11" r="5" fill="#C47C55"/>',
+      innovation: '<line x1="22" y1="4" x2="22" y2="40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="2" y1="22" x2="42" y2="22" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+      waste: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="14" width="22" height="22"/><rect x="11" y="9" width="22" height="22"/><rect x="18" y="4" width="22" height="22"/></g><circle cx="29" cy="15" r="4" fill="#C47C55"/>'
+    };
     D.cats.forEach(function (c) {
       if (c.id === 'tells') return;
       var cards = D.cards.filter(function (x) { return x.cat === c.id; });
-      var block = mk('div', 'cat reveal');
+      var block = mk('div', 'cat');
       var head = mk('div', 'cat-head');
+      var ico = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      ico.setAttribute('viewBox', '0 0 44 44'); ico.setAttribute('class', 'cat-g'); ico.setAttribute('aria-hidden', 'true');
+      ico.innerHTML = GLYPH[c.id] || GLYPH.decisions;
+      head.appendChild(ico);
       head.appendChild(mk('h3', null, c.name));
       head.appendChild(mk('span', null, cards.length + ' practices'));
       block.appendChild(head);
-      var list = mk('ol', 'crows');
+      var list = mk('ol', 'crows crows-2');
       cards.forEach(function (x) {
         var li = mk('li');
         li.appendChild(mk('span', 'n', (x.id < 10 ? '0' : '') + x.id));
@@ -27,15 +37,14 @@
         t.appendChild(mk('strong', null, x.t));
         t.appendChild(mk('em', null, x.joke));
         li.appendChild(t);
-        li.appendChild(mk('span', 'd', x.why));
         list.appendChild(li);
       });
       block.appendChild(list);
-      block.appendChild(mk('p', 'example', c.example));
-      var better = mk('p', 'better');
-      better.appendChild(mk('strong', null, 'Better approach: '));
-      better.appendChild(document.createTextNode(c.better));
-      block.appendChild(better);
+      var vs = mk('div', 'cat-vs');
+      var pb = mk('p', 'vs-b'); pb.appendChild(mk('span', null, 'Bureaucracy')); pb.appendChild(document.createTextNode(c.example));
+      var pe = mk('p', 'vs-e'); pe.appendChild(mk('span', null, 'Better')); pe.appendChild(document.createTextNode(c.better));
+      vs.appendChild(pb); vs.appendChild(pe);
+      block.appendChild(vs);
       catalog.appendChild(block);
     });
   }

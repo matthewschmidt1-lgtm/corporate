@@ -1366,3 +1366,20 @@ main:focus { outline: none; }
 #think-differently .edition-final { margin-top: 0; }
 #think-differently .ed-alt { color: var(--dark-ink); border-color: var(--dark-ink); }
 #think-differently .ed-alt:hover, #think-differently .ed-alt:focus-visible { background: var(--dark-ink); color: var(--dark); }
+
+/* field guide: a glyph per group, two-part rows, bureaucracy and better as a pair */
+.cat-head { display: grid; grid-template-columns: 40px 1fr auto; column-gap: 14px; align-items: center; border-bottom: 1px solid var(--ink); padding-bottom: 12px; }
+.cat-g { width: 32px; height: 32px; display: block; color: var(--ink); overflow: visible; }
+.cat-head h3 { font-size: 26px; margin: 0; }
+.crows-2 li { grid-template-columns: 40px 1fr; align-items: baseline; padding: 12px 0; }
+.crows-2 .n { color: var(--copper); }
+.crows-2 .t strong { font-size: 19px; }
+.crows-2 .t em { font-size: 16px; color: var(--mute); }
+.cat-vs { margin: 20px 0 0; display: grid; gap: 8px; max-width: 760px; }
+.cat-vs p { margin: 0; padding: 4px 0; border-left: 0; font-size: 17px; line-height: 1.45; }
+.cat-vs p span { display: inline; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; margin-right: 8px; vertical-align: 1px; }
+.cat-vs p span::after { content: ":"; }
+.cat-vs .vs-b { color: var(--mute); } .cat-vs .vs-b span { color: #7A3E2A; }
+.cat-vs .vs-e { color: var(--ink); } .cat-vs .vs-e span { color: var(--moss); }
+.cat { margin-top: 44px; }
+@media (min-width: 760px) { .crows-2 { columns: 2; column-gap: 40px; } .crows-2 li { break-inside: avoid; } }
