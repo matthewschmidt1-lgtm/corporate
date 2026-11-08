@@ -505,7 +505,7 @@
     var b4 = h("button", "link as-link small", "Play again"); b4.type = "button";
     var b8 = h("button", "link as-link small js-clear", "Clear my answers"); b8.type = "button";
     add(acts2, b4, b8);
-    var privNote = h("p", "fine privacy-note", "Nothing here left your device. Clear my answers wipes it.");
+    var privNote = h("p", "fine privacy-note", "Nothing here was saved or sent. Close the tab, or press Clear my answers, and it is gone.");
     var claim = h("p", "fine claim", "One person's view, so use it to start a talk. ");
     var cl2 = h("a", null, "How scoring works"); cl2.href = "methodology.html"; claim.appendChild(cl2);
 
