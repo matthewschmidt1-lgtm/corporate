@@ -1078,3 +1078,17 @@ main:focus { outline: none; }
 /* header: the same three destinations on every page, the current one marked */
 .nav nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
 .nav-panel a[aria-current="page"] { color: var(--clay); }
+
+/* the lessons are the spine: home pointer, and links back from the report */
+.ls-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--ink); max-width: 760px; }
+.ls-list li { border-bottom: 1px solid var(--line); }
+.ls-list a { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; padding: 16px 0; font-size: 19px; line-height: 1.35; text-decoration: none; color: var(--mute); transition: color .15s; }
+.ls-list a:hover, .ls-list a:focus-visible { color: var(--ink); }
+.ls-list strong { color: var(--ink); font-weight: 600; }
+.ls-n { font-size: 14px; font-weight: 700; color: var(--clay); letter-spacing: .04em; }
+#lessons .actions { margin-top: 32px; }
+.lesson-link { display: flex; align-items: center; min-height: 44px; margin: 0; font-size: 16px; font-weight: 600; color: var(--clay); text-decoration: none; }
+.lesson-link::before { content: "\2192\00a0"; }
+.lesson-link:hover { text-decoration: underline; }
+.lesson-link.small { display: inline-flex; min-height: 36px; font-size: 15px; }
+.ml { scroll-margin-top: 64px; }

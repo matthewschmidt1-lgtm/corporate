@@ -409,6 +409,11 @@
 
   function section(title) { var s = h("section", "r-sec"); s.appendChild(h("h3", "sub", title)); return s; }
 
+  // each principle points back to the lesson it comes from
+  var LESSON = { focus: "lesson-focus", simplicity: "lesson-simplicity", speed: "lesson-simplicity", customer: "lesson-customer", ownership: "lesson-customer", integration: "lesson-customer",
+    excellence: "lesson-excellence", talent: "lesson-excellence", innovation: "lesson-innovation", courage: "lesson-innovation", human: "soul" };
+  function lessonFor(k) { return "lessons.html#" + (LESSON[k] || "questions"); }
+
   // the verdict as a measurement: a 0 to 100 line, the likely range, and a dot where you landed
   function svgEl(tag, attrs) {
     var e = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -489,6 +494,8 @@
       var mf = h("button", "move-first", "Move this first: " + P[weakest[0]].name); mf.type = "button";
       mf.addEventListener("click", function () { var m = $("monday"); if (m) m.scrollIntoView({ block: "start", behavior: "smooth" }); });
       card.appendChild(mf);
+      var ll = h("a", "lesson-link", "Watch the lesson behind it"); ll.href = lessonFor(weakest[0]);
+      card.appendChild(ll);
     }
     root.appendChild(card);
     if (cls.guard) root.appendChild(h("p", "pattern", "Capped: results were allowed to excuse cruelty or pressure. Speed does not buy that off."));
@@ -513,6 +520,7 @@
       add(li, h("h4", null, P[k].name + (worst ? ": " + worst.card.title : "")));
       var dop = h("p"); add(dop, h("strong", null, "Do this: "), document.createTextNode(m.do)); li.appendChild(dop);
       var sayp = h("p", "say"); add(sayp, h("strong", null, "Say this: "), document.createTextNode("“" + m.say + "”")); li.appendChild(sayp);
+      var lk = h("a", "lesson-link small", "The lesson"); lk.href = lessonFor(k); li.appendChild(lk);
       plan.appendChild(li);
     });
     if (!weakest.length) plan.appendChild(h("li", null, "Nothing scored badly. Keep doing what you are doing, and play more cards to check."));
