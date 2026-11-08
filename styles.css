@@ -1166,8 +1166,9 @@ main:focus { outline: none; }
 /* home lessons: the glyphs lead each line, the copper rule opens the list, less air above and below */
 #lessons { padding: clamp(44px, 6vw, 72px) 0; }
 #lessons h2 { margin-bottom: 14px; }
-.ls-list { border-top: 0; margin-top: 24px; }
-.ls-list::before { content: ""; display: block; height: 8px; margin-bottom: 6px; background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) left center / 8px 8px no-repeat; }
+.ls-list { border-top: 1px solid var(--line); margin-top: 24px; }
+.ls-list li:last-child { border-bottom: 0; }
+.ls-list::after { content: ""; display: block; height: 8px; margin-top: 6px; background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) left center / 8px 8px no-repeat; }
 .ls-list a { grid-template-columns: 52px 1fr; align-items: center; padding: 12px 0; }
 .ls-g { display: block; width: 36px; height: 36px; overflow: visible; }
 #lessons .actions { margin-top: 24px; }
@@ -1175,3 +1176,23 @@ main:focus { outline: none; }
 /* the heading is an equation too */
 .eq-h { max-width: none; }
 .eq-x { color: var(--copper); font-weight: 500; padding: 0 .04em; }
+
+/* the equation at desktop size: bigger marks */
+@media (min-width: 1000px) {
+  .eq { max-width: none; gap: 6px 0; }
+  .term { width: 94px; padding: 8px 2px 6px; }
+  .term svg { width: 64px; height: 64px; }
+  .term-eq { max-width: 160px; padding: 8px 8px 6px; }
+  .term-eq svg { width: 88px; height: 88px; margin-top: -12px; }
+  .op { font-size: 30px; padding: 25px 1px 0; }
+  .op.paren { font-size: 54px; padding: 10px 2px 0; }
+}
+@media (min-width: 1200px) {
+  .eq { margin-right: -150px; }
+  .term { width: 108px; }
+  .term svg { width: 76px; height: 76px; }
+  .term-eq { max-width: 180px; }
+  .term-eq svg { width: 104px; height: 104px; margin-top: -14px; }
+  .op { font-size: 34px; padding-top: 29px; }
+  .op.paren { font-size: 62px; padding-top: 10px; }
+}
