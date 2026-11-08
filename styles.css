@@ -1270,3 +1270,6 @@ main:focus { outline: none; }
 #vs-fold { margin-top: 32px; }
 #vs-fold[open] .vs-list { margin-top: 12px; }
 @media (max-width: 759px) { #vs-fold[open] .vs-list { margin-top: 16px; } }
+
+/* the swipe hint under the differences: shown on phones (the earlier rule lost to a later one) */
+@media (max-width: 759px) { .swipe-hint { display: block; } }
