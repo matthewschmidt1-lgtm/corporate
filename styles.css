@@ -1383,3 +1383,12 @@ main:focus { outline: none; }
 .cat-vs .vs-e { color: var(--ink); } .cat-vs .vs-e span { color: var(--moss); }
 .cat { margin-top: 44px; }
 @media (min-width: 760px) { .crows-2 { columns: 2; column-gap: 40px; } .crows-2 li { break-inside: avoid; } }
+
+/* field guide groups: each one on its own tonal panel */
+.cat { margin-top: 28px; padding: 22px 26px 24px; background: #EEE7D9; border: 1px solid var(--line); border-radius: 3px; }
+.cat:first-child { margin-top: 20px; }
+.cat-head { border-bottom-color: var(--ink); padding-bottom: 12px; }
+.cat-vs { margin-top: 22px; padding: 14px 18px; background: var(--bg); border-left: 3px solid var(--copper); max-width: none; }
+.cat-vs p + p { margin-top: 4px; }
+.crows-2 li { border-bottom-color: rgba(42, 38, 33, .14); }
+@media (max-width: 600px) { .cat { padding: 16px 14px 18px; } .cat-vs { padding: 12px 14px; } }
