@@ -123,7 +123,7 @@
   }
 
   // The lessons, in motion: each panel plays once when it is well in view, and again on Replay
-  var mls = document.querySelectorAll('.ml');
+  var mls = document.querySelectorAll('.ml, .seed-anim');
   if (mls.length) {
     var playPanel = function (el) { el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); };
     if ('IntersectionObserver' in window) {

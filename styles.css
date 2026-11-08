@@ -1196,3 +1196,67 @@ main:focus { outline: none; }
   .op { font-size: 34px; padding-top: 29px; }
   .op.paren { font-size: 62px; padding-top: 10px; }
 }
+
+/* home lessons list: larger marks and type on wide screens */
+@media (min-width: 760px) {
+  .ls-list { max-width: none; }
+  .ls-list a { grid-template-columns: 84px 1fr; gap: 20px; padding: 18px 0; font-size: 22px; }
+  .ls-g { width: 60px; height: 60px; }
+}
+@media (min-width: 1000px) {
+  .ls-list a { grid-template-columns: 96px 1fr; padding: 20px 0; font-size: 23px; }
+  .ls-g { width: 68px; height: 68px; }
+}
+
+/* final lesson: the leads and the challenge as short paragraphs */
+#think-differently .lead + .lead { margin-top: 16px; }
+.challenge-text + .challenge-text { margin-top: 14px; }
+
+/* home coda: the final lesson, pointing to the lessons page */
+.coda { padding: clamp(48px, 7vw, 88px) 0; }
+.coda h2 { margin-bottom: 18px; }
+.coda-text { font-size: clamp(20px, 2.6vw, 26px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; max-width: 30em; margin: 0; }
+.coda .actions { margin-top: 28px; }
+
+/* home: the test is a short dark band after the final lesson */
+#final { padding: clamp(36px, 5vw, 56px) 0; }
+#final .big { font-size: clamp(22px, 3vw, 30px); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 10px; }
+#final .lead { font-size: 16px; margin-bottom: 16px; }
+#final .edition-final .ed { min-height: 52px; padding: 10px 16px; }
+#final .edition-final .ed strong { font-size: 18px; }
+#final .edition-final .ed em { font-size: 14px; }
+#final .ed-link { font-size: 15px; min-height: 40px; margin-top: 2px; }
+#final .final-lessons { margin-top: 4px; }
+#final .bookend-mark { width: 260px; height: 260px; right: -70px; }
+@media (max-width: 700px) { #final .bookend-mark { width: 180px; height: 180px; right: -80px; } }
+
+/* the final lesson in sage: same brightness as sand, a different note */
+.coda { background: #D3DAC4; }
+.coda .eyebrow { color: var(--moss); }
+.coda .btn { background: var(--moss); }
+.coda .btn:hover { background: var(--ink); }
+
+/* the seed: roots first, slowly; then the stem, fast */
+.seed { margin: 0; color: var(--ink); }
+.seed-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.coda .sec-fig { max-width: 240px; }
+.seed-section .wrap { display: grid; grid-template-columns: 1fr; gap: 8px 48px; }
+.seed-section .seed { color: var(--dark-ink); max-width: 220px; margin: 0 0 20px; }
+@media (min-width: 900px) {
+  .seed-section .wrap { grid-template-columns: minmax(0, 1fr) 300px; }
+  .seed-section .wrap > * { grid-column: 1; }
+  .seed-section .seed { grid-column: 2; grid-row: 1 / 8; align-self: start; max-width: none; margin: 10px 0 0; position: sticky; top: 80px; }
+}
+.seed-anim .sd-root, .seed-anim .sd-stem, .seed-anim .sd-leaf { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.seed-anim .sd-seed { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.seed-anim.play .sd-root { animation: mlDraw .9s ease-out forwards; }
+.seed-anim.play .r1 { animation-delay: .1s; } .seed-anim.play .r2 { animation-delay: .5s; } .seed-anim.play .r3 { animation-delay: .9s; }
+.seed-anim.play .r4 { animation-delay: 1.3s; animation-duration: .6s; } .seed-anim.play .r5 { animation-delay: 1.6s; animation-duration: .6s; } .seed-anim.play .r6 { animation-delay: 1.9s; animation-duration: .6s; }
+.seed-anim.play .sd-seed { animation: dotIn .25s ease-out 2.3s forwards; }
+.seed-anim.play .sd-stem { animation: mlDraw .5s cubic-bezier(.2, .7, .2, 1) 2.55s forwards; }
+.seed-anim.play .l1 { animation: mlDraw .45s ease-out 2.95s forwards; }
+.seed-anim.play .l2 { animation: mlDraw .45s ease-out 3.15s forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .seed-anim .sd-root, .seed-anim .sd-stem, .seed-anim .sd-leaf { stroke-dashoffset: 0; animation: none; }
+  .seed-anim .sd-seed { opacity: 1; animation: none; }
+}
