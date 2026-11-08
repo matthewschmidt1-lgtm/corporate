@@ -1475,3 +1475,12 @@ main:focus { outline: none; }
   .river-5 .rv-lab { font-size: 20px; letter-spacing: .05em; }
   .river-5 .st2 .rv-lab, .river-5 .st4 .rv-lab { transform: translateY(-86px); }
 }
+
+/* symptom and cause: room to breathe around the tree, the two folds, and the quote */
+#soul .lead { margin-bottom: 0; }
+#soul .sc-fig { margin: clamp(40px, 6vw, 64px) 0 clamp(40px, 6vw, 56px); }
+#soul .fold { margin-top: 0; }
+#soul .fold + .fold { margin-top: 16px; }
+#soul .pull { margin: clamp(56px, 8vw, 88px) 0 28px; font-size: clamp(28px, 4vw, 44px); max-width: 22em; }
+#soul .monday { max-width: 40em; }
+@media (max-width: 600px) { #soul .sc-fig { margin: 32px 0; } #soul .pull { margin-top: 48px; } }
