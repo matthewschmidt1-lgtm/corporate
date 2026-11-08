@@ -928,7 +928,7 @@ main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { .scard.enter { animation: none; } }
 
 /* progress: a rail that takes the color of each answer, and a copper dot that moves with you */
-.play-top { position: relative; }
+.play-top { position: sticky; }
 .segs { gap: 2px; }
 .segs span { height: 4px; background: var(--line); transition: background .2s; }
 .segs span.done { background: var(--ink); }
@@ -1321,4 +1321,22 @@ main:focus { outline: none; }
   .nav-panel a.panel-play { color: var(--copper); }
   .nav-menu[open] summary { background: var(--dark); color: var(--dark-ink); border-color: var(--dark); }
   .nav-menu[open] summary::after { color: var(--copper); }
+}
+
+/* playing on laptops and desktops: the rail is the heading, the card and answers fit one screen */
+@media (min-width: 601px) {
+  body.playing .game-main { padding-top: 20px; }
+  body.playing .play-top { padding: 6px 0; margin-bottom: 12px; }
+  body.playing .play-top .segs { margin-bottom: 6px; }
+  body.playing .stickybar { margin-top: 12px; padding: 8px 24px calc(8px + env(safe-area-inset-bottom)); }
+}
+@media (min-width: 861px) {
+  body.playing .scard { padding: clamp(22px, 2.5vw, 28px); margin-bottom: 20px; }
+  body.playing .scard-head { margin-bottom: 14px; }
+  body.playing .scard-title { font-size: clamp(30px, 3vw, 38px); margin-bottom: 14px; }
+  body.playing .scard-text p { font-size: clamp(18px, 1.6vw, 20px); line-height: 1.35; max-width: 34em; margin-bottom: .6em; }
+  body.playing .options { gap: 8px; }
+  body.playing .obtn { font-size: 17px; line-height: 1.35; padding: 11px 16px; }
+  body.playing .options .obtn[data-t="N"], body.playing .options .obtn[data-t="U"] { min-height: 40px; padding: 6px 12px; font-size: 14px; }
+  body.playing .peek .scard { padding: 20px 22px 18px; }
 }
