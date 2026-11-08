@@ -1425,3 +1425,6 @@ main:focus { outline: none; }
 
 .fold-t { flex: 1 1 auto; min-width: 0; padding: 10px 0; }
 @media (max-width: 600px) { .fold-copper > summary { min-height: 0; padding-top: 4px; padding-bottom: 4px; } }
+
+/* a copper rule never sits on a section edge */
+.rule-in { padding-top: clamp(20px, 3vw, 36px); }
