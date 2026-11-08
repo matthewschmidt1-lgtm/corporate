@@ -50,12 +50,14 @@
   }
   var tells = document.getElementById('tells');
   if (D && tells) {
-    var tl = mk('ol', 'crows tells-list reveal');
-    D.cards.filter(function (x) { return x.cat === 'tells'; }).forEach(function (x, i) {
+    var tl = mk('ol', 'tells-2');
+    D.cards.filter(function (x) { return x.cat === 'tells'; }).forEach(function (x) {
       var li = mk('li');
-      li.appendChild(mk('span', 'n', (i + 1 < 10 ? '0' : '') + (i + 1)));
-      li.appendChild(mk('span', 't phrase', '“' + x.t + '”'));
-      li.appendChild(mk('span', 'd', x.why));
+      li.appendChild(mk('span', 'tq', '\u201C'));
+      var t = mk('span', 't');
+      t.appendChild(mk('strong', null, x.t));
+      t.appendChild(mk('em', null, x.why));
+      li.appendChild(t);
       tl.appendChild(li);
     });
     tells.appendChild(tl);

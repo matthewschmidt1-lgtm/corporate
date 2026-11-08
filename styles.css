@@ -1402,3 +1402,26 @@ main:focus { outline: none; }
 .rules.ten .d { font-size: 18px; line-height: 1.35; }
 @media (min-width: 760px) { .rules.ten { columns: 2; column-gap: 40px; } }
 @media (max-width: 600px) { .rules.ten { padding: 12px 14px 6px; } }
+
+/* symptom and cause: what you hear above the line, what is underneath */
+.sc-fig { margin: 8px 0 20px; max-width: 320px; color: var(--ink); }
+.sc-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+#soul .fold + .fold { margin-top: 12px; }
+.fold-k { display: inline-block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--copper); margin-right: 12px; }
+.tells-2 { list-style: none; margin: 12px 0 0; padding: 16px 22px 8px; background: #EFE4DC; border: 1px solid var(--line); border-radius: 3px; }
+.tells-2 li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(42, 38, 33, .14); break-inside: avoid; }
+.tells-2 .tq { font-size: 30px; line-height: .8; color: var(--copper); font-weight: 700; }
+.tells-2 .t strong { display: block; font-size: 18px; letter-spacing: -0.015em; }
+.tells-2 .t em { display: block; font-style: normal; font-size: 15px; color: var(--mute); margin-top: 2px; }
+#soul .tells-note { margin: 10px 0 0; }
+.roots-list { list-style: none; margin: 12px 0 0; padding: 16px 22px 8px; background: #EEE7D9; border: 1px solid var(--line); border-radius: 3px; }
+.roots-list li { display: grid; grid-template-columns: 28px 1fr; column-gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(42, 38, 33, .14); }
+.roots-list .root-g { grid-row: 1 / span 2; width: 22px; height: 26px; margin-top: 3px; }
+.roots-list .t { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+.roots-list .d { color: var(--mute); font-size: 16px; margin-top: 2px; }
+#soul .pull { margin-top: 40px; }
+@media (min-width: 760px) { .tells-2 { columns: 2; column-gap: 40px; } }
+@media (max-width: 600px) { .tells-2, .roots-list { padding: 10px 14px 4px; } .fold-k { display: block; margin: 0 0 2px; } }
+
+.fold-t { flex: 1 1 auto; min-width: 0; padding: 10px 0; }
+@media (max-width: 600px) { .fold-copper > summary { min-height: 0; padding-top: 4px; padding-bottom: 4px; } }
