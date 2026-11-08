@@ -113,8 +113,6 @@
       terms.forEach(function (b) { var on = b.getAttribute('data-k') === k; b.classList.toggle('on', on); b.setAttribute('aria-expanded', on ? 'true' : 'false'); });
       document.getElementById('eqp-k').textContent = d.k;
       document.getElementById('eqp-t').textContent = d.t;
-      var a = document.getElementById('eqp-link'); a.href = d.href; a.textContent = d.label;
-      document.getElementById('eqp-count').textContent = (cur + 1) + ' of ' + order.length;
       document.getElementById('eqp-next').textContent = cur === order.length - 1 ? 'Start over' : 'Next';
       if (pop.hidden) { pop.hidden = false; } else { pop.classList.remove('eq-pop'); void pop.offsetWidth; pop.classList.add('eq-pop'); }
       if (scroll && pop.scrollIntoView) pop.scrollIntoView({ block: 'nearest', behavior: 'smooth' });

@@ -1340,3 +1340,7 @@ main:focus { outline: none; }
   body.playing .options .obtn[data-t="N"], body.playing .options .obtn[data-t="U"] { min-height: 40px; padding: 6px 12px; font-size: 14px; }
   body.playing .peek .scard { padding: 20px 22px 18px; }
 }
+
+/* the equation box: headline and Next only */
+.eq-pop-nav { justify-content: flex-end; }
+.eq-pop-t { margin-bottom: 4px; }
