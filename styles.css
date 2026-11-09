@@ -1489,3 +1489,14 @@ main:focus { outline: none; }
 #final .river-h { margin-bottom: clamp(32px, 4.5vw, 52px); }
 #final .river-5 { margin-bottom: clamp(32px, 4.5vw, 48px); }
 @media (max-width: 600px) { #final .river-h { margin-bottom: 36px; } #final .river-5 { margin-bottom: 30px; } }
+
+/* the dark-band door turns copper on hover and keyboard focus; its copper marks go ink so they stay visible */
+.final .river-doors .ed-main:hover, .final .river-doors .ed-main:focus-visible,
+#final .river-doors .ed-main:hover, #final .river-doors .ed-main:focus-visible,
+#think-differently .river-doors .ed-main:hover, #think-differently .river-doors .ed-main:focus-visible { background: var(--copper); border-color: var(--copper); color: var(--dark); }
+.river-doors .ed-main:hover .door-g line, .river-doors .ed-main:focus-visible .door-g line { stroke: var(--dark); }
+.river-doors .ed-main:hover .door-g circle, .river-doors .ed-main:focus-visible .door-g circle { fill: var(--dark); }
+@media (max-width: 600px) {
+  .river-5 .st1 .rv-lab, .river-5 .st3 .rv-lab, .river-5 .st5 .rv-lab { transform: translateY(6px); }
+  .river-5 .st2 .rv-lab, .river-5 .st4 .rv-lab { transform: translateY(-83px); }
+}
