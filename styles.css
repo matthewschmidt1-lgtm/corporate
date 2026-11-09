@@ -1484,3 +1484,8 @@ main:focus { outline: none; }
 #soul .pull { margin: clamp(56px, 8vw, 88px) 0 28px; font-size: clamp(28px, 4vw, 44px); max-width: 22em; }
 #soul .monday { max-width: 40em; }
 @media (max-width: 600px) { #soul .sc-fig { margin: 32px 0; } #soul .pull { margin-top: 48px; } }
+
+/* home closing band: heading, river, door, each with room */
+#final .river-h { margin-bottom: clamp(32px, 4.5vw, 52px); }
+#final .river-5 { margin-bottom: clamp(32px, 4.5vw, 48px); }
+@media (max-width: 600px) { #final .river-h { margin-bottom: 36px; } #final .river-5 { margin-bottom: 30px; } }
