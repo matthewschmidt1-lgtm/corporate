@@ -1500,3 +1500,5 @@ main:focus { outline: none; }
   .river-5 .st1 .rv-lab, .river-5 .st3 .rv-lab, .river-5 .st5 .rv-lab { transform: translateY(6px); }
   .river-5 .st2 .rv-lab, .river-5 .st4 .rv-lab { transform: translateY(-83px); }
 }
+/* desktop: the river drawing carries its own headroom above the icons, so the heading needs less margin */
+@media (min-width: 601px) { #final .river-h { margin-bottom: 16px; } }
