@@ -13,9 +13,9 @@
     simplicity: '<rect x="6" y="16" width="32" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="22" y1="4" x2="22" y2="40" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
     customer: '<circle cx="22" cy="22" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="22" cy="22" r="4.5" fill="#C47C55"/>',
     excellence: '<rect x="6" y="6" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="13" width="18" height="18" fill="none" stroke="#C47C55" stroke-width="2"/>',
-    people: '<g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="30" r="5"/><circle cx="22" cy="30" r="5"/><circle cx="34" cy="30" r="5"/></g><circle cx="22" cy="12" r="5" fill="#C47C55"/>',
-    focus: '<g stroke="currentColor" fill="none"><line x1="6" y1="8" x2="38" y2="8" stroke-width="1.5" opacity=".35"/><line x1="6" y1="15" x2="38" y2="15" stroke-width="4"/><line x1="6" y1="22" x2="38" y2="22" stroke-width="1.5" opacity=".35"/><line x1="6" y1="29" x2="38" y2="29" stroke-width="4"/><line x1="6" y1="36" x2="38" y2="36" stroke-width="1.5" opacity=".35"/></g>',
-    own: '<rect x="8" y="8" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="22" y1="22" x2="40" y2="4" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/><circle cx="22" cy="22" r="3.5" fill="#C47C55"/>'
+    people: '<g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="21" r="5.5"/><circle cx="22" cy="21" r="5.5"/><circle cx="33" cy="21" r="5.5"/></g><line x1="6" y1="33" x2="38" y2="33" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+    focus: '<path d="M6 14V6h8M30 6h8v8M38 30v8h-8M14 38H6v-8" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="14" y1="22" x2="30" y2="22" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+    own: '<path d="M6 8L29 22M6 22H29M6 36L29 22" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="33.5" cy="22" r="4.5" fill="#C47C55"/>'
   };
   var WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   var NUM = ['none', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];

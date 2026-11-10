@@ -14,7 +14,7 @@
     var GLYPH = {
       decisions: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="32" height="8"/><rect x="6" y="18" width="32" height="8"/><rect x="6" y="30" width="32" height="8"/></g><line x1="22" y1="2" x2="22" y2="42" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
       leadership: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="20" width="28" height="7"/><rect x="8" y="31" width="28" height="7"/></g><circle cx="22" cy="11" r="5" fill="#C47C55"/>',
-      innovation: '<line x1="22" y1="4" x2="22" y2="40" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/><line x1="2" y1="22" x2="42" y2="22" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+      innovation: '<line x1="14" y1="38" x2="14" y2="6" stroke="currentColor" stroke-width="1.5"/><path d="M14 30C14 20 22 13 33.5 11" fill="none" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/><circle cx="33.5" cy="11" r="4.5" fill="#C47C55"/>',
       waste: '<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="14" width="22" height="22"/><rect x="11" y="9" width="22" height="22"/><rect x="18" y="4" width="22" height="22"/></g><circle cx="29" cy="15" r="4" fill="#C47C55"/>'
     };
     D.cats.forEach(function (c) {
