@@ -1728,3 +1728,5 @@ main:focus { outline: none; }
 .own-words-dark .tk-pick-b:hover, .own-words-dark .tk-pick-b:focus-visible, .own-words-dark .tk-pick-b[aria-pressed="true"] { color: var(--dark-ink); border-color: var(--dark-ink); }
 .own-words-dark .wt-lab { fill: var(--dark-mute); }
 .own-words-dark .river-doors { margin-bottom: 0; }
+.tk-essence + .tk-essence-line { margin-top: -28px; font-weight: 600; color: var(--ink); }
+@media (max-width: 600px) { .tk-essence + .tk-essence-line { margin-top: -18px; } }
