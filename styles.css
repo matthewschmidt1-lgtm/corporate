@@ -1588,3 +1588,8 @@ main:focus { outline: none; }
 }
 .river-talks .rv-lab { font-size: 12px; letter-spacing: .03em; }
 @media (max-width: 600px) { .river-talks .rv-lab { font-size: 19px; letter-spacing: 0; } }
+
+/* talks hero: one paragraph on the man before the river */
+.tk-hero .lead { margin-bottom: 18px; }
+.tk-essence { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--ink); max-width: 40em; margin: 0 0 44px; }
+@media (max-width: 600px) { .tk-essence { font-size: 17px; margin-bottom: 32px; } }
