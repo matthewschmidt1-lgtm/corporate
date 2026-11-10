@@ -804,9 +804,9 @@ main:focus { outline: none; }
 .challenge .eyebrow { color: var(--dark-mute); }
 .challenge-text { font-size: clamp(22px, 4.4vw, 30px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 600; color: var(--dark-ink); margin: 0; }
 
-/* mobile menu: same destinations as desktop */
-.nav-menu { display: none; }
-@media (max-width: 860px) {
+/* the menu is the header at every width */
+.nav-menu { display: block; }
+@media (min-width: 0) {
   .nav-menu { display: block; margin-left: 4px; }
   .nav-inner nav { margin-left: auto; margin-right: 14px; }
   .nav-menu summary { list-style: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); }
@@ -1277,7 +1277,7 @@ main:focus { outline: none; }
 .ls-row { color: var(--mute); cursor: default; }
 
 /* phones: the header is the wordmark and the menu, nothing else */
-@media (max-width: 860px) { .nav-inner nav { display: none; } }
+.nav-inner nav { display: none; }
 
 /* the test band as a river: cards, answers, verdict, then two doors */
 #final .river-h { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.03em; margin: 0 0 6px; max-width: none; }
@@ -1314,7 +1314,7 @@ main:focus { outline: none; }
 @media (max-width: 600px) { .foot-eq svg { width: 18px; height: 18px; } .foot-eq svg:last-child { width: 22px; height: 22px; } .foot-eq i { font-size: 13px; } }
 
 /* the open menu is a dark panel, so it reads against any section */
-@media (max-width: 860px) {
+@media (min-width: 0) {
   .nav-panel { background: var(--dark); border-bottom: 0; border-top: 3px solid var(--copper); padding: 10px 24px 18px; box-shadow: 0 16px 32px rgba(42, 38, 33, .22); }
   .nav-panel a { color: var(--dark-ink); border-bottom: 1px solid rgba(237, 230, 216, .16); }
   .nav-panel a[aria-current="page"] { color: var(--copper); }
@@ -1700,4 +1700,11 @@ main:focus { outline: none; }
   .bike-anim .hr-horse, .bike-anim .hr-eye, .bike-anim .pc-cursor { opacity: 1; transform: none; animation: none; }
   .bike-anim .hr-leg { transform: none; animation: none; }
   .bike-anim .pc-draw, .bike-anim .pc-t { stroke-dashoffset: 0; animation: none; }
+}
+
+/* desktop: the menu button sits at the right and its panel drops under it */
+.nav-menu { margin-left: auto; }
+@media (min-width: 861px) {
+  .nav-menu { position: relative; }
+  .nav-panel { left: auto; right: 0; top: 50px; min-width: 300px; border-radius: 0 0 4px 4px; }
 }
