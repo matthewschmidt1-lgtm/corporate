@@ -1708,3 +1708,7 @@ main:focus { outline: none; }
   .nav-menu { position: relative; }
   .nav-panel { left: auto; right: 0; top: 50px; min-width: 300px; border-radius: 0 0 4px 4px; }
 }
+
+/* the equation pop: one short description under the headline for the five lessons */
+.eq-pop-s { margin: 8px 0 14px; font-size: 16px; line-height: 1.5; color: var(--ink); max-width: 34em; }
+.eq-pop-s[hidden] { display: none; }

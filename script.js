@@ -101,11 +101,11 @@
   var eq = document.getElementById('eq');
   if (eq) {
     var POP = {
-      focus: { k: 'Focus', t: 'Fifteen priorities is a hiding place.', s: 'Pick three and say no to the rest out loud. Your no is what makes your yes worth anything.', href: 'lessons.html#lesson-focus', label: 'Watch the lesson' },
-      customer: { k: 'Customer', t: 'The customer is not in the room until someone brings them in.', s: 'At the next decision, name who speaks for them. If nobody can, congratulations, you just found the first fix.', href: 'lessons.html#lesson-customer', label: 'Watch the lesson' },
-      simplicity: { k: 'Simplicity', t: 'Easy is cheap. Simple is expensive.', s: 'Which is why most companies skip it. Seven layers, one carries the value. Remove the rest on purpose, then guard the door so they do not sneak back in.', href: 'lessons.html#lesson-simplicity', label: 'Watch the lesson' },
-      excellence: { k: 'Excellence', t: 'Finish the back of the cabinet.', s: 'Nobody will check. That is exactly why it matters. Care that only shows up when someone is watching is not care, it is theater.', href: 'lessons.html#lesson-excellence', label: 'Watch the lesson' },
-      innovation: { k: 'Innovation', t: 'Most limits are old habits with good posture.', s: 'Pick one thing your industry calls a law. Ask it a rude question: real limit, or just the way it has always been done?', href: 'lessons.html#lesson-innovation', label: 'Watch the lesson' },
+      focus: { d: "Greatness comes from concentrating on what matters most. Have the courage to say no to good opportunities so you can pursue the truly important ones.", k: 'Focus', t: 'Fifteen priorities is a hiding place.', s: 'Pick three and say no to the rest out loud. Your no is what makes your yes worth anything.', href: 'lessons.html#lesson-focus', label: 'Watch the lesson' },
+      customer: { d: "Start with people, not products. Understand your customers' needs and experiences, then work backward to create something that genuinely delights them.", k: 'Customer', t: 'The customer is not in the room until someone brings them in.', s: 'At the next decision, name who speaks for them. If nobody can, congratulations, you just found the first fix.', href: 'lessons.html#lesson-customer', label: 'Watch the lesson' },
+      simplicity: { d: "Make the complex feel effortless. True simplicity comes from deep understanding and the discipline to eliminate everything that doesn't add value.", k: 'Simplicity', t: 'Easy is cheap. Simple is expensive.', s: 'Which is why most companies skip it. Seven layers, one carries the value. Remove the rest on purpose, then guard the door so they do not sneak back in.', href: 'lessons.html#lesson-simplicity', label: 'Watch the lesson' },
+      excellence: { d: "Quality is reflected in every detail. Everything communicates something about your company, including the things customers may never consciously notice.", k: 'Excellence', t: 'Finish the back of the cabinet.', s: 'Nobody will check. That is exactly why it matters. Care that only shows up when someone is watching is not care, it is theater.', href: 'lessons.html#lesson-excellence', label: 'Watch the lesson' },
+      innovation: { d: "Challenge what everyone else accepts as normal. Don't simply improve existing solutions; rethink the problem and imagine something fundamentally better.", k: 'Innovation', t: 'Most limits are old habits with good posture.', s: 'Pick one thing your industry calls a law. Ask it a rude question: real limit, or just the way it has always been done?', href: 'lessons.html#lesson-innovation', label: 'Watch the lesson' },
       monday: { k: 'Times Monday', t: 'Five lessons times zero action is zero.', s: 'This is the multiplier. One move a week, said out loud, beats a strategy deck nobody opens. Startup Speed has eight moves to pick from.', href: 'startup-speed.html', label: 'Pick a move' },
       company: { k: 'Equals', t: 'A company that works for the customer, not a bureaucracy that works for itself.', s: 'That is the whole site in one line. The game tells you how close yours is. Twelve cards, no account, nothing saved.', href: 'play.html?go=staff', label: 'Play the game' }
     };
@@ -124,6 +124,7 @@
       terms.forEach(function (b) { var on = b.getAttribute('data-k') === k; b.classList.toggle('on', on); b.setAttribute('aria-expanded', on ? 'true' : 'false'); });
       document.getElementById('eqp-k').textContent = d.k;
       document.getElementById('eqp-t').textContent = d.t;
+      var ds = document.getElementById('eqp-s'); if (ds) { ds.textContent = d.d || ''; ds.hidden = !d.d; }
       document.getElementById('eqp-next').textContent = cur === order.length - 1 ? 'Start over' : 'Next';
       if (pop.hidden) { pop.hidden = false; } else { pop.classList.remove('eq-pop'); void pop.offsetWidth; pop.classList.add('eq-pop'); }
       if (scroll && pop.scrollIntoView) pop.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
