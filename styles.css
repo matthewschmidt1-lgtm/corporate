@@ -1734,3 +1734,4 @@ main:focus { outline: none; }
 /* Icon system: the small cut. A mark drawn at 24px or less thickens to ink 2.5 and copper 3.5, from the same SVG */
 .wm [stroke-width="1.5"], .mk-sm [stroke-width="1.5"] { stroke-width: 2.5px; }
 .wm [stroke-width="2.5"], .mk-sm [stroke-width="2.5"] { stroke-width: 3.5px; }
+.tk-hero h1 + .tk-essence { margin-top: 0; }

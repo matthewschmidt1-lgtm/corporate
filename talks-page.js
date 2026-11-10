@@ -55,7 +55,7 @@
 
   // The count line reads as growing
   var count = document.getElementById('tk-count');
-  if (count) count.textContent = word(T.length) + (T.length === 1 ? ' talk, ' : ' talks, ') + word(S.length).toLowerCase() + ' ideas so far. More as they turn up.';
+  if (count) count.textContent = 'More talks as they turn up.';
 
   // The river: one copper line, a station per shape
   if (river) {
