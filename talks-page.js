@@ -9,7 +9,7 @@
   var SVGNS = 'http://www.w3.org/2000/svg';
   var COPPER = '#C47C55', INK = '#2A2621';
   var GLYPH = {
-    tools: '<circle cx="12" cy="28" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="32" cy="28" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="28" x2="32" y2="14" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
+    tools: '<path d="M15 34L22 25.5L29 34Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="6" y1="30" x2="38" y2="16" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
     simplicity: '<rect x="6" y="16" width="32" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="22" y1="4" x2="22" y2="40" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>',
     customer: '<circle cx="22" cy="22" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="22" cy="22" r="4.5" fill="#C47C55"/>',
     excellence: '<rect x="6" y="6" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="13" width="18" height="18" fill="none" stroke="#C47C55" stroke-width="2"/>',
