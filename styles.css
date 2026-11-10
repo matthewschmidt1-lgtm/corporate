@@ -1712,3 +1712,19 @@ main:focus { outline: none; }
 /* the equation pop: one short description under the headline for the five lessons */
 .eq-pop-s { margin: 8px 0 14px; font-size: 16px; line-height: 1.5; color: var(--ink); max-width: 34em; }
 .eq-pop-s[hidden] { display: none; }
+
+/* in his own words, the promo: the rider and the watch side by side, then one door to the talks */
+.ow-figs { display: grid; grid-template-columns: 1fr; gap: 40px; margin: clamp(28px, 4vw, 44px) 0 clamp(36px, 5vw, 56px); }
+.ow-fig .tk-fig { margin-top: 0; }
+@media (min-width: 960px) { .ow-figs { grid-template-columns: 1fr 1fr; gap: 64px; max-width: 760px; } }
+
+/* lessons: In his own words sits inside the dark final lesson, above Your turn */
+.own-words-dark { margin-top: clamp(48px, 7vw, 88px); }
+.own-words-dark::before { content: ""; display: block; height: 8px; margin-bottom: clamp(36px, 5vw, 56px); background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) left center / 8px 8px no-repeat; }
+.own-words-dark h2 { color: var(--dark-ink); }
+.own-words-dark .lead { margin-bottom: 0; }
+.own-words-dark .tk-fig { color: var(--dark-ink); }
+.own-words-dark .tk-pick-b { color: var(--dark-mute); border-color: rgba(237, 230, 216, .3); }
+.own-words-dark .tk-pick-b:hover, .own-words-dark .tk-pick-b:focus-visible, .own-words-dark .tk-pick-b[aria-pressed="true"] { color: var(--dark-ink); border-color: var(--dark-ink); }
+.own-words-dark .wt-lab { fill: var(--dark-mute); }
+.own-words-dark .river-doors { margin-bottom: 0; }
