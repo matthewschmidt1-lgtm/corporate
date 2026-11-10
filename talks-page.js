@@ -106,6 +106,64 @@
     return s;
   }
 
+
+  // The bicycle for the mind: a line sketch that rides in once when it comes into view
+  function bicycle() {
+    var f = mk('figure', 'tk-fig bike-anim');
+    f.setAttribute('aria-hidden', 'true');
+    f.innerHTML =
+      '<svg viewBox="0 0 320 200" focusable="false">' +
+        '<path class="bk-ground" pathLength="1" d="M10 172 H 310" fill="none" stroke="#C47C55" stroke-width="2.5" stroke-linecap="round"/>' +
+        '<g class="bk-bike" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+          '<g class="bk-wheel"><circle cx="92" cy="142" r="30"/><g class="bk-spokes" opacity=".45"><line x1="62" y1="142" x2="122" y2="142"/><line x1="77" y1="116" x2="107" y2="168"/><line x1="77" y1="168" x2="107" y2="116"/></g><circle cx="92" cy="142" r="2.5" fill="currentColor" stroke="none"/></g>' +
+          '<g class="bk-wheel"><circle cx="236" cy="142" r="30"/><g class="bk-spokes" opacity=".45"><line x1="206" y1="142" x2="266" y2="142"/><line x1="221" y1="116" x2="251" y2="168"/><line x1="221" y1="168" x2="251" y2="116"/></g></g>' +
+          '<path d="M92 142 L150 148 L138 92 L206 96 L236 142 M150 148 L206 96 M92 142 L138 92"/>' +
+          '<path d="M128 90 L148 90 M206 96 L197 87 L191 89"/>' +
+          '<path d="M140 136 L160 160 M158 160 L166 160 M136 136 L142 136" opacity=".8"/>' +
+          '<path class="bk-far" d="M140 90 L152 122 L140 136" opacity=".5"/>' +
+          '<path d="M140 90 L166 118 L160 160"/>' +
+          '<path d="M140 90 Q150 70 170 64 L176 60 M170 64 L199 89"/>' +
+          '<circle cx="179" cy="50" r="10"/>' +
+          '<circle class="bk-hub" cx="236" cy="142" r="4.5" fill="#C47C55" stroke="none"/>' +
+        '</g>' +
+      '</svg>';
+    return f;
+  }
+
+
+  // Simple outside, hard inside: a watch with the works showing. Gears turn and settle, hands sweep to ten past ten.
+  function gearPath(cx, cy, r, n) {
+    var d = '', depth = Math.max(3.5, r * 0.13), steps = n * 4;
+    for (var i = 0; i <= steps; i++) {
+      var a = (i / steps) * Math.PI * 2 - Math.PI / 2;
+      var k = i % 4, rr = (k === 1 || k === 2) ? r : r - depth;
+      var x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a);
+      d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    return d + ' Z';
+  }
+  function watch() {
+    var f = mk('figure', 'tk-fig watch-anim');
+    f.setAttribute('aria-hidden', 'true');
+    f.innerHTML =
+      '<svg viewBox="0 0 320 200" focusable="false">' +
+        '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+          '<circle class="wt-case" pathLength="1" cx="160" cy="100" r="78"/>' +
+          '<path class="wt-case wt-crown" pathLength="1" d="M238 94 h8 v12 h-8"/>' +
+          '<g class="wt-ticks" opacity=".6"><path d="M160 30 v6 M160 164 v6 M90 100 h6 M224 100 h6"/></g>' +
+          '<g class="wt-works" opacity=".5">' +
+            '<path class="wt-gear wt-g1" d="' + gearPath(132, 112, 40, 16) + '"/><circle cx="132" cy="112" r="6"/>' +
+            '<path class="wt-gear wt-g2" d="' + gearPath(190, 89, 22, 10) + '"/><circle cx="190" cy="89" r="4"/>' +
+            '<path class="wt-gear wt-g3" d="' + gearPath(182, 134, 11, 6) + '"/><circle cx="182" cy="134" r="2.5"/>' +
+          '</g>' +
+          '<line class="wt-hand wt-hour" x1="160" y1="100" x2="160" y2="62" stroke-width="3"/>' +
+          '<line class="wt-hand wt-min" x1="160" y1="100" x2="160" y2="42" stroke="#C47C55" stroke-width="2.5"/>' +
+          '<circle class="wt-pin" cx="160" cy="100" r="4.5" fill="#C47C55" stroke="none"/>' +
+        '</g>' +
+      '</svg>';
+    return f;
+  }
+
   // One room per shape, alternating cream and sand
   S.forEach(function (sh, i) {
     var sec = mk('section', 'section rule-in tk' + (i % 2 ? ' sand' : ''));
@@ -120,6 +178,8 @@
     h.id = sec.id + '-h';
     head.appendChild(h);
     head.appendChild(mk('p', 'tk-why', sh.meaning));
+    if (sh.figure === 'bicycle') head.appendChild(bicycle());
+    if (sh.figure === 'watch') head.appendChild(watch());
     head.appendChild(strip(sh));
     wrap.appendChild(head);
 

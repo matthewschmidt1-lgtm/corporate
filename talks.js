@@ -31,7 +31,7 @@ window.TALKS = [
 
 window.SHAPES = [
   {
-    id: 'tools', label: 'Tools', glyph: 'tools',
+    id: 'tools', label: 'Tools', glyph: 'tools', figure: 'bicycle',
     name: 'Tools that make people bigger.',
     meaning: 'Your product is worth what it lets an ordinary person do.',
     counts: { 1981: 3, 1983: 4, 1986: 2, 1991: 1, 1992: 2, 1998: 1, 2008: 1 },
@@ -49,7 +49,7 @@ window.SHAPES = [
     monday: 'Ask a customer what your product lets them do. Lead with that.'
   },
   {
-    id: 'simple', label: 'Simple', glyph: 'simplicity',
+    id: 'simple', label: 'Simple', glyph: 'simplicity', figure: 'watch',
     name: 'Simple outside, hard inside.',
     meaning: 'Every step you remove for the customer costs you work. Remove it anyway.',
     counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1998: 2, 2008: 0 },
