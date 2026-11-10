@@ -17,6 +17,8 @@
   lines before the passage), quote (the full thought, about 40 to 90 words, exact from the captions;
   for auto captions fix only punctuation and capitals; one ellipsis at most, only to cut filler),
   note (one line under 12 words, or '' when setup and passage already say it).
+  A second talk in the same year needs an id (for example '1991-12'); its moments and counts then use that id
+  instead of the year, and the year strips add the two together.
   The count line and the sources sentence update themselves.
 */
 window.TALKS = [
@@ -24,6 +26,7 @@ window.TALKS = [
   { year: 1983, venue: 'International Design Conference, Aspen', url: 'https://www.youtube.com/watch?v=t9HmOz8H0qI', videoId: 't9HmOz8H0qI', captionType: 'channel', runtime: '55:14' },
   { year: 1986, venue: 'NeXT retreats, Pebble Beach', url: 'https://www.youtube.com/watch?v=s-a4aU1RUgM', videoId: 's-a4aU1RUgM', captionType: 'channel', runtime: '20:12' },
   { year: 1991, venue: 'Interview on ten years of the PC', url: 'https://www.youtube.com/watch?v=OzZB5pZTslE', videoId: 'OzZB5pZTslE', captionType: 'channel', runtime: '21:40' },
+  { year: 1991, id: '1991-12', venue: 'Interview on Joseph Juran and quality', url: 'https://www.youtube.com/watch?v=XbkMcvnNq3g', videoId: 'XbkMcvnNq3g', captionType: 'auto', runtime: '19:18' },
   { year: 1992, venue: 'MIT, Distinguished Speaker Series', url: 'https://www.youtube.com/watch?v=YXUhLbV8Nrg', videoId: 'YXUhLbV8Nrg', captionType: 'auto', runtime: '1:12:53' },
   { year: 1998, venue: 'iMac satellite tour', url: 'https://www.youtube.com/watch?v=8a5KSoOUT_U', videoId: '8a5KSoOUT_U', captionType: 'auto', runtime: '10:29' },
   { year: 2008, venue: 'iPhone 3G interview', url: 'https://www.youtube.com/watch?v=qSUTHa7ssoc', videoId: 'qSUTHa7ssoc', captionType: 'auto', runtime: '4:40' }
@@ -88,7 +91,7 @@ window.SHAPES = [
     id: 'care', label: 'Care', glyph: 'excellence',
     name: 'Care costs no more.',
     meaning: 'Great and junk cost about the same to make. Choose great, everywhere.',
-    counts: { 1981: 0, 1983: 3, 1986: 1, 1991: 0, 1992: 2, 1998: 1, 2008: 1 },
+    counts: { 1981: 0, 1983: 3, 1986: 1, 1991: 0, '1991-12': 3, 1992: 2, 1998: 1, 2008: 1 },
     moments: [
       { talk: 1983, t: 489, setup: "Asking designers for help, since computers would sell by the million however they looked:",
         quote: "It doesn’t really matter, because people are going to just suck this stuff up so fast that they’re going to do it no matter what it looks like. And it doesn’t cost any more money to make it look great. There are going to be these objects, this new object that’s going to be in everyone’s working environment… And we have a shot at putting a great object there, or if we don’t, we’re going to put one more piece-of-junk object there.",
@@ -96,8 +99,8 @@ window.SHAPES = [
       { talk: 1992, t: 3573, setup: "On what you learn the moment you start building factories:",
         quote: "Warehouses are bad because you tend to put things in them, and inventory is really bad. Inventory is really bad because if it's defective, you don't find out about it for a while, and you don't close the quality feedback loop with a vendor and correct the problem till they've made a zillion of them. What you want to do is find a problem, the first one that comes in the door, and stop them from making more until you fix the problem.",
         note: "Work that waits hides its defects." },
-      { talk: 1998, t: 291, setup: "Asked whether he really looked to The Jetsons when designing the iMac:",
-        quote: "Well, you've seen most computers. You know what they look like, right? You kind of have to hide them when company comes. So we wanted to do something that was, was really different than that, and really, really was fun, and really, really was great design. And, and so we look to all sorts of, you know, resources to find ideas and feelings about what we wanted to capture, you know, because we want to have more fun.",
+      { talk: '1991-12', t: 365, setup: "On why the companies that advertise quality the most are not the ones known for it:",
+        quote: "The answer is because customers don't form their opinions on quality from marketing. They don't form their opinions on quality from who won the, the Deming award or who won the Baldrige award. They form their opinions on quality from their own experience with the products or the services. And so one can spend enormous amounts of money on quality, one can win every quality award there is, and yet if your products don't live up to it, customers will not keep that opinion for long in their minds.",
         note: "" }
     ],
     monday: 'Fix one thing customers see every day that nobody owns.'
@@ -106,7 +109,7 @@ window.SHAPES = [
     id: 'people', label: 'People', glyph: 'people',
     name: 'Few people, real agreement.',
     meaning: 'Hire people to tell you what to do. Then argue until you agree.',
-    counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, 1992: 4, 1998: 0, 2008: 0 },
+    counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1998: 0, 2008: 0 },
     moments: [
       { talk: 1981, t: 1137, setup: "Asked how a company growing this fast builds its executive team:",
         quote: "Well, one of the things that we always did was we tried to hire somebody who was better than us in a particular thing. That's still my greatest joy around here, is when we hire somebody that's better than I'll ever be at one particular thing. So you try to hire just really outstanding people that are much too, they're actually much too senior for the current jobs that you have.",
@@ -114,9 +117,9 @@ window.SHAPES = [
       { talk: 1992, t: 3199, setup: "Asked how NeXT resolves conflict, he explains why he never tells people to just buy in:",
         quote: "Sooner or later you're paying somebody to do what they think is right, but then you're trying to get him to do what they think isn't right, and it ends, sooner or later it outs, and you end up having that conflict. So I've always felt that the best way is to get everybody in a room and talk it through until you agree. Now, that's not everybody in the company, but that's everybody that's really involved in that decision that needs to execute it.",
         note: "" },
-      { talk: 1992, t: 3107, setup: "Asked what has changed in how he manages since Apple:",
-        quote: "I now take a longer-term view on people. In other words, when I see something not being done right, my first reaction isn't to go fix it. It's to say, we're building a team here, and we're gonna do great stuff for the next decade, not just the next year. And so what do I need to do to help so that the person that's screwing up learns, versus how do I fix the problem? And that's painful sometimes.",
-        note: "" }
+      { talk: '1991-12', t: 593, setup: "Asked what requests he says yes to now; he says the question has it backwards:",
+        quote: "Authority should be vested in the people doing the work to improve their own processes, to teach them how to measure them, to understand them, and to improve them. And they should not have to ask for permission to improve their processes. So I think a lot of the philosophy behind this quality stuff carries with it a flattening of the traditional hierarchical organization and a distribution of authority to the people who are best in the position to decide what should happen to improve these processes: the people doing the work themselves.",
+        note: "The permission that matters is permission not to ask." }
     ],
     monday: 'On your next big call, argue until the people doing it agree.'
   },

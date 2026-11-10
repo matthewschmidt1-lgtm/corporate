@@ -19,8 +19,14 @@
   };
   var WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
   var NUM = ['none', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-  var byYear = {};
-  T.forEach(function (t) { byYear[t.year] = t; });
+  // A talk is keyed by its id when it has one, else by its year, so two talks can share a year
+  var keyOf = function (t) { return String(t.id || t.year); };
+  var byKey = {};
+  T.forEach(function (t) { byKey[keyOf(t)] = t; });
+  var YEARS = [];
+  T.forEach(function (t) { if (YEARS.indexOf(t.year) < 0) YEARS.push(t.year); });
+  function countFor(sh, t) { return (sh.counts && sh.counts[keyOf(t)]) || 0; }
+  function countYear(sh, y) { var n = 0; T.forEach(function (t) { if (t.year === y) n += countFor(sh, t); }); return n; }
 
   function mk(tag, cls, text) {
     var e = document.createElement(tag);
@@ -84,14 +90,14 @@
   // A small year strip per shape: squares sized by how often he came back to it that year
   function strip(sh) {
     var W = 300, pad = 18, Y = 20, X = [];
-    for (var k = 0; k < T.length; k++) X.push(T.length > 1 ? pad + k * (W - 2 * pad) / (T.length - 1) : W / 2);
+    for (var k = 0; k < YEARS.length; k++) X.push(YEARS.length > 1 ? pad + k * (W - 2 * pad) / (YEARS.length - 1) : W / 2);
     var parts = [];
     var s = sv('svg', { 'class': 'ys', viewBox: '0 0 300 52', role: 'img' });
     s.appendChild(sv('line', { x1: '2', y1: String(Y), x2: '298', y2: String(Y), stroke: COPPER, 'stroke-width': '2' }));
     s.appendChild(sv('circle', { cx: '2', cy: String(Y), r: '3', fill: COPPER }));
-    T.forEach(function (t, i) {
-      var n = (sh.counts && sh.counts[t.year]) || 0;
-      parts.push(t.year + ' ' + (NUM[n] || n));
+    YEARS.forEach(function (y, i) {
+      var n = countYear(sh, y);
+      parts.push(y + ' ' + (NUM[n] || n));
       if (n) {
         var z = Math.min(22, 6 + n * 3.2);
         s.appendChild(sv('rect', { x: String(X[i] - z / 2), y: String(Y - z / 2), width: String(z), height: String(z), fill: INK }));
@@ -99,7 +105,7 @@
         s.appendChild(sv('rect', { 'class': 'ys-none', x: String(X[i] - 4), y: String(Y - 4), width: '8', height: '8', fill: '#F3EEE4', stroke: INK, 'stroke-width': '1', opacity: '.5' }));
       }
       var lab = sv('text', { 'class': 'ys-lab', x: String(X[i]), y: '49', 'text-anchor': 'middle' });
-      lab.textContent = String(t.year);
+      lab.textContent = String(y);
       s.appendChild(lab);
     });
     s.setAttribute('aria-label', 'Clear moments on this idea, by year: ' + parts.join(', ') + '.');
@@ -388,7 +394,7 @@
     var wrap = mk('div', 'wrap tk-grid');
 
     var head = mk('div', 'tk-head');
-    var years = T.filter(function (t) { return sh.counts && sh.counts[t.year]; }).length;
+    var years = T.filter(function (t) { return countFor(sh, t); }).length;
     head.appendChild(mk('p', 'eyebrow', 'In ' + word(years).toLowerCase() + ' of ' + word(T.length).toLowerCase() + ' talks'));
     var h = mk('h2', null, sh.name);
     h.id = sec.id + '-h';
@@ -401,7 +407,7 @@
 
     var list = mk('ol', 'tk-moments');
     sh.moments.forEach(function (m) {
-      var talk = byYear[m.talk];
+      var talk = byKey[String(m.talk)];
       if (!talk) return;
       var li = mk('li', 'tk-m reveal');
       li.appendChild(mk('p', 'tk-src', talk.year + ', ' + talk.venue));
