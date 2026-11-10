@@ -1614,34 +1614,90 @@ main:focus { outline: none; }
 }
 @media (max-width: 959px) { .tk-fig { max-width: 300px; margin-top: 20px; } }
 
-/* the watch: case draws, the three gears turn at meshed speeds and settle, the hands sweep to ten past ten */
+/* the watch: case draws, the works fade up and run like a movement, the hands sweep to the current time */
 .watch-anim .wt-case { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .watch-anim .wt-ticks, .watch-anim .wt-works, .watch-anim .wt-hand, .watch-anim .wt-pin { opacity: 0; }
-.watch-anim .wt-gear { transform-box: fill-box; transform-origin: center; }
-.watch-anim .wt-hand { transform-box: view-box; transform-origin: 160px 100px; }
+.watch-anim .wt-gear { transform-box: view-box; }
+.watch-anim .wt-g1 { transform-origin: 132px 112px; }
+.watch-anim .wt-g2 { transform-origin: 186px 91px; }
+.watch-anim .wt-g3 { transform-origin: 174px 131px; }
+.watch-anim .wt-hand { transform-box: view-box; transform-origin: 160px 100px; transition: transform 1.6s cubic-bezier(.3, .7, .2, 1); }
+.watch-anim.wt-live .wt-hand { transition: transform .1s linear; }
 .watch-anim .wt-pin { transform-box: fill-box; transform-origin: center; }
 .watch-anim.play .wt-case { animation: mlDraw 1s cubic-bezier(.4, 0, .2, 1) forwards; }
 .watch-anim.play .wt-ticks { animation: wtFade .4s ease .8s forwards; }
 .watch-anim.play .wt-works { animation: wtFadeHalf .5s ease .6s forwards; }
-.watch-anim.play .wt-g1 { animation: wtTurnA 2.4s cubic-bezier(.2, .6, .2, 1) .6s forwards; }
-.watch-anim.play .wt-g2 { animation: wtTurnB 2.4s cubic-bezier(.2, .6, .2, 1) .6s forwards; }
-.watch-anim.play .wt-g3 { animation: wtTurnC 2.4s cubic-bezier(.2, .6, .2, 1) .6s forwards; }
-.watch-anim.play .wt-hour { animation: wtHour 1.8s cubic-bezier(.3, .7, .2, 1) 1.1s forwards; }
-.watch-anim.play .wt-min { animation: wtMin 1.8s cubic-bezier(.3, .7, .2, 1) 1.1s forwards; }
-.watch-anim.play .wt-pin { animation: dotIn .4s ease 2.6s forwards; }
+.watch-anim.play .wt-g1 { animation: wtCW 24s linear infinite; }
+.watch-anim.play .wt-g2 { animation: wtCCW 13s linear infinite; }
+.watch-anim.play .wt-g3 { animation: wtCCW 6s linear infinite; }
+.watch-anim.play .wt-hand { animation: wtShow .3s ease .9s forwards; }
+.watch-anim.play .wt-pin { animation: dotIn .4s ease 2.4s forwards; }
 @keyframes wtFade { to { opacity: .6; } }
 @keyframes wtFadeHalf { to { opacity: .5; } }
-@keyframes wtTurnA { to { transform: rotate(90deg); } }
-@keyframes wtTurnB { to { transform: rotate(-164deg); } }
-@keyframes wtTurnC { to { transform: rotate(327deg); } }
-@keyframes wtHour { from { opacity: 1; transform: rotate(0deg); } to { opacity: 1; transform: rotate(-60deg); } }
-@keyframes wtMin { from { opacity: 1; transform: rotate(0deg); } to { opacity: 1; transform: rotate(60deg); } }
+@keyframes wtShow { to { opacity: 1; } }
+@keyframes wtCW { to { transform: rotate(360deg); } }
+@keyframes wtCCW { to { transform: rotate(-360deg); } }
+.watch-anim.play .wt-sec { animation-name: wtShowSec; }
+@keyframes wtShowSec { to { opacity: .75; } }
 @media (prefers-reduced-motion: reduce) {
   .watch-anim .wt-case { stroke-dashoffset: 0; animation: none; }
   .watch-anim .wt-ticks { opacity: .6; animation: none; }
   .watch-anim .wt-works { opacity: .5; animation: none; }
   .watch-anim .wt-gear { animation: none; }
-  .watch-anim .wt-hand, .watch-anim .wt-pin { opacity: 1; animation: none; }
-  .watch-anim .wt-hour { transform: rotate(-60deg); }
-  .watch-anim .wt-min { transform: rotate(60deg); }
+  .watch-anim .wt-hand { opacity: 1; animation: none; transition: none; }
+  .watch-anim .wt-sec { opacity: .75; }
+  .watch-anim .wt-pin { opacity: 1; animation: none; }
+}
+
+/* three watches, one picker */
+.tk-fig svg[hidden] { display: none; }
+.tk-pick { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.tk-pick-b { font: 600 12px/1 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--mute); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0 12px 0 10px; min-height: 32px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; transition: color .2s, border-color .2s; }
+.tk-pick-b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--copper); box-sizing: border-box; }
+.tk-pick-b:hover, .tk-pick-b:focus-visible { color: var(--ink); border-color: var(--ink); outline: none; }
+.tk-pick-b[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+.tk-pick-b[aria-pressed="true"]::before { background: var(--copper); }
+/* digital: lit segments in ink, the rest ghosted like a real LCD */
+.wt-digi .sg { stroke: currentColor; opacity: .08; }
+.wt-digi .sg.on { opacity: .92; }
+.wt-lab { font: 600 7px/1 var(--font); letter-spacing: .08em; fill: var(--mute); stroke: none; }
+/* words: the grid is quiet, the sentence is lit */
+.wt-word .wl { font: 600 11px/1 var(--font); fill: currentColor; opacity: .14; }
+.wt-word .wl.on { opacity: 1; }
+.wt-word .wd { fill: #C47C55; opacity: .18; }
+.wt-word .wd.on { opacity: 1; }
+.tk-pick { gap: 6px; }
+.tk-pick-b { font-size: 11px; letter-spacing: .04em; padding: 0 9px 0 8px; min-height: 30px; gap: 6px; }
+
+/* the bicycle figure's two other sketches: a horse at a trot that walks in and stops, and a person at an early computer */
+.bike-anim .hr-horse { opacity: 0; transform: translateX(-90px); }
+.bike-anim .hr-leg { transform-box: view-box; }
+.bike-anim .hr-nf { transform-origin: 214px 124px; }
+.bike-anim .hr-ff { transform-origin: 204px 124px; }
+.bike-anim .hr-nh { transform-origin: 118px 126px; }
+.bike-anim .hr-fh { transform-origin: 130px 126px; }
+.bike-anim .hr-eye { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.bike-anim.play .hr-horse { animation: bkRide 1.9s cubic-bezier(.15, .7, .2, 1) .25s forwards; }
+.bike-anim.play .hr-nf, .bike-anim.play .hr-fh { animation: hrSwingA 1.9s cubic-bezier(.2, .6, .3, 1) .25s both; }
+.bike-anim.play .hr-ff, .bike-anim.play .hr-nh { animation: hrSwingB 1.9s cubic-bezier(.2, .6, .3, 1) .25s both; }
+.bike-anim.play .hr-eye { animation: dotIn .4s ease 1.9s forwards; }
+@keyframes hrSwingA { 0% { transform: rotate(-12deg); } 28% { transform: rotate(10deg); } 54% { transform: rotate(-6deg); } 78% { transform: rotate(2deg); } 100% { transform: none; } }
+@keyframes hrSwingB { 0% { transform: rotate(12deg); } 28% { transform: rotate(-10deg); } 54% { transform: rotate(6deg); } 78% { transform: rotate(-2deg); } 100% { transform: none; } }
+.bike-anim .pc-draw, .bike-anim .pc-t { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.bike-anim .pc-cursor { opacity: 0; }
+.bike-anim.play .pc-desk { animation: mlDraw .8s cubic-bezier(.4, 0, .2, 1) .3s forwards; }
+.bike-anim.play .pc-box { animation: mlDraw .9s cubic-bezier(.4, 0, .2, 1) .6s forwards; }
+.bike-anim.play .pc-chair { animation: mlDraw .7s cubic-bezier(.4, 0, .2, 1) .8s forwards; }
+.bike-anim.play .pc-man { animation: mlDraw .9s cubic-bezier(.4, 0, .2, 1) 1s forwards; }
+.bike-anim.play .pc-t1 { animation: mlDraw .35s steps(6) 2s forwards; }
+.bike-anim.play .pc-t2 { animation: mlDraw .45s steps(8) 2.45s forwards; }
+.bike-anim.play .pc-t3 { animation: mlDraw .25s steps(4) 3s forwards; }
+.bike-anim.play .pc-cursor { animation: pcBlink .5s step-end 3.3s 3 both; }
+@keyframes pcBlink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 1; } }
+.tk-pick-snug { gap: 5px; flex-wrap: nowrap; }
+.tk-pick-snug .tk-pick-b { letter-spacing: .01em; padding: 0 8px 0 7px; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .bike-anim .hr-horse, .bike-anim .hr-eye, .bike-anim .pc-cursor { opacity: 1; transform: none; animation: none; }
+  .bike-anim .hr-leg { transform: none; animation: none; }
+  .bike-anim .pc-draw, .bike-anim .pc-t { stroke-dashoffset: 0; animation: none; }
 }
