@@ -134,12 +134,6 @@
     if (FG && sh.figure === 'watch') { var wf = FG.watch(); head.appendChild(wf); head.appendChild(FG.watchPicker(wf)); }
     if (FG && FG.sketch && sh.figure) { var sk = FG.sketch(sh.figure); if (sk) head.appendChild(sk); }
     head.appendChild(strip(sh));
-    if (sh.changed) {
-      var ch = mk('p', 'tk-changed');
-      ch.appendChild(mk('span', 'tk-changed-k', 'How it changed'));
-      ch.appendChild(document.createTextNode(sh.changed));
-      head.appendChild(ch);
-    }
     wrap.appendChild(head);
 
     var list = mk('ol', 'tk-moments');
