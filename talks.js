@@ -119,7 +119,7 @@ window.SHAPES = [
     id: 'people', label: 'People', glyph: 'people', figure: 'people',
     about: 'On who gets to decide',
     name: 'Few people, real agreement.',
-    meaning: 'Hire people to tell you what to do. Then argue until you agree.',
+    meaning: 'Hire people to tell you what to do. Then talk it through until you agree.',
     changed: "From hiring stars to how a team decides. Gone from the short late interviews.",
     counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1998: 0, 2008: 0 },
     moments: [
@@ -133,7 +133,7 @@ window.SHAPES = [
         quote: "Authority should be vested in the people doing the work to improve their own processes, to teach them how to measure them, to understand them, and to improve them. And they should not have to ask for permission to improve their processes. So I think a lot of the philosophy behind this quality stuff carries with it a flattening of the traditional hierarchical organization and a distribution of authority to the people who are best in the position to decide what should happen to improve these processes: the people doing the work themselves.",
         key: "they should not have to ask for permission to improve their processes.", note: "The permission that matters is permission not to ask." }
     ],
-    monday: 'On your next big call, argue until the people doing it agree.'
+    monday: 'On your next big call, talk it through until the people doing the work agree.'
   },
   {
     id: 'focus', label: 'Focus', glyph: 'focus', figure: 'focus',
