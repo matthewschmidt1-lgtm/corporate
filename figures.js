@@ -281,7 +281,116 @@
     } else { start(); }
   }
 
-  window.GarageFigures = { bicycle: bicycle, watch: watch, picker: picker, bikePicker: bikePicker, watchPicker: watchPicker };
+  // Five more sketches for the talks, one per idea. Each is ink on currentColor with one copper line
+  // and at most one copper dot; the CSS draws them in once the observer adds .play to the figure.
+  var CU = '#C47C55';
+  function skPath(cls, d, extra) { return '<path class="' + cls + '" pathLength="1" d="' + d + '"' + (extra || '') + '/>'; }
+  function skCircle(cls, cx, cy, r, extra) { return '<circle class="' + cls + '" pathLength="1" cx="' + cx + '" cy="' + cy + '" r="' + r + '"' + (extra || '') + '/>'; }
+  function skCopper(cls, d) { return '<path class="sk-cl ' + cls + '" pathLength="1" d="' + d + '" fill="none" stroke="' + CU + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'; }
+  function skDot(cx, cy) { return '<circle class="sk-dot" cx="' + cx + '" cy="' + cy + '" r="4.5" fill="' + CU + '" stroke="none"/>'; }
+  function skSvg(inner) {
+    return '<svg viewBox="0 0 320 200" focusable="false">' +
+      '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + inner + '</g></svg>';
+  }
+
+  // Customers tell you what you are: a maker by his box on a stand, a customer across the room, and what she says lands on the product
+  function customersSvg() {
+    return skSvg(
+      skPath('sk-d sk-t1', 'M18 172 H 302', ' opacity=".4"') +
+      skPath('sk-d sk-t2', 'M94 132 H 142 M100 132 V 172 M136 132 V 172') +
+      skPath('sk-d sk-t3', 'M102 132 V 98 H 134 V 132 Z') +
+      skPath('sk-d sk-t3', 'M102 107 H 134', ' opacity=".5"') +
+      skCircle('sk-d sk-t2', 52, 64, 10) +
+      skPath('sk-d sk-t2', 'M52 75 L54 126 M54 126 L45 170 M54 126 L63 170 M53 90 L76 104 L101 112') +
+      skPath('sk-d sk-t2', 'M53 90 L44 118', ' opacity=".6"') +
+      skCircle('sk-d sk-t3', 266, 64, 10) +
+      skPath('sk-d sk-t3', 'M266 75 L264 126 M264 126 L255 170 M264 126 L273 170 M265 90 L248 108') +
+      skPath('sk-d sk-t3', 'M265 90 L276 118', ' opacity=".6"') +
+      skCopper('sk-cu-say', 'M251 60 Q 188 22 120 96') +
+      skDot(120, 98)
+    );
+  }
+
+  // Care costs no more: a rough box and a finished one on a balance; the beam settles level
+  function careSvg() {
+    return skSvg(
+      skPath('sk-d sk-t1', 'M120 172 H 200 M148 172 L160 124 L172 172') +
+      '<g class="sk-ca-l">' +
+        skPath('sk-d sk-t2', 'M84 120 V 108 M58 104 Q 60 108 66 108 H 102 Q 108 108 110 104') +
+        skPath('sk-d sk-t3', 'M66 107 L64 84 L104 82 L102 107 M64 84 L57 73 M104 82 L111 72') +
+      '</g>' +
+      '<g class="sk-ca-r">' +
+        skPath('sk-d sk-t2', 'M236 120 V 108 M210 104 Q 212 108 218 108 H 254 Q 260 108 262 104') +
+        skPath('sk-d sk-t3', 'M217 107 V 80 H 255 V 107 Z') +
+        skPath('sk-d sk-t4', 'M223 101 V 86 H 249 V 101 Z', ' opacity=".55"') +
+      '</g>' +
+      '<g class="sk-ca-beam">' + skCopper('sk-ca-line', 'M80 120 H 240') + '</g>' +
+      skDot(160, 120)
+    );
+  }
+
+  // Few people, real agreement: five seats round a table, arguments cross it, then one copper ring
+  function peopleSvg() {
+    var cx = 160, cy = 100, seats = '';
+    for (var i = 0; i < 5; i++) {
+      var a = -90 + i * 72, r = a * Math.PI / 180;
+      var sx = (cx + 66 * Math.cos(r)).toFixed(1), sy = (cy + 66 * Math.sin(r)).toFixed(1);
+      seats += '<rect class="sk-d sk-t2" pathLength="1" x="-8" y="-5" width="16" height="10" rx="2" transform="translate(' + sx + ' ' + sy + ') rotate(' + (a + 90) + ')"/>';
+    }
+    // A copper figure 8, two loops that disagree, drawn like a written 8. The loops then slide together into one circle.
+    function loop(cls, y, rot) {
+      return '<g class="sk-pe-loop ' + cls + '"><circle class="sk-pe-l" pathLength="1" cx="' + cx + '" cy="' + y + '" r="10" fill="none" stroke="' + CU + '" stroke-width="2.5" stroke-linecap="round" transform="rotate(' + rot + ' ' + cx + ' ' + y + ')"/></g>';
+    }
+    return skSvg(
+      skCircle('sk-d sk-t1', cx, cy, 52) + seats +
+      loop('sk-pe-up', cy - 10, 90) + loop('sk-pe-dn', cy + 10, -90)
+    );
+  }
+
+  // Bet on a few things: a fanned hand of five cards; four fall back and one comes forward.
+  // Outline cards would show through each other, so each card is masked by the cards in front of it.
+  var skMaskN = 0;
+  function focusSvg() {
+    var n = ++skMaskN, card = 'x="137" y="70" width="46" height="68" rx="4"';
+    function blk(i) { return i === 2 ? '<g class="sk-fo-rise"><rect class="sk-fo-c sk-fo-c2" ' + card + ' fill="#000"/></g>' : '<rect class="sk-fo-c sk-fo-c' + i + '" ' + card + ' fill="#000"/>'; }
+    function mask(i, front) {
+      return '<mask id="sk-fo-' + n + '-' + i + '" maskUnits="userSpaceOnUse" x="-40" y="-40" width="400" height="280">' +
+        '<rect x="-40" y="-40" width="400" height="280" fill="#fff"/>' + front.map(blk).join('') + '</mask>';
+    }
+    function back(i) {
+      return '<g class="sk-fo-back" mask="url(#sk-fo-' + n + '-' + i + ')"><rect class="sk-fo-c sk-fo-c' + i + '" ' + card + '/></g>';
+    }
+    return skSvg(
+      '<defs>' + mask(0, [1, 2]) + mask(1, [2]) + mask(3, [2]) + mask(4, [3, 2]) + '</defs>' +
+      back(0) + back(4) + back(1) + back(3) +
+      '<g class="sk-fo-rise"><rect class="sk-fo-c sk-fo-c2" ' + card + '/>' + skCopper('sk-fo-line', 'M148 98 H 172') + '</g>'
+    );
+  }
+
+  // Own it. Keep moving: a cracked bowl mended with one copper seam
+  function ownSvg() {
+    return skSvg(
+      skPath('sk-d sk-t1', 'M100 168 H 220', ' opacity=".4"') +
+      skPath('sk-d sk-t1', 'M70 80 Q 76 152 140 156 H 180 Q 244 152 250 80') +
+      skPath('sk-d sk-t2', 'M70 80 A 90 10 0 0 0 250 80') +
+      skPath('sk-d sk-t2', 'M70 80 A 90 10 0 0 1 250 80', ' opacity=".45"') +
+      skPath('sk-d sk-t2', 'M141 156 L138 168 H 182 L179 156') +
+      skPath('sk-d sk-ow-crack', 'M140 90 L148 104 L139 117 L151 131 L145 145', ' stroke-width="1"') +
+      skCopper('sk-ow-seam', 'M140 90 L148 104 L139 117 L151 131 L145 145') +
+      skDot(145, 145)
+    );
+  }
+
+  var SKETCHES = { customers: customersSvg, care: careSvg, people: peopleSvg, focus: focusSvg, own: ownSvg };
+  function sketch(name) {
+    if (!Object.prototype.hasOwnProperty.call(SKETCHES, name)) return null;
+    var f = mk('figure', 'tk-fig sk-anim sk-' + name);
+    f.setAttribute('aria-hidden', 'true');
+    f.innerHTML = SKETCHES[name]();
+    return f;
+  }
+
+  window.GarageFigures = { bicycle: bicycle, watch: watch, picker: picker, bikePicker: bikePicker, watchPicker: watchPicker, sketch: sketch };
 
   // The promo for the talks page: the rider and the watch side by side, each with its picker
   var promo = document.getElementById('own-words-promo');

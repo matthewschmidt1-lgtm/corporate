@@ -124,25 +124,35 @@
 
     var head = mk('div', 'tk-head');
     var years = T.filter(function (t) { return countFor(sh, t); }).length;
-    head.appendChild(mk('p', 'eyebrow', 'In ' + word(years).toLowerCase() + ' of ' + word(T.length).toLowerCase() + ' talks'));
+    var span = word(years) + ' of ' + word(T.length).toLowerCase() + ' talks';
+    head.appendChild(mk('p', 'eyebrow', sh.about || span));
     var h = mk('h2', null, sh.name);
     h.id = sec.id + '-h';
     head.appendChild(h);
     head.appendChild(mk('p', 'tk-why', sh.meaning));
     if (FG && sh.figure === 'bicycle') { var bf = FG.bicycle(); head.appendChild(bf); head.appendChild(FG.bikePicker(bf)); }
     if (FG && sh.figure === 'watch') { var wf = FG.watch(); head.appendChild(wf); head.appendChild(FG.watchPicker(wf)); }
+    if (FG && FG.sketch && sh.figure) { var sk = FG.sketch(sh.figure); if (sk) head.appendChild(sk); }
     head.appendChild(strip(sh));
+    if (sh.changed) {
+      var ch = mk('p', 'tk-changed');
+      ch.appendChild(mk('span', 'tk-changed-k', 'How it changed'));
+      ch.appendChild(document.createTextNode(sh.changed));
+      head.appendChild(ch);
+    }
     wrap.appendChild(head);
 
     var list = mk('ol', 'tk-moments');
-    sh.moments.forEach(function (m) {
+    var moment = function (m, folded) {
       var talk = byKey[String(m.talk)];
-      if (!talk) return;
-      var li = mk('li', 'tk-m reveal');
+      if (!talk) return null;
+      var li = mk('li', 'tk-m' + (folded ? '' : ' reveal'));
       li.appendChild(mk('p', 'tk-src', talk.year + ', ' + talk.venue));
       if (m.setup) li.appendChild(mk('p', 'tk-setup', m.setup));
       var bq = mk('blockquote', 'tk-q');
-      bq.appendChild(mk('p', null, '“' + m.quote + '”'));
+      var qp = mk('p');
+      qp.textContent = '“' + m.quote + '”';
+      bq.appendChild(qp);
       li.appendChild(bq);
       var foot = mk('p', 'tk-foot');
       var a = out(mk('a', 'tk-t', clock(m.t)));
@@ -151,8 +161,24 @@
       foot.appendChild(a);
       if (m.note) foot.appendChild(mk('span', 'tk-note', m.note));
       li.appendChild(foot);
-      list.appendChild(li);
-    });
+      return li;
+    };
+    // The lead passage stays open; the rest fold behind one line
+    var leadIx = 0;
+    sh.moments.forEach(function (m, k) { if (m.lead) leadIx = k; });
+    var first = moment(sh.moments[leadIx], false);
+    if (first) list.appendChild(first);
+    var rest = sh.moments.filter(function (m, k) { return k !== leadIx; });
+    if (rest.length) {
+      var more = mk('li', 'tk-more-li');
+      var det = mk('details', 'tk-more');
+      det.appendChild(mk('summary', null, word(rest.length) + (rest.length === 1 ? ' more passage' : ' more passages')));
+      var inner = mk('ol', 'tk-moments tk-inner');
+      rest.forEach(function (m) { var x = moment(m, true); if (x) inner.appendChild(x); });
+      det.appendChild(inner);
+      more.appendChild(det);
+      list.appendChild(more);
+    }
     wrap.appendChild(list);
 
     var mon = mk('p', 'monday tk-monday');
@@ -162,6 +188,34 @@
     sec.appendChild(wrap);
     host.appendChild(sec);
   });
+
+  // A slim bar that follows the reader: the seven ideas, the current one marked
+  var bar = mk('nav', 'tk-bar');
+  bar.setAttribute('aria-label', 'The ideas');
+  var barIn = mk('div', 'wrap tk-bar-in');
+  var barLinks = S.map(function (sh) {
+    var a = mk('a', 'tk-bar-a', sh.label);
+    a.href = '#shape-' + sh.id;
+    barIn.appendChild(a);
+    return a;
+  });
+  bar.appendChild(barIn);
+  host.parentNode.insertBefore(bar, host);
+  var secs = S.map(function (sh) { return document.getElementById('shape-' + sh.id); });
+  var ticking = false;
+  var markBar = function () {
+    ticking = false;
+    var cur = -1;
+    for (var k = 0; k < secs.length; k++) { if (secs[k] && secs[k].getBoundingClientRect().top <= 140) cur = k; }
+    var last = secs[secs.length - 1];
+    if (last && last.getBoundingClientRect().bottom < 140) cur = -1;
+    barLinks.forEach(function (a, k) {
+      if (k === cur) { a.setAttribute('aria-current', 'true'); if (a.scrollIntoView && barIn.scrollWidth > barIn.clientWidth) barIn.scrollLeft = a.offsetLeft - 24; }
+      else a.removeAttribute('aria-current');
+    });
+  };
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; window.requestAnimationFrame(markBar); } }, { passive: true });
+  markBar();
 
   // The sources: one row per talk
   if (srcList) {
