@@ -1838,3 +1838,19 @@ main:focus { outline: none; }
   .sk-people .sk-pe-up { transform: translateY(10px) scale(2); stroke-width: 1.25px; animation: none; }
   .sk-people .sk-pe-dn { transform: translateY(-10px) scale(2); stroke-width: 1.25px; animation: none; }
 }
+
+/* phone: the question comes first; the caption follows the lead. The equation breaks before its operators */
+.eq-br { display: none; }
+@media (max-width: 899px) {
+  .hero-play .wrap { display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-play .mark-fig { display: contents; }
+  .hero-play .mark-fig .hero-mark { margin: 0 0 22px; }
+  .hero-play .mark-cap { order: 5; margin: 22px 0 0; }
+}
+@media (max-width: 599px) {
+  .eq-br { display: block; flex-basis: 100%; height: 0; }
+  .eq { row-gap: 10px; }
+}
+/* picker pills keep their size but take a 44px tap */
+.tk-pick-b { position: relative; }
+.tk-pick-b::after { content: ""; position: absolute; inset: -7px -3px; }
