@@ -494,7 +494,7 @@
       var mf = h("button", "move-first", "Move this first: " + P[weakest[0]].name); mf.type = "button";
       mf.addEventListener("click", function () { var m = $("monday"); if (m) m.scrollIntoView({ block: "start", behavior: "smooth" }); });
       card.appendChild(mf);
-      var ll = h("a", "lesson-link", "Watch the lesson behind it"); ll.href = lessonFor(weakest[0]);
+      var ll = h("a", "lesson-link", "Watch the principle behind it"); ll.href = lessonFor(weakest[0]);
       card.appendChild(ll);
     }
     root.appendChild(card);
@@ -520,7 +520,7 @@
       add(li, h("h4", null, P[k].name + (worst ? ": " + worst.card.title : "")));
       var dop = h("p"); add(dop, h("strong", null, "Do this: "), document.createTextNode(m.do)); li.appendChild(dop);
       var sayp = h("p", "say"); add(sayp, h("strong", null, "Say this: "), document.createTextNode("“" + m.say + "”")); li.appendChild(sayp);
-      var lk = h("a", "lesson-link small", "The lesson"); lk.href = lessonFor(k); li.appendChild(lk);
+      var lk = h("a", "lesson-link small", "The principle"); lk.href = lessonFor(k); li.appendChild(lk);
       plan.appendChild(li);
     });
     if (!weakest.length) plan.appendChild(h("li", null, "Nothing scored badly. Keep doing what you are doing, and play more cards to check."));
