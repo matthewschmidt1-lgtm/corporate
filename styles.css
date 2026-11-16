@@ -1963,3 +1963,10 @@ main:focus { outline: none; }
 .rules-goal .n { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper); }
 .rules-goal .d { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 @media (max-width: 600px) { .rules-goal { grid-template-columns: 1fr; row-gap: 6px; } .rules-goal .d { font-size: 20px; } }
+/* field notes: a one-line takeaway under each */
+.note-tag { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.note-tag span { display: block; margin-bottom: 3px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--clay); }
+.notes .note { display: flex; flex-direction: column; }
+.notes .note .note-tag { margin-top: auto; }
+.notes .note p:not(.note-tag) { margin-bottom: 16px; }
+.notes .note .note-tag { border-top: 0; padding-top: 0; }
