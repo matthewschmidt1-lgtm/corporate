@@ -1854,3 +1854,99 @@ main:focus { outline: none; }
 /* picker pills keep their size but take a 44px tap */
 .tk-pick-b { position: relative; }
 .tk-pick-b::after { content: ""; position: absolute; inset: -7px -3px; }
+
+/* lessons: the iceberg of bureaucracy */
+.ib-sec { padding-bottom: 0; }
+.ib-sec h2 { margin-bottom: 0; }
+.ib-phr { list-style: none; margin: clamp(36px, 6vw, 56px) auto 0; padding: 0; max-width: 860px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 10px; }
+.ib-phr li { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; padding: 9px 15px; background: #FBF8F0; border: 1px solid var(--line); border-radius: 999px; }
+.ib-fig { position: relative; margin: clamp(28px, 5vw, 48px) 0 0; background: linear-gradient(to bottom, var(--bg) 0, var(--bg) calc(26.667% - 1px), var(--copper) calc(26.667% - 1px), var(--copper) calc(26.667% + 1px), var(--dark) calc(26.667% + 1px)); }
+.ib-fig svg { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto; }
+.ib-lab { position: absolute; left: max(24px, calc((100% - var(--max)) / 2 + 24px)); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.ib-lab-up { top: calc(26.667% - 26px); color: var(--clay); }
+.ib-lab-dn { top: calc(26.667% + 12px); color: var(--dark-mute); }
+.ib-deep { padding: clamp(8px, 2vw, 24px) 0 clamp(72px, 11vw, 140px); }
+.ib-deep h3 { font-size: clamp(28px, 4.4vw, 44px); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 14px; color: var(--dark-ink); max-width: 18em; }
+.ib-deep .lead { max-width: 34em; }
+.ib-roots { list-style: none; margin: clamp(36px, 6vw, 56px) 0 0; padding: 0; }
+.ib-roots li { display: grid; grid-template-columns: 56px 1fr; column-gap: 8px; padding: 26px 0; border-top: 1px solid rgba(237, 230, 216, .16); }
+.ib-roots li:last-child { border-bottom: 1px solid rgba(237, 230, 216, .16); }
+.ib-n { grid-row: 1 / span 2; font-size: 34px; font-weight: 600; line-height: 1; color: var(--copper); letter-spacing: -0.03em; }
+.ib-roots h4 { margin: 2px 0 14px; font-size: clamp(21px, 2.6vw, 26px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--dark-ink); }
+.ib-roots dl { margin: 0; display: grid; gap: 14px; }
+.ib-roots dt { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--dark-mute); margin: 0 0 4px; }
+.ib-roots div + div dt { color: var(--copper); }
+.ib-roots dd { margin: 0; font-size: 17px; line-height: 1.5; color: var(--dark-ink); max-width: 30em; }
+@media (min-width: 760px) { .ib-roots dl { grid-template-columns: 1fr 1fr; column-gap: 40px; } }
+#soul .ib-deep .pull { color: var(--dark-ink); margin: clamp(56px, 8vw, 88px) 0 28px; }
+#soul .ib-deep .monday { color: var(--dark-mute); }
+#soul .ib-deep .monday strong { color: var(--dark-ink); }
+@media (max-width: 600px) {
+  .ib-phr { gap: 8px; }
+  .ib-phr li { font-size: 15px; padding: 7px 12px; }
+  .ib-lab-up { top: calc(26.667% - 22px); }
+  .ib-lab { font-size: 11px; }
+  .ib-roots li { grid-template-columns: 40px 1fr; }
+  .ib-n { font-size: 28px; }
+}
+
+/* the reveal: phrases surface, the tip rises, then the water drains away from what is underneath */
+.ib-anim .ib-phr li { opacity: 0; transform: translateY(8px); }
+.ib-anim.play .ib-phr li { animation: ibIn .45s ease-out forwards; }
+.ib-anim.play .ib-phr li:nth-child(2) { animation-delay: .06s; } .ib-anim.play .ib-phr li:nth-child(3) { animation-delay: .12s; }
+.ib-anim.play .ib-phr li:nth-child(4) { animation-delay: .18s; } .ib-anim.play .ib-phr li:nth-child(5) { animation-delay: .24s; }
+.ib-anim.play .ib-phr li:nth-child(6) { animation-delay: .3s; } .ib-anim.play .ib-phr li:nth-child(7) { animation-delay: .36s; }
+.ib-anim.play .ib-phr li:nth-child(8) { animation-delay: .42s; } .ib-anim.play .ib-phr li:nth-child(9) { animation-delay: .48s; }
+.ib-anim.play .ib-phr li:nth-child(10) { animation-delay: .54s; }
+.ib-fig .ib-tip { transform: translateY(40px); transform-box: view-box; opacity: 0; }
+.ib-fig.play .ib-tip { animation: ibTip .7s cubic-bezier(.2, .7, .2, 1) forwards; }
+.ib-fig .ib-curtain { transform-box: view-box; }
+.ib-fig.play .ib-curtain { animation: ibDrain 1.6s cubic-bezier(.45, 0, .2, 1) .6s forwards; }
+.ib-fig .ib-lab-dn { opacity: 0; }
+.ib-fig.play .ib-lab-dn { animation: ibIn .5s ease-out 1.6s forwards; }
+.ib-roots li { opacity: 0; transform: translateY(12px); }
+.ib-roots.play li { animation: ibIn .55s ease-out forwards; }
+.ib-roots.play li:nth-child(2) { animation-delay: .12s; } .ib-roots.play li:nth-child(3) { animation-delay: .24s; }
+.ib-roots.play li:nth-child(4) { animation-delay: .36s; } .ib-roots.play li:nth-child(5) { animation-delay: .48s; }
+@keyframes ibIn { to { opacity: 1; transform: none; } }
+@keyframes ibTip { to { opacity: 1; transform: none; } }
+@keyframes ibDrain { to { transform: translateY(262px); } }
+@media (prefers-reduced-motion: reduce) {
+  .ib-anim .ib-phr li, .ib-roots li, .ib-fig .ib-tip, .ib-fig .ib-lab-dn { opacity: 1; transform: none; animation: none !important; }
+  .ib-fig .ib-curtain { display: none; }
+}
+.ib-fig .ib-nums { opacity: 0; }
+.ib-fig.play .ib-nums { animation: ibIn .5s ease-out 2s forwards; }
+@media (prefers-reduced-motion: reduce) { .ib-fig .ib-nums { opacity: 1; animation: none !important; } }
+@media (max-width: 600px) {
+  .ib-phr { gap: 6px; }
+  .ib-phr li { font-size: 14px; padding: 6px 11px; }
+  .ib-fig { overflow: hidden; }
+  .ib-fig svg { width: 124%; max-width: none; margin-left: -12%; }
+  .ib-lab-dn { display: none; }
+}
+
+/* the iceberg is now a rendered image; the band below continues its deep water */
+.ib-fig { --wl: 30.8%; background: #142333; overflow: hidden; }
+.ib-fig picture, .ib-fig img { display: block; width: 100%; height: auto; }
+.ib-fig .ib-lab-up { top: calc(var(--wl) - 26px); color: #B8D0E2; }
+.ib-fig .ib-lab-dn { top: calc(var(--wl) + 12px); color: #8FA9BF; display: block; }
+.ib-deep.dark { background: #142333; }
+.ib-roots li, .ib-roots li:last-child { border-color: rgba(184, 208, 226, .16); }
+.ib-deep .lead, .ib-roots dt { color: #8FA9BF; }
+#soul .ib-deep .monday { color: #8FA9BF; }
+/* the reveal: the depths start dark and the mass surfaces from below */
+.ib-fig::after { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--wl) + 2px); bottom: 0; background: linear-gradient(#142333, #0E1926); opacity: .92; pointer-events: none; }
+.ib-fig.play::after { animation: ibSurface 1.8s cubic-bezier(.45, 0, .2, 1) .5s forwards; }
+@keyframes ibSurface { to { opacity: 0; } }
+@media (max-width: 700px) {
+  .ib-fig { --wl: 36%; }
+  .ib-fig .ib-lab { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ib-fig::after { display: none; } }
+
+/* the whole iceberg section is the night sea: the sky colour continues up behind the heading and phrases */
+.ib-sec { background: #213651; color: #EDF3F8; }
+.ib-sec .eyebrow { color: #B8D0E2; }
+.ib-sec h2 { color: #F4F8FB; }
+.ib-phr li { background: rgba(237, 243, 248, .07); border-color: rgba(184, 208, 226, .32); color: #EDF3F8; }

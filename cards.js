@@ -7,7 +7,7 @@ window.DECK = {
       better: "Promote competence, reward ownership, and let people challenge ideas respectfully.",
       example: "A talented employee has a better idea than their manager. It gets rejected because the manager feels threatened. The company loses an opportunity to protect one ego." },
     { id: "innovation", name: "Innovation", short: "Innovation",
-      better: "Experiment, prototype, test, learn, and improve.",
+      better: "Question the status quo. Try the better idea. Build a quick prototype, put it in front of customers, measure what works, and improve. Don't defend the old way just because it's familiar. Let results decide what stays.",
       example: "Someone suggests a new way to serve customers. Management replies, “We have always done it this way.” That sentence has killed countless opportunities." },
     { id: "waste", name: "Waste", short: "Operational waste",
       better: "One source of truth, clear accountability, fewer priorities, and measurable outcomes.",

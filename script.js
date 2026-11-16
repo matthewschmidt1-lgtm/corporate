@@ -50,14 +50,11 @@
   }
   var tells = document.getElementById('tells');
   if (D && tells) {
-    var tl = mk('ol', 'tells-2');
+    var tl = mk('ul', 'ib-phr');
+    tl.setAttribute('aria-label', 'Ten phrases you hear above the waterline');
     D.cards.filter(function (x) { return x.cat === 'tells'; }).forEach(function (x) {
-      var li = mk('li');
-      li.appendChild(mk('span', 'tq', '\u201C'));
-      var t = mk('span', 't');
-      t.appendChild(mk('strong', null, x.t));
-      t.appendChild(mk('em', null, x.why));
-      li.appendChild(t);
+      var li = mk('li', null, '\u201C' + x.t + '\u201D');
+      li.title = x.why;
       tl.appendChild(li);
     });
     tells.appendChild(tl);
@@ -154,7 +151,7 @@
   }
 
   // The lessons, in motion: each panel plays once when it is well in view, and again on Replay
-  var mls = document.querySelectorAll('.ml, .seed-anim, .river-anim, .bike-anim, .watch-anim, .sk-anim');
+  var mls = document.querySelectorAll('.ml, .seed-anim, .river-anim, .bike-anim, .watch-anim, .sk-anim, .ib-anim');
   if (mls.length) {
     var playPanel = function (el) { el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); };
     if ('IntersectionObserver' in window) {

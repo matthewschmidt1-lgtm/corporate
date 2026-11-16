@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://corporate-production-f647.up.railway.app/og-image.png?v=4">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=311c2ec5">
+<link rel="stylesheet" href="styles.css?v=cac88b3b">
 </head>
 <body>
 
@@ -279,54 +279,36 @@
 </section>
 
 <!-- SYMPTOM AND CAUSE -->
-<section class="section rule-in" id="soul">
+<section class="section ib-sec" id="soul">
   <div class="wrap">
-    <p class="eyebrow">Symptom and cause</p>
-    <h2>What you hear, and what's underneath.</h2>
-    <p class="lead">Bureaucracy is the symptom. The cause is quieter: a company loses sight of what it was built to do. As companies grow, culture drifts, values become slogans, and actions stop matching words.</p>
+    <p class="eyebrow">What the organization shows vs. what is actually happening</p>
+    <h2>The iceberg of bureaucracy.</h2>
+    <div class="ib-tells ib-anim" id="tells"></div>
+  </div>
 
-    <figure class="sc-fig" aria-hidden="true">
-      <svg viewBox="0 0 320 200" focusable="false">
-        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M160 86 L128 66 L112 52 M128 66 L136 50"/>
-          <path d="M160 86 L192 66 L208 52 M192 66 L184 50"/>
-          <path d="M160 58 L146 42 L138 30 M146 42 L154 30"/>
-          <path d="M160 58 L174 42 L182 30 M174 42 L166 30"/>
-          <path d="M160 100 L140 92 L130 84 M160 100 L180 92 L190 84"/>
-        </g>
-        <line x1="160" y1="110" x2="160" y2="58" stroke="#C47C55" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="8" cy="110" r="4" fill="#C47C55"/>
-        <line x1="12" y1="110" x2="312" y2="110" stroke="#C47C55" stroke-width="2"/>
-        <line x1="160" y1="110" x2="160" y2="172" stroke="#C47C55" stroke-width="2.2" stroke-linecap="round" opacity=".9"/>
-        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".55">
-          <path d="M160 118 L130 138 L108 158 M130 138 L120 154"/>
-          <path d="M160 118 L190 138 L212 158 M190 138 L200 154"/>
-          <path d="M160 136 L142 150 L130 170 M142 150 L136 166"/>
-          <path d="M160 136 L178 150 L190 170 M178 150 L184 166"/>
-          <path d="M160 156 L150 176 M160 156 L170 176"/>
-        </g>
-      </svg>
-    </figure>
+  <figure class="ib-fig ib-anim">
+    <picture>
+      <source media="(max-width: 700px)" srcset="iceberg-tall.jpg" width="1080" height="1350">
+      <img src="iceberg-wide.jpg" width="2400" height="1350" alt="An iceberg in cross-section: a small white tip above the waterline, and a far larger mass of ice hidden below it.">
+    </picture>
+    <span class="ib-lab ib-lab-up" aria-hidden="true">What you hear</span>
+    <span class="ib-lab ib-lab-dn" aria-hidden="true">What is underneath</span>
+  </figure>
 
-    <details class="fold fold-copper" id="tells-fold">
-      <summary><span class="fold-t"><span class="fold-k">Above ground</span>Ten phrases you hear before the quarter goes badly</span></summary>
-      <div id="tells"></div>
-      <p class="fine tells-note">These phrases are not always bad. They are bad when they replace judgment and action.</p>
-    </details>
-
-    <details class="fold fold-copper" id="soul-fold">
-      <summary><span class="fold-t"><span class="fold-k">Below ground</span>Five ways a company loses its soul</span></summary>
-      <ol class="roots-list">
-        <li><svg class="root-g" viewBox="0 0 24 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#C47C55" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="9"/><path d="M12 9 C 10 14, 5 16, 3 24"/><path d="M12 9 C 14 14, 19 16, 21 24"/><path d="M12 9 C 12 15, 11 20, 12 27"/></g><circle cx="12" cy="1.5" r="1.8" fill="#C47C55"/></svg><span class="t">The mission becomes a slogan.</span><span class="d">People talk about the vision but stop living it.</span></li>
-        <li><svg class="root-g" viewBox="0 0 24 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#C47C55" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="9"/><path d="M12 9 C 10 14, 5 16, 3 24"/><path d="M12 9 C 14 14, 19 16, 21 24"/><path d="M12 9 C 12 15, 11 20, 12 27"/></g><circle cx="12" cy="1.5" r="1.8" fill="#C47C55"/></svg><span class="t">Politics replace progress.</span><span class="d">Protecting positions becomes more important than solving problems.</span></li>
-        <li><svg class="root-g" viewBox="0 0 24 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#C47C55" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="9"/><path d="M12 9 C 10 14, 5 16, 3 24"/><path d="M12 9 C 14 14, 19 16, 21 24"/><path d="M12 9 C 12 15, 11 20, 12 27"/></g><circle cx="12" cy="1.5" r="1.8" fill="#C47C55"/></svg><span class="t">Transparency becomes a buzzword.</span><span class="d">Leaders talk about openness but withhold information and avoid difficult conversations.</span></li>
-        <li><svg class="root-g" viewBox="0 0 24 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#C47C55" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="9"/><path d="M12 9 C 10 14, 5 16, 3 24"/><path d="M12 9 C 14 14, 19 16, 21 24"/><path d="M12 9 C 12 15, 11 20, 12 27"/></g><circle cx="12" cy="1.5" r="1.8" fill="#C47C55"/></svg><span class="t">Values become window dressing.</span><span class="d">What the company says it believes no longer matches how people are treated or how decisions are made.</span></li>
-        <li><svg class="root-g" viewBox="0 0 24 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#C47C55" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="9"/><path d="M12 9 C 10 14, 5 16, 3 24"/><path d="M12 9 C 14 14, 19 16, 21 24"/><path d="M12 9 C 12 15, 11 20, 12 27"/></g><circle cx="12" cy="1.5" r="1.8" fill="#C47C55"/></svg><span class="t">Excellence becomes negotiable.</span><span class="d">Good enough replaces great, and accountability slowly disappears.</span></li>
+  <div class="ib-deep dark">
+    <div class="wrap">
+      <h3>Five ways organizations lose their way.</h3>
+      <p class="lead">Bureaucracy is rarely the root problem. It is often the result of deeper organizational failures.</p>
+      <ol class="ib-roots ib-anim">
+        <li><span class="ib-n">1</span><h4>The mission becomes a slogan.</h4><dl><div><dt>What happens</dt><dd>The company talks about its mission but stops using it to guide decisions.</dd></div><div><dt>What to change</dt><dd>Make the mission part of everyday priorities, resource allocation, and customer decisions.</dd></div></dl></li>
+        <li><span class="ib-n">2</span><h4>Politics replace progress.</h4><dl><div><dt>What happens</dt><dd>Protecting status and departmental interests becomes more important than solving problems.</dd></div><div><dt>What to change</dt><dd>Reward results, collaboration, and the best ideas, regardless of rank.</dd></div></dl></li>
+        <li><span class="ib-n">3</span><h4>Transparency becomes a buzzword.</h4><dl><div><dt>What happens</dt><dd>Leaders talk about openness but withhold information and avoid difficult conversations.</dd></div><div><dt>What to change</dt><dd>Share information, communicate honestly, and make it safe to raise problems.</dd></div></dl></li>
+        <li><span class="ib-n">4</span><h4>Values become window dressing.</h4><dl><div><dt>What happens</dt><dd>What the company rewards and tolerates contradicts what it claims to believe.</dd></div><div><dt>What to change</dt><dd>Make values visible in hiring, promotions, performance reviews, and leadership behavior.</dd></div></dl></li>
+        <li><span class="ib-n">5</span><h4>Excellence becomes negotiable.</h4><dl><div><dt>What happens</dt><dd>Good enough replaces great. Standards slip, problems go unresolved, and accountability fades.</dd></div><div><dt>What to change</dt><dd>Set clear standards, empower talented people, and hold everyone accountable for quality.</dd></div></dl></li>
       </ol>
-    </details>
-
-    <p class="pull">A company's culture is not what it says on the walls. It is what people experience every day.</p>
-    <p class="monday"><strong>Monday.</strong> Ask five people, separately, what the company is for. If you get five different answers, you have found the real problem. If the answers are all slogans, you have found the second one.</p>
+      <p class="pull">A company's culture is not what it says on the walls. It is what people experience every day.</p>
+      <p class="monday"><strong>Monday.</strong> Ask five people, separately, what the company is for. If you get five different answers, you have found the real problem. If the answers are all slogans, you have found the second one.</p>
+    </div>
   </div>
 </section>
 
@@ -437,9 +419,9 @@
   </div>
 </footer>
 
-<script defer src="cards.js?v=8a38d8f9"></script>
+<script defer src="cards.js?v=9e83b21c"></script>
 <script defer src="figures.js?v=1864fed2"></script>
-<script defer src="script.js?v=438272cd"></script>
+<script defer src="script.js?v=a9fe652d"></script>
 <script defer src="nav.js?v=c6c4f8ef"></script>
 </body>
 </html>
