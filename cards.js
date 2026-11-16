@@ -1,8 +1,8 @@
 window.DECK = {
   cats: [
     { id: "decisions", name: "Decisions", short: "Decision speed", sub: "Four ways organizations slow decisions.",
-      better: "Push decisions closer to the work. Give people clear authority, reasonable limits, and ownership of the outcome. Trust them to make decisions without asking permission at every turn.",
-      example: "A simple idea could save the company $100,000 a year. But four managers, two departments, and a chain of approvals stand between the idea and action. By the time everyone agrees, the opportunity is gone." },
+      better: "Give people clear decision making authority, reasonable limits, and accountability. Move decisions closer to the customer and the people doing the work.",
+      example: "A competitor launches a better offer. Your team sees an opportunity to respond, but pricing changes require multiple approvals. Weeks pass while competitors move faster and customers move on." },
     { id: "leadership", name: "Leadership", short: "Leadership", sub: "Four ways management gets in the way.",
       better: "Promote competence, reward ownership, and let the best ideas win regardless of title.",
       example: "A talented employee has a better idea than their manager. It gets rejected because the manager feels threatened. The company loses an opportunity to protect one ego." },
