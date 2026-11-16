@@ -1957,3 +1957,9 @@ main:focus { outline: none; }
 .hero-index { padding-top: clamp(48px, 8vw, 104px); padding-bottom: clamp(28px, 4vw, 48px); }
 #questions { padding-top: 0; }
 #questions .ml-list { margin-top: 0; }
+.ib-deep .lead + .lead { margin-top: 14px; }
+/* the ten rules end on their goal */
+.rules-goal { display: grid; grid-template-columns: 64px 1fr; align-items: baseline; margin: 0; padding: 22px 0 6px; border-top: 2px solid var(--copper); }
+.rules-goal .n { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper); }
+.rules-goal .d { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+@media (max-width: 600px) { .rules-goal { grid-template-columns: 1fr; row-gap: 6px; } .rules-goal .d { font-size: 20px; } }

@@ -51,7 +51,7 @@
   var tells = document.getElementById('tells');
   if (D && tells) {
     var tl = mk('ul', 'ib-phr');
-    tl.setAttribute('aria-label', 'Ten phrases you hear above the waterline');
+    tl.setAttribute('aria-label', 'Phrases you hear above the waterline');
     D.cards.filter(function (x) { return x.cat === 'tells'; }).forEach(function (x) {
       var li = mk('li', null, '\u201C' + x.t + '\u201D');
       li.title = x.why;

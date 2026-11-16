@@ -52,23 +52,20 @@ window.DECK = {
     { id: 28, cat: "tells", t: "That is how we have always done it.", why: "Habit is standing in for thinking." },
     { id: 29, cat: "tells", t: "We need approval from leadership.", why: "Authority is hoarded." },
     { id: 30, cat: "tells", t: "Let us circle back next quarter.", why: "Nobody is on the hook." },
-    { id: 31, cat: "tells", t: "We cannot take that risk.", why: "Fear is blocking experiments." },
-    { id: 32, cat: "tells", t: "We need everyone aligned first.", why: "Consensus is passing for progress." },
     { id: 33, cat: "tells", t: "That is above my pay grade.", why: "People do not feel trusted." },
-    { id: 34, cat: "tells", t: "Let us create a committee.", why: "Nobody wants to be accountable." },
-    { id: 35, cat: "tells", t: "We need more data before deciding.", why: "Analysis is standing in for action." }
+    { id: 36, cat: "tells", t: "That's not how we measure success.", why: "The scorecard has replaced the goal." }
   ],
 
   rules: [
-    "Every project has one clearly accountable owner.",
-    "Decisions are made as close to the work as possible.",
-    "Every meeting has a clear purpose and a desired outcome.",
-    "Employees can challenge management respectfully.",
-    "Remove any process that does not protect quality, safety, compliance, or meaningful value.",
-    "Measure outcomes, not appearances.",
-    "Keep teams small enough to communicate effectively.",
-    "Test ideas instead of debating them indefinitely.",
-    "Put customer satisfaction ahead of internal politics.",
-    "Regularly eliminate unnecessary work."
+    "One project. One owner. Clear accountability.",
+    "Make decisions as close to the work as possible.",
+    "Every meeting must have a purpose and a decision to make.",
+    "Challenge ideas, question authority, and speak up.",
+    "Eliminate every process that doesn't protect quality, safety, compliance, or create real value.",
+    "Measure what gets accomplished, not how busy people look.",
+    "Keep teams small enough to move fast and work closely.",
+    "Stop debating. Test ideas. Let results decide.",
+    "Put customers ahead of internal politics. Every time.",
+    "Constantly question what can be simplified, improved, or eliminated."
   ]
 };
