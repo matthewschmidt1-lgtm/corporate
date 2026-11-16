@@ -1950,3 +1950,5 @@ main:focus { outline: none; }
 .ib-sec .eyebrow { color: #B8D0E2; }
 .ib-sec h2 { color: #F4F8FB; }
 .ib-phr li { background: rgba(237, 243, 248, .07); border-color: rgba(184, 208, 226, .32); color: #EDF3F8; }
+/* each cause surfaces on its own as it enters the screen, so a tall list never waits */
+.ib-roots li.play { animation: ibIn .5s ease-out forwards; animation-delay: 0s; }
