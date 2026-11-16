@@ -2001,3 +2001,6 @@ main:focus { outline: none; }
   .bill-vis .arrow::after { right: 3px; }
 }
 .real-close { margin: 18px 0 0; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+/* home difference: the tension line and the closing challenge */
+.lead.diff-tension { margin-top: 14px; color: var(--ink); font-weight: 600; }
+.diff-close { margin: clamp(32px, 5vw, 48px) 0 0; font-size: clamp(22px, 3vw, 30px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; color: var(--clay); max-width: 22em; }
