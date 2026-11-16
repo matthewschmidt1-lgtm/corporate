@@ -2013,3 +2013,5 @@ main:focus { outline: none; }
 .rg-list li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 6px 0; align-items: baseline; }
 @media (max-width: 760px) { .rules.ten > li.rgroup { grid-template-columns: 1fr; row-gap: 8px; } .rg-t { padding-top: 0; } }
 .rules.ten .rg-list li { border-bottom: 0; padding: 6px 0; }
+/* the umbrella line above the ten rules */
+.rules-motto { margin: 4px 0 28px; font-size: clamp(26px, 3.6vw, 38px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--moss); }
