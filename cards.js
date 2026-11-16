@@ -1,8 +1,8 @@
 window.DECK = {
   cats: [
     { id: "decisions", name: "Decisions", short: "Decision speed",
-      better: "Give people clear decision-making authority, spending limits, and accountability.",
-      example: "An employee finds a $5,000 improvement that would save $100,000 a year. It needs four managers and two departments to approve. By the time the approvals arrive, the opportunity is gone." },
+      better: "Push decisions down to the people doing the work. Give them clear authority, reasonable limits, and ownership of the outcome. Hire smart people, trust their judgment, and stop making them ask permission to do their jobs.",
+      example: "Someone spots a simple fix that could save the company $100,000 a year. But nobody can say yes. Four managers, two departments, and a chain of approvals stand between a good idea and action. By the time everyone agrees, the opportunity is gone." },
     { id: "leadership", name: "Leadership", short: "Leadership",
       better: "Promote competence, reward ownership, and let people challenge ideas respectfully.",
       example: "A talented employee has a better idea than their manager. It gets rejected because the manager feels threatened. The company loses an opportunity to protect one ego." },
