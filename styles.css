@@ -1972,3 +1972,32 @@ main:focus { outline: none; }
 .notes .note .note-tag { border-top: 0; padding-top: 0; }
 @media (max-width: 600px) { .cat-head { flex-wrap: wrap; row-gap: 6px; } .cat-head > span { flex-basis: 100%; margin-left: 0; text-align: left; } }
 @media (max-width: 600px) { .cat-head > span { grid-column: 1 / -1; } }
+
+/* after the navy iceberg: sage (the home page green), then sand, then the dark close */
+.sage-band { background: #D3DAC4; }
+.sage-band .eyebrow { color: var(--moss); }
+
+/* the honest version: the bill as a picture, strength on the left, its darker side on the right */
+.bill-block { margin-top: clamp(48px, 7vw, 72px); }
+.bill-block h3 { font-size: clamp(24px, 3.2vw, 32px); letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 24px; max-width: 20em; }
+.bill-cols { display: grid; grid-template-columns: 1fr 64px 1fr; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 10px; }
+.bill-cols span:last-child { grid-column: 3; color: #7A3E2A; }
+.bill-vis { margin: 0; padding: 0; }
+.bill-vis li { grid-template-columns: 1fr 64px 1fr; align-items: stretch; column-gap: 0; padding: 0; border: 0; margin-bottom: 10px; font-size: 18px; }
+.bill-vis .s, .bill-vis .b { display: flex; align-items: center; min-height: 52px; padding: 10px 16px; border-radius: 3px; font-weight: 600; letter-spacing: -0.015em; }
+.bill-vis .s { background: #FBF8F0; border: 1px solid var(--line); color: var(--ink); }
+.bill-vis .b { background: var(--dark); color: var(--dark-ink); }
+.bill-vis .arrow { position: relative; }
+.bill-vis .arrow::before { content: ""; position: absolute; left: 8px; right: 12px; top: 50%; height: 2px; margin-top: -1px; background: linear-gradient(90deg, var(--copper), #7A3E2A); }
+.bill-vis .arrow::after { content: ""; position: absolute; right: 6px; top: 50%; margin-top: -5px; border: 5px solid transparent; border-left: 7px solid #7A3E2A; border-right: 0; }
+.real-lesson { margin-top: clamp(48px, 7vw, 72px); max-width: 40em; }
+.real-lesson .lead + .lead { margin-top: 14px; }
+#mistakes .pull { margin-top: clamp(40px, 6vw, 56px); max-width: 22em; }
+@media (max-width: 600px) {
+  .bill-cols, .bill-vis li { grid-template-columns: 1fr 34px 1fr; }
+  .bill-vis li { font-size: 15px; }
+  .bill-vis .s, .bill-vis .b { min-height: 48px; padding: 8px 10px; }
+  .bill-vis .arrow::before { left: 4px; right: 8px; }
+  .bill-vis .arrow::after { right: 3px; }
+}
+.real-close { margin: 18px 0 0; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
