@@ -61,11 +61,20 @@
   }
   var ar = document.getElementById('antirules');
   if (D && ar) {
-    D.rules.forEach(function (r, i) {
-      var li = mk('li');
-      li.appendChild(mk('span', 'n', (i + 1 < 10 ? '0' : '') + (i + 1)));
-      li.appendChild(mk('span', 'd', r));
-      ar.appendChild(li);
+    var rn = 0;
+    D.ruleGroups.forEach(function (g, gi) {
+      var grp = mk('li', 'rgroup');
+      grp.appendChild(mk('span', 'rg-t', (gi + 1) + '. ' + g.t));
+      var sub = mk('ol', 'rg-list');
+      g.r.forEach(function (r) {
+        rn++;
+        var li = mk('li');
+        li.appendChild(mk('span', 'n', (rn < 10 ? '0' : '') + rn));
+        li.appendChild(mk('span', 'd', r));
+        sub.appendChild(li);
+      });
+      grp.appendChild(sub);
+      ar.appendChild(grp);
     });
   }
 

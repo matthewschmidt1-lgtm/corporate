@@ -47,16 +47,11 @@ window.DECK = {
     { id: 36, cat: "tells", t: "That's not how we measure success.", why: "The scorecard has replaced the goal." }
   ],
 
-  rules: [
-    "One project. One owner. Clear accountability.",
-    "Make decisions as close to the work as possible.",
-    "Every meeting must have a purpose and a decision to make.",
-    "Challenge ideas, question authority, and speak up.",
-    "Eliminate every process that doesn't protect quality, safety, compliance, or create real value.",
-    "Measure what gets accomplished, not how busy people look.",
-    "Keep teams small enough to move fast and work closely.",
-    "Stop debating. Test ideas. Let results decide.",
-    "Put customers ahead of internal politics. Every time.",
-    "Constantly question what can be simplified, improved, or eliminated."
+  ruleGroups: [
+    { t: "Ownership over bureaucracy", r: ["One project. One owner. Clear accountability.", "Make decisions as close to the work as possible."] },
+    { t: "Substance over ceremony", r: ["Every meeting must have a purpose and a decision to make.", "Eliminate every process that doesn't protect quality, safety, compliance, or create real value."] },
+    { t: "Courage over conformity", r: ["Challenge ideas, question authority, and speak up.", "Stop debating. Test ideas. Let results decide."] },
+    { t: "Results over activity", r: ["Measure what gets accomplished, not how busy people look.", "Keep teams small enough to move fast and work closely."] },
+    { t: "Customers over politics", r: ["Put customers ahead of internal politics. Every time.", "Constantly question what can be simplified, improved, or eliminated."] }
   ]
 };
