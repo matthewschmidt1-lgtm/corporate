@@ -1970,3 +1970,5 @@ main:focus { outline: none; }
 .notes .note .note-tag { margin-top: auto; }
 .notes .note p:not(.note-tag) { margin-bottom: 16px; }
 .notes .note .note-tag { border-top: 0; padding-top: 0; }
+@media (max-width: 600px) { .cat-head { flex-wrap: wrap; row-gap: 6px; } .cat-head > span { flex-basis: 100%; margin-left: 0; text-align: left; } }
+@media (max-width: 600px) { .cat-head > span { grid-column: 1 / -1; } }

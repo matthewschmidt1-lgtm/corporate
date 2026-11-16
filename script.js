@@ -27,7 +27,7 @@
       ico.innerHTML = GLYPH[c.id] || GLYPH.decisions;
       head.appendChild(ico);
       head.appendChild(mk('h3', null, c.name));
-      head.appendChild(mk('span', null, cards.length + ' practices'));
+      head.appendChild(mk('span', null, c.sub || (cards.length + ' practices')));
       block.appendChild(head);
       var list = mk('ol', 'crows crows-2');
       cards.forEach(function (x) {
