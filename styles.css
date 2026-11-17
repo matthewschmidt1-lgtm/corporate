@@ -2055,3 +2055,43 @@ main:focus { outline: none; }
 .rule-in.tk .wrap::after, .rule-in.tk-list-sec .wrap::after { content: ""; display: block; height: 8px; margin-top: clamp(56px, 8vw, 96px);
   background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) right center / 8px 8px no-repeat; }
 .rule-in.tk .wrap::after, .rule-in.tk-list-sec .wrap::after { grid-column: 1 / -1; grid-row: 4; width: 100%; }
+
+/* the Monday lessons in one line, above the sources */
+.tk-sum { max-width: 22em; margin: 0 0 clamp(48px, 7vw, 80px); padding-bottom: clamp(36px, 5vw, 56px); border-bottom: 1px solid rgba(42, 38, 33, .18); font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); }
+.tk-sum span { color: var(--moss); }
+
+/* the summary drawing: one block breaks the line, turns copper, and climbs toward today */
+.tk-sum-row { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; margin: 0 0 clamp(48px, 7vw, 80px); padding-bottom: clamp(36px, 5vw, 56px); border-bottom: 1px solid rgba(42, 38, 33, .18); }
+.tk-sum-row .tk-sum { margin: 0; padding: 0; border: 0; }
+.sum-fig { display: block; width: 100%; max-width: 360px; height: auto; overflow: visible; }
+@media (min-width: 860px) { .tk-sum-row { grid-template-columns: minmax(0, 1fr) 360px; gap: 56px; } }
+.sum-ground { stroke: rgba(42, 38, 33, .35); stroke-width: 1.5; }
+.sum-b, .sum-out { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.sum-ghost { fill: none; stroke: rgba(42, 38, 33, .3); stroke-width: 1.2; stroke-dasharray: 3 4; }
+.sum-out { transform-box: fill-box; transform-origin: center; transform: translate(14px, -30px) rotate(-18deg); stroke: var(--copper); fill: rgba(196, 124, 85, .14); stroke-width: 2; }
+.sum-path { fill: none; stroke: var(--copper); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 170; }
+.sum-dot { fill: var(--copper); }
+.sum-lab { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; fill: var(--moss); text-anchor: middle; }
+/* motion: start in line, then break out and climb */
+@media (prefers-reduced-motion: no-preference) {
+  .sum-anim .sum-b, .sum-anim .sum-ghost { opacity: 0; }
+  .sum-anim .sum-out { transform: none; stroke: var(--ink); fill: none; opacity: 0; }
+  .sum-anim .sum-path { stroke-dashoffset: 170; opacity: 0; }
+  .sum-anim .sum-dot, .sum-anim .sum-lab { opacity: 0; }
+  .sum-anim.play .sum-b { opacity: 1; transition: opacity .4s ease; }
+  .sum-anim.play .sum-b2 { transition-delay: .1s; } .sum-anim.play .sum-b3 { transition-delay: .2s; } .sum-anim.play .sum-b4 { transition-delay: .3s; }
+  .sum-anim.play .sum-out { opacity: 1; transform: translate(14px, -30px) rotate(-18deg); stroke: var(--copper); fill: rgba(196, 124, 85, .14);
+    transition: opacity .4s ease .4s, transform .9s cubic-bezier(.3, 1.3, .5, 1) 1.1s, stroke .5s ease 1.1s, fill .5s ease 1.1s; }
+  .sum-anim.play .sum-ghost { opacity: 1; transition: opacity .5s ease 1.4s; }
+  .sum-anim.play .sum-path { opacity: 1; stroke-dashoffset: 0; transition: opacity .2s ease 1.9s, stroke-dashoffset 1.2s ease-out 1.9s; }
+  .sum-anim.play .sum-dot, .sum-anim.play .sum-lab { opacity: 1; transition: opacity .4s ease 3s; }
+}
+.sum-pole { stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+.sum-flag { fill: var(--copper); transform-box: fill-box; transform-origin: left center; }
+@media (prefers-reduced-motion: no-preference) {
+  .sum-anim .sum-pole { opacity: 0; }
+  .sum-anim .sum-flag { opacity: 0; transform: scaleX(0); }
+  .sum-anim.play .sum-pole { opacity: 1; transition: opacity .3s ease 3s; }
+  .sum-anim.play .sum-flag { opacity: 1; transform: scaleX(1); transition: opacity .2s ease 3.2s, transform .5s cubic-bezier(.3, 1.4, .5, 1) 3.2s; }
+  .sum-anim.play .sum-lab { transition-delay: 3.5s; }
+}
