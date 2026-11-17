@@ -56,24 +56,24 @@ window.SHAPES = [
     monday: 'Ask a customer what your product lets them do. Lead with that.'
   },
   {
-    id: 'simple', label: 'Simple', glyph: 'simplicity', figure: 'watch',
-    about: 'Make complexity disappear',
-    name: 'Simplicity takes work.',
-    meaning: 'Less is more powerful.',
-    changed: "First a hardware paradox, then a software strategy, then a product promise.",
-    counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1998: 2, 2008: 0 },
+    id: 'focus', label: 'Focus', glyph: 'focus', figure: 'focus',
+    about: 'Focus is a decision',
+    name: 'The power of knowing what matters.',
+    meaning: 'Not everything deserves your attention.',
+    changed: "A founder's bet, then an operating discipline, then plain composure.",
+    counts: { 1981: 1, 1983: 1, 1986: 3, 1991: 0, 1992: 2, 1998: 1, 2008: 1 },
     moments: [
-      { talk: 1983, t: 2550, setup: "On the two ways to bring people and computers together:",
-        quote: "So, gradually, the level of technical literacy is rising. The problem is we’re educating people on these garbage devices. Setting a Casio watch is really a pain still. So even though we have products like Lisa, we are still going to need to educate people about what computers are and what they do. But where we’re trying to get is we’re trying to get away from programming. We’ve got to get away from programming, because people don’t want to program computers, people want to use computers.",
-        key: "people don’t want to program computers, people want to use computers.", note: "" },
-      { talk: 1992, t: 1703, setup: "Explaining to MIT students why NeXT apps take a fraction of the usual time:",
-        quote: "However, to do a particular app, on average you write about 20% of the code that you do in any other development environment we know of, about 20% of the code then in Sun or anything else. So the code that's the fastest to write, the code that's the easiest to maintain, and the code that never breaks is the code you don't write. So that's our strategy, right? A lot less code.",
-        key: "the code that never breaks is the code you don't write.", lead: true, note: "The step you never add can never fail." },
-      { talk: 1998, t: 177, setup: "Asked whether the iMac is a breakthrough:",
-        quote: "I think, you know, what iMac was designed to do was to do for the Internet what the original Macintosh did for personal computing, which was to make it easy. … Its greatest power, I think, is that you can take it home, take it out of the box and be cruising the Internet within 10 minutes, and that's not something you can do on, on any other computer we know of.",
-        key: "take it out of the box and be cruising the Internet within 10 minutes", note: "" }
+      { talk: 1986, t: 382, setup: "At the first NeXT retreat, 90 days in, with one market chosen:",
+        quote: "So really, the next 90 days are real important. We are going to make it or break it based on whether we can provide products to higher education and services and relationships to higher education that no one else provides. And I think we ought to spend 100% of our time thinking about that. And if we can't do that, then we ought to go broke.",
+        key: "And if we can't do that, then we ought to go broke.", lead: true, note: "" },
+      { talk: 1992, t: 3246, setup: "On how the eight-person team at the top of NeXT decides:",
+        quote: "One is we try to differentiate between the really important decisions and the ones that we don't have to make, and the really important ones we work on it till we all agree, because we're paying people to tell us what to do. … The key to making that work is to realize there's not that many things that any one team really has to decide, and we might have 25 really important things we have to decide on a year. Not a lot.",
+        key: "we might have 25 really important things we have to decide on a year. Not a lot.", note: "" },
+      { talk: 1998, t: 123, setup: "Answering a question the tape did not catch, about something others were worrying over:",
+        quote: "Oh, you know, I decided about probably about nine months ago that that wasn't my problem, so I stopped thinking about it, and I stopped worrying about it. And, uh, other people may worry about it, but I, I don't worry about it. I just focus on what I'm doing right now, which is trying to get the iMac launched and trying to make as many as we can.",
+        key: "I just focus on what I'm doing right now", note: "" }
     ],
-    monday: 'Time a new customer\'s first result. Remove one step.'
+    monday: 'List what you would go broke over. Stop one thing that is not.'
   },
   {
     id: 'customers', label: 'Customers', glyph: 'customer', figure: 'customers',
@@ -94,6 +94,26 @@ window.SHAPES = [
         key: "that's up to customers to decide.", note: "" }
     ],
     monday: 'Ask three customers what you are best at. Write down the surprise.'
+  },
+  {
+    id: 'simple', label: 'Simple', glyph: 'simplicity', figure: 'watch',
+    about: 'Make complexity disappear',
+    name: 'Simplicity takes work.',
+    meaning: 'Less is more powerful.',
+    changed: "First a hardware paradox, then a software strategy, then a product promise.",
+    counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1998: 2, 2008: 0 },
+    moments: [
+      { talk: 1983, t: 2550, setup: "On the two ways to bring people and computers together:",
+        quote: "So, gradually, the level of technical literacy is rising. The problem is we’re educating people on these garbage devices. Setting a Casio watch is really a pain still. So even though we have products like Lisa, we are still going to need to educate people about what computers are and what they do. But where we’re trying to get is we’re trying to get away from programming. We’ve got to get away from programming, because people don’t want to program computers, people want to use computers.",
+        key: "people don’t want to program computers, people want to use computers.", note: "" },
+      { talk: 1992, t: 1703, setup: "Explaining to MIT students why NeXT apps take a fraction of the usual time:",
+        quote: "However, to do a particular app, on average you write about 20% of the code that you do in any other development environment we know of, about 20% of the code then in Sun or anything else. So the code that's the fastest to write, the code that's the easiest to maintain, and the code that never breaks is the code you don't write. So that's our strategy, right? A lot less code.",
+        key: "the code that never breaks is the code you don't write.", lead: true, note: "The step you never add can never fail." },
+      { talk: 1998, t: 177, setup: "Asked whether the iMac is a breakthrough:",
+        quote: "I think, you know, what iMac was designed to do was to do for the Internet what the original Macintosh did for personal computing, which was to make it easy. … Its greatest power, I think, is that you can take it home, take it out of the box and be cruising the Internet within 10 minutes, and that's not something you can do on, on any other computer we know of.",
+        key: "take it out of the box and be cruising the Internet within 10 minutes", note: "" }
+    ],
+    monday: 'Time a new customer\'s first result. Remove one step.'
   },
   {
     id: 'care', label: 'Care', glyph: 'excellence', figure: 'care',
@@ -118,8 +138,8 @@ window.SHAPES = [
   {
     id: 'people', label: 'People', glyph: 'people', figure: 'people',
     about: 'Give great people room to lead',
-    name: 'Stop managing. Start trusting.',
-    meaning: 'Put authority where the answers are.',
+    name: 'Put authority where the answers are.',
+    meaning: 'Stop managing. Start trusting.',
     changed: "From hiring stars to how a team decides. Gone from the short late interviews.",
     counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1998: 0, 2008: 0 },
     moments: [
@@ -134,26 +154,6 @@ window.SHAPES = [
         key: "they should not have to ask for permission to improve their processes.", note: "The permission that matters is permission not to ask." }
     ],
     monday: 'On your next big call, talk it through until the people doing the work agree.'
-  },
-  {
-    id: 'focus', label: 'Focus', glyph: 'focus', figure: 'focus',
-    about: 'Focus is a decision',
-    name: 'Not everything deserves your attention.',
-    meaning: 'The power of knowing what matters.',
-    changed: "A founder's bet, then an operating discipline, then plain composure.",
-    counts: { 1981: 1, 1983: 1, 1986: 3, 1991: 0, 1992: 2, 1998: 1, 2008: 1 },
-    moments: [
-      { talk: 1986, t: 382, setup: "At the first NeXT retreat, 90 days in, with one market chosen:",
-        quote: "So really, the next 90 days are real important. We are going to make it or break it based on whether we can provide products to higher education and services and relationships to higher education that no one else provides. And I think we ought to spend 100% of our time thinking about that. And if we can't do that, then we ought to go broke.",
-        key: "And if we can't do that, then we ought to go broke.", lead: true, note: "" },
-      { talk: 1992, t: 3246, setup: "On how the eight-person team at the top of NeXT decides:",
-        quote: "One is we try to differentiate between the really important decisions and the ones that we don't have to make, and the really important ones we work on it till we all agree, because we're paying people to tell us what to do. … The key to making that work is to realize there's not that many things that any one team really has to decide, and we might have 25 really important things we have to decide on a year. Not a lot.",
-        key: "we might have 25 really important things we have to decide on a year. Not a lot.", note: "" },
-      { talk: 1998, t: 123, setup: "Answering a question the tape did not catch, about something others were worrying over:",
-        quote: "Oh, you know, I decided about probably about nine months ago that that wasn't my problem, so I stopped thinking about it, and I stopped worrying about it. And, uh, other people may worry about it, but I, I don't worry about it. I just focus on what I'm doing right now, which is trying to get the iMac launched and trying to make as many as we can.",
-        key: "I just focus on what I'm doing right now", note: "" }
-    ],
-    monday: 'List what you would go broke over. Stop one thing that is not.'
   },
   {
     id: 'own', label: 'Ownership', glyph: 'own', figure: 'own',
