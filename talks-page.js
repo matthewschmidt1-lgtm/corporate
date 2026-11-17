@@ -54,8 +54,6 @@
   }
 
   // The count line reads as growing
-  var count = document.getElementById('tk-count');
-  if (count) count.textContent = 'More talks as they turn up.';
 
   // The river: one copper line, a station per shape
   if (river) {
