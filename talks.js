@@ -53,7 +53,7 @@ window.SHAPES = [
         quote: "I think personal computing, which we mastered in the eighties, its mission was to improve individual productivity and at best creativity, and with over 50 million personal computer shipped in the eighties, it worked! The next thing for the nineties though, needs to be more. Improving individual productivity isn't enough anymore. The real competitive advantage of the nineties is going to come from improving group productivity and collaboration.",
         key: "The real competitive advantage of the nineties is going to come from improving group productivity and collaboration.", note: "The tool grows from one person to the team." }
     ],
-    monday: 'Ask a customer what your product lets them do. Lead with that.'
+    monday: 'Ask a customer what your product makes possible that wasn\'t possible before.'
   },
   {
     id: 'focus', label: 'Focus', glyph: 'focus', figure: 'focus',
@@ -73,7 +73,7 @@ window.SHAPES = [
         quote: "Oh, you know, I decided about probably about nine months ago that that wasn't my problem, so I stopped thinking about it, and I stopped worrying about it. And, uh, other people may worry about it, but I, I don't worry about it. I just focus on what I'm doing right now, which is trying to get the iMac launched and trying to make as many as we can.",
         key: "I just focus on what I'm doing right now", note: "" }
     ],
-    monday: 'List what you would go broke over. Stop one thing that is not.'
+    monday: 'Identify the one priority you\'d bet the next 90 days on, and stop one thing competing with it.'
   },
   {
     id: 'customers', label: 'Customers', glyph: 'customer', figure: 'customers',
@@ -93,11 +93,11 @@ window.SHAPES = [
         quote: "Well, that's up to customers to decide. We're just going to give them the best iPhone we know how, and they'll pick what they want.",
         key: "that's up to customers to decide.", note: "" }
     ],
-    monday: 'Ask three customers what you are best at. Write down the surprise.'
+    monday: 'Call three customers, ask what matters most, and act on something that surprises you.'
   },
   {
     id: 'simple', label: 'Simple', glyph: 'simplicity', figure: 'watch',
-    about: 'Make complexity disappear',
+    about: 'Simplicity is a discipline',
     name: 'Simplicity takes work.',
     meaning: 'Less is more powerful.',
     changed: "First a hardware paradox, then a software strategy, then a product promise.",
@@ -113,7 +113,7 @@ window.SHAPES = [
         quote: "I think, you know, what iMac was designed to do was to do for the Internet what the original Macintosh did for personal computing, which was to make it easy. … Its greatest power, I think, is that you can take it home, take it out of the box and be cruising the Internet within 10 minutes, and that's not something you can do on, on any other computer we know of.",
         key: "take it out of the box and be cruising the Internet within 10 minutes", note: "" }
     ],
-    monday: 'Time a new customer\'s first result. Remove one step.'
+    monday: 'Experience your product as a first-time customer and eliminate one unnecessary step.'
   },
   {
     id: 'care', label: 'Care', glyph: 'excellence', figure: 'care',
@@ -133,7 +133,7 @@ window.SHAPES = [
         quote: "The answer is because customers don't form their opinions on quality from marketing. They don't form their opinions on quality from who won the, the Deming award or who won the Baldrige award. They form their opinions on quality from their own experience with the products or the services. And so one can spend enormous amounts of money on quality, one can win every quality award there is, and yet if your products don't live up to it, customers will not keep that opinion for long in their minds.",
         key: "They form their opinions on quality from their own experience with the products or the services.", note: "" }
     ],
-    monday: 'Fix one thing customers see every day that nobody owns.'
+    monday: 'Find one detail that falls short of your standards, take ownership, and fix it.'
   },
   {
     id: 'people', label: 'People', glyph: 'people', figure: 'people',
@@ -153,7 +153,7 @@ window.SHAPES = [
         quote: "Authority should be vested in the people doing the work to improve their own processes, to teach them how to measure them, to understand them, and to improve them. And they should not have to ask for permission to improve their processes. So I think a lot of the philosophy behind this quality stuff carries with it a flattening of the traditional hierarchical organization and a distribution of authority to the people who are best in the position to decide what should happen to improve these processes: the people doing the work themselves.",
         key: "they should not have to ask for permission to improve their processes.", note: "The permission that matters is permission not to ask." }
     ],
-    monday: 'On your next big call, talk it through until the people doing the work agree.'
+    monday: 'Give someone closest to the work ownership of a decision they\'ve been waiting for you to make.'
   },
   {
     id: 'own', label: 'Ownership', glyph: 'own', figure: 'own',
@@ -173,6 +173,6 @@ window.SHAPES = [
         quote: "And I think that the real problem has not been with Wall Street, it's been with the management of our industry. It's been with people not being willing to take responsibility for the underlying component technologies, and thinking that we could give that responsibility to others, and survive in just a successful of a fashion, which is not true. Industry after industry has shown us that that's not true.",
         key: "the real problem has not been with Wall Street, it's been with the management of our industry.", note: "" }
     ],
-    monday: 'Name one problem you blame on outsiders. Find your part in it.'
+    monday: 'Identify one problem you\'ve blamed on others and take responsibility for changing your part in it.'
   }
 ];
