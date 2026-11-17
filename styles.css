@@ -2015,3 +2015,8 @@ main:focus { outline: none; }
 .rules.ten .rg-list li { border-bottom: 0; padding: 6px 0; }
 /* the umbrella line above the ten rules */
 .rules-motto { margin: 4px 0 28px; font-size: clamp(26px, 3.6vw, 38px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--moss); }
+
+/* the open menu wears the iceberg navy */
+.nav-panel { background: #213651; box-shadow: 0 16px 32px rgba(20, 35, 51, .28); }
+.nav-panel a { border-bottom-color: rgba(237, 230, 216, .14); }
+.nav-menu[open] summary { background: #213651; border-color: #213651; }
