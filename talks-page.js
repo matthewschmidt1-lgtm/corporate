@@ -115,9 +115,10 @@
   // The rider and the watch live in figures.js, shared with the promos on other pages
   var FG = window.GarageFigures || null;
 
-  // One room per shape, alternating cream and sand
+  // One room per shape: cream between sand, sage and sand again
+  var TONES = ['', ' sand', '', ' tk-sage', '', ' sand', ''];
   S.forEach(function (sh, i) {
-    var sec = mk('section', 'section rule-in tk' + (i % 2 ? ' sand' : ''));
+    var sec = mk('section', 'section rule-in tk' + (TONES[i % TONES.length] || ''));
     sec.id = 'shape-' + sh.id;
     sec.setAttribute('aria-labelledby', sec.id + '-h');
     var wrap = mk('div', 'wrap tk-grid');

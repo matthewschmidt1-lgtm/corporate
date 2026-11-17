@@ -2020,3 +2020,38 @@ main:focus { outline: none; }
 .nav-panel { background: #213651; box-shadow: 0 16px 32px rgba(20, 35, 51, .28); }
 .nav-panel a { border-bottom-color: rgba(237, 230, 216, .14); }
 .nav-menu[open] summary { background: #213651; border-color: #213651; }
+
+/* transitions: a quiet line that hands one section to the next */
+.bridge { max-width: 34em; margin: 0 0 56px; font-size: 17px; line-height: 1.55; font-style: italic; color: var(--mute); }
+.bridge::before { content: ""; display: block; width: 28px; height: 2px; margin-bottom: 16px; background: var(--copper); }
+.ib-sec .bridge { color: #B8D0E2; }
+@media (max-width: 600px) { .bridge { font-size: 16px; margin-bottom: 40px; } }
+
+/* the bill: narrower, equal boxes on wider screens */
+@media (min-width: 601px) {
+  .bill-cols, .bill-vis li { grid-template-columns: minmax(0, 300px) 64px minmax(0, 300px); justify-content: center; }
+}
+
+/* in his own words: the iceberg navy closes the page */
+.own-words.dark { background: #213651; color: #EDF3F8; }
+.own-words.dark .eyebrow { color: #B8D0E2; }
+.own-words.dark h2 { color: var(--dark-ink); }
+.own-words.dark .lead { color: #C9D6E2; }
+.own-words.dark .tk-fig { color: var(--dark-ink); }
+.own-words.dark .tk-pick-b { color: #B8D0E2; border-color: rgba(237, 243, 248, .3); }
+.own-words.dark .tk-pick-b:hover, .own-words.dark .tk-pick-b:focus-visible, .own-words.dark .tk-pick-b[aria-pressed="true"] { color: var(--dark-ink); border-color: var(--dark-ink); }
+.own-words.dark .wt-lab { fill: #B8D0E2; }
+.own-words.dark .ed-main { background: var(--dark-ink); color: var(--dark); border-color: var(--dark-ink); }
+.own-words.dark .river-doors .ed-main:hover, .own-words.dark .river-doors .ed-main:focus-visible { background: var(--copper); border-color: var(--copper); color: var(--dark); }
+
+/* in his own words: site colours in rotation, navy to close */
+.tk-sage { background: #D3DAC4; }
+.tk-navy { background: #213651; }
+.tk-navy .eyebrow { color: #B8D0E2; }
+
+/* in his own words: the copper rule closes each section instead of opening it */
+.rule-in.tk, .rule-in.tk-list-sec { padding-top: clamp(72px, 11vw, 140px); padding-bottom: clamp(20px, 3vw, 36px); }
+.rule-in.tk .wrap::before, .rule-in.tk-list-sec .wrap::before { content: none; }
+.rule-in.tk .wrap::after, .rule-in.tk-list-sec .wrap::after { content: ""; display: block; height: 8px; margin-top: clamp(56px, 8vw, 96px);
+  background: linear-gradient(var(--copper), var(--copper)) center / 100% 2px no-repeat, radial-gradient(circle, var(--copper) 3.5px, transparent 4px) right center / 8px 8px no-repeat; }
+.rule-in.tk .wrap::after, .rule-in.tk-list-sec .wrap::after { grid-column: 1 / -1; grid-row: 4; width: 100%; }
