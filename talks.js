@@ -37,9 +37,9 @@ window.TALKS = [
 window.SHAPES = [
   {
     id: 'tools', label: 'Tools', glyph: 'tools', figure: 'bicycle',
-    about: 'On what a product is for',
-    name: 'Tools that make people bigger.',
-    meaning: 'Your product is worth what it lets an ordinary person do.',
+    about: 'Tools that change what\'s possible',
+    name: 'Give people leverage.',
+    meaning: 'Technology as human leverage.',
     changed: "1981, a tool for one person. 1991, for the team. 2008, for the employee who wants it at work.",
     counts: { 1981: 3, 1983: 4, 1986: 2, 1991: 1, 1992: 2, 1998: 1, 2008: 1 },
     moments: [
@@ -57,9 +57,9 @@ window.SHAPES = [
   },
   {
     id: 'simple', label: 'Simple', glyph: 'simplicity', figure: 'watch',
-    about: 'On who does the hard work',
-    name: 'Simple outside, hard inside.',
-    meaning: 'Every step you remove for the customer costs you work. Remove it anyway.',
+    about: 'Make complexity disappear',
+    name: 'Simplicity takes work.',
+    meaning: 'Less is more powerful.',
     changed: "First a hardware paradox, then a software strategy, then a product promise.",
     counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1998: 2, 2008: 0 },
     moments: [
@@ -77,9 +77,9 @@ window.SHAPES = [
   },
   {
     id: 'customers', label: 'Customers', glyph: 'customer', figure: 'customers',
-    about: 'On who knows what you are good at',
-    name: 'Customers tell you what you are.',
-    meaning: 'Your real advantage is often the one customers name first.',
+    about: 'Let customers show you the way',
+    name: 'Build it. Listen. Learn.',
+    meaning: 'Your customers may know something you don\'t.',
     changed: "Barely there in 1981. By 2008 it is every answer he gives.",
     counts: { 1981: 1, 1983: 1, 1986: 1, 1991: 2, 1992: 3, 1998: 2, 2008: 3 },
     moments: [
@@ -97,9 +97,9 @@ window.SHAPES = [
   },
   {
     id: 'care', label: 'Care', glyph: 'excellence', figure: 'care',
-    about: 'On what quality costs, and who judges it',
-    name: 'Care costs no more.',
-    meaning: 'Great and junk cost about the same to make. Choose great, everywhere.',
+    about: 'Excellence is in the details',
+    name: 'Greatness is built, not advertised.',
+    meaning: 'Quality speaks for itself.',
     changed: "1983, how it looks. 1992, how it is made. 1998, how it looks again.",
     counts: { 1981: 0, 1983: 3, 1986: 1, 1991: 0, '1991-12': 3, 1992: 2, 1998: 1, 2008: 1 },
     moments: [
@@ -117,9 +117,9 @@ window.SHAPES = [
   },
   {
     id: 'people', label: 'People', glyph: 'people', figure: 'people',
-    about: 'On who gets to decide',
-    name: 'Few people, real agreement.',
-    meaning: 'Hire people to tell you what to do. Then talk it through until you agree.',
+    about: 'Give great people room to lead',
+    name: 'Stop managing. Start trusting.',
+    meaning: 'Put authority where the answers are.',
     changed: "From hiring stars to how a team decides. Gone from the short late interviews.",
     counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1998: 0, 2008: 0 },
     moments: [
@@ -137,9 +137,9 @@ window.SHAPES = [
   },
   {
     id: 'focus', label: 'Focus', glyph: 'focus', figure: 'focus',
-    about: 'On what deserves your time',
-    name: 'Bet on a few things.',
-    meaning: 'Name what you would go broke over. Spend your time there.',
+    about: 'Focus is a decision',
+    name: 'Not everything deserves your attention.',
+    meaning: 'The power of knowing what matters.',
     changed: "A founder's bet, then an operating discipline, then plain composure.",
     counts: { 1981: 1, 1983: 1, 1986: 3, 1991: 0, 1992: 2, 1998: 1, 2008: 1 },
     moments: [
@@ -157,9 +157,9 @@ window.SHAPES = [
   },
   {
     id: 'own', label: 'Ownership', glyph: 'own', figure: 'own',
-    about: 'On what success does to a company',
-    name: 'Own it. Keep moving.',
-    meaning: 'Success breeds caution, and blaming outsiders is the comfortable kind.',
+    about: 'Stay hungry. Stay accountable.',
+    name: 'Don\'t let success slow you down.',
+    meaning: 'Earn tomorrow\'s success.',
     changed: "Loudest in 1986 and 1992, the years outside Apple.",
     counts: { 1981: 1, 1983: 3, 1986: 4, 1991: 3, 1992: 5, 1998: 0, 2008: 0 },
     moments: [
