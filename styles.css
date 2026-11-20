@@ -2095,3 +2095,29 @@ main:focus { outline: none; }
   .sum-anim.play .sum-flag { opacity: 1; transform: scaleX(1); transition: opacity .2s ease 3.2s, transform .5s cubic-bezier(.3, 1.4, .5, 1) 3.2s; }
   .sum-anim.play .sum-lab { transition-delay: 3.5s; }
 }
+
+/* header: three plain links, no menu */
+.nav-menu { display: none; }
+.nav .nav-inner nav { display: flex; align-items: center; gap: 28px; margin: 0 0 0 auto; }
+.nav .nav-inner nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--mute); text-decoration: none; }
+.nav .nav-inner nav a:hover, .nav .nav-inner nav a:focus-visible { color: var(--ink); }
+.nav .nav-inner nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--copper); text-decoration-thickness: 2px; text-underline-offset: 8px; }
+@media (max-width: 560px) {
+  .nav .nav-inner nav { gap: 16px; }
+  .nav .nav-inner nav a { font-size: 13px; }
+  .wm-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wordmark .wm { width: 22px; height: 22px; }
+}
+
+/* header sub-menus: hover or focus a link to see its sections */
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-sub { position: absolute; top: 100%; left: -20px; z-index: 20; min-width: 260px; padding: 8px 0 10px; background: #213651; border-top: 3px solid var(--copper); border-radius: 0 0 4px 4px; box-shadow: 0 16px 32px rgba(20, 35, 51, .28);
+  opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s; }
+.nav-item:last-child .nav-sub { left: auto; right: -20px; }
+.nav .nav-inner nav .nav-sub a { display: block; min-height: 0; padding: 9px 20px; font-size: 14px; font-weight: 400; color: #EDE6D8; white-space: nowrap; text-decoration: none; }
+.nav .nav-inner nav .nav-sub a:hover, .nav .nav-inner nav .nav-sub a:focus-visible { color: var(--copper); background: rgba(237, 230, 216, .06); }
+@media (hover: hover) and (min-width: 861px) {
+  .nav-item:hover .nav-sub, .nav-item:focus-within .nav-sub { opacity: 1; visibility: visible; transform: none; transition: opacity .15s ease, transform .15s ease, visibility 0s; }
+}
+@media (hover: none), (max-width: 860px) { .nav-sub { display: none; } }
+@media (prefers-reduced-motion: reduce) { .nav-sub { transition: none; } }
