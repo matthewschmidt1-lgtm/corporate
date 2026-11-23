@@ -31,6 +31,7 @@ window.TALKS = [
   { year: 1991, id: '1991-12', venue: 'Interview on Joseph Juran and quality', url: 'https://www.youtube.com/watch?v=XbkMcvnNq3g', videoId: 'XbkMcvnNq3g', captionType: 'auto', runtime: '19:18' },
   { year: 1992, venue: 'MIT, Distinguished Speaker Series', url: 'https://www.youtube.com/watch?v=YXUhLbV8Nrg', videoId: 'YXUhLbV8Nrg', captionType: 'auto', runtime: '1:12:53' },
   { year: 1995, venue: 'Triumph of the Nerds, the Lost Interview', url: 'https://www.youtube.com/watch?v=Bbwj58Xj2yI', videoId: 'Bbwj58Xj2yI', captionType: 'auto', runtime: '1:11:08', film: 'https://www.youtube.com/watch?v=tBh5_j4a1yo' },
+  { year: 1997, venue: 'Apple staff meeting, introducing Think Different', url: 'https://www.youtube.com/watch?v=keCwRdbwNQY', videoId: 'keCwRdbwNQY', captionType: 'auto', runtime: '7:00' },
   { year: 1998, venue: 'iMac satellite tour', url: 'https://www.youtube.com/watch?v=8a5KSoOUT_U', videoId: '8a5KSoOUT_U', captionType: 'auto', runtime: '10:29' },
   { year: 2008, venue: 'iPhone 3G interview', url: 'https://www.youtube.com/watch?v=qSUTHa7ssoc', videoId: 'qSUTHa7ssoc', captionType: 'auto', runtime: '4:40' }
 ];
@@ -42,7 +43,7 @@ window.SHAPES = [
     name: 'Give people leverage.',
     meaning: 'Technology as human leverage.',
     changed: "1981, a tool for one person. 1991, for the team. 2008, for the employee who wants it at work.",
-    counts: { 1981: 3, 1983: 4, 1986: 2, 1991: 1, 1992: 2, 1995: 2, 1998: 1, 2008: 1 },
+    counts: { 1981: 3, 1983: 4, 1986: 2, 1991: 1, 1992: 2, 1995: 2, 1997: 0, 1998: 1, 2008: 1 },
     moments: [
       { talk: 1981, t: 358, setup: "Asked what kind of person needs a personal computer, he tells a story about a condor:",
         quote: "But someone there had the insight to test the efficiency of man riding a bicycle, and man riding a bicycle was twice as good as the condor, all the way off the end of the list. And what it really illustrated was man's ability as a tool maker to fashion a tool that can amplify an inherent ability that he has. And that's exactly what we think we're doing. We think we're basically fashioning a 21st century bicycle here.",
@@ -62,7 +63,7 @@ window.SHAPES = [
     name: 'The power of knowing what matters.',
     meaning: 'Not everything deserves your attention.',
     changed: "A founder's bet, then an operating discipline, then plain composure.",
-    counts: { 1981: 1, 1983: 1, 1986: 3, 1991: 0, 1992: 2, 1995: 1, 1998: 1, 2008: 1 },
+    counts: { 1981: 1, 1983: 1, 1986: 3, 1991: 0, 1992: 2, 1995: 1, 1997: 1, 1998: 1, 2008: 1 },
     moments: [
       { talk: 1986, t: 382, setup: "At the first NeXT retreat, 90 days in, with one market chosen:",
         quote: "So really, the next 90 days are real important. We are going to make it or break it based on whether we can provide products to higher education and services and relationships to higher education that no one else provides. And I think we ought to spend 100% of our time thinking about that. And if we can't do that, then we ought to go broke.",
@@ -82,7 +83,7 @@ window.SHAPES = [
     name: 'Build it. Listen. Learn.',
     meaning: 'Your customers may know something you don\'t.',
     changed: "Barely there in 1981. By 2008 it is every answer he gives.",
-    counts: { 1981: 1, 1983: 1, 1986: 1, 1991: 2, 1992: 3, 1995: 2, 1998: 2, 2008: 3 },
+    counts: { 1981: 1, 1983: 1, 1986: 1, 1991: 2, 1992: 3, 1995: 2, 1997: 1, 1998: 2, 2008: 3 },
     moments: [
       { talk: 1992, t: 705, setup: "On how NeXT found out, a year late, what it was actually good at:",
         quote: "Some really big companies came to us and said, you don't understand what you've got. The same software that allows Lotus to create their apps five to ten times is letting us build our in-house mission-critical apps five to ten times faster, and this is the biggest problem we've had. This is a huge problem for every big company and almost all medium-sized companies, and you have the solution in your hands, and you dummies don't even know it.",
@@ -102,7 +103,7 @@ window.SHAPES = [
     name: 'Simplicity takes work.',
     meaning: 'Less is more powerful.',
     changed: "First a hardware paradox, then a software strategy, then a product promise.",
-    counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1995: 1, 1998: 2, 2008: 0 },
+    counts: { 1981: 1, 1983: 2, 1986: 0, 1991: 1, 1992: 2, 1995: 1, 1997: 0, 1998: 2, 2008: 0 },
     moments: [
       { talk: 1983, t: 2550, setup: "On the two ways to bring people and computers together:",
         quote: "So, gradually, the level of technical literacy is rising. The problem is we’re educating people on these garbage devices. Setting a Casio watch is really a pain still. So even though we have products like Lisa, we are still going to need to educate people about what computers are and what they do. But where we’re trying to get is we’re trying to get away from programming. We’ve got to get away from programming, because people don’t want to program computers, people want to use computers.",
@@ -122,7 +123,7 @@ window.SHAPES = [
     name: 'Greatness is built, not advertised.',
     meaning: 'Quality speaks for itself.',
     changed: "1983, how it looks. 1992, how it is made. 1998, how it looks again.",
-    counts: { 1981: 0, 1983: 3, 1986: 1, 1991: 0, '1991-12': 3, 1992: 2, 1995: 2, 1998: 1, 2008: 1 },
+    counts: { 1981: 0, 1983: 3, 1986: 1, 1991: 0, '1991-12': 3, 1992: 2, 1995: 2, 1997: 1, 1998: 1, 2008: 1 },
     moments: [
       { talk: 1983, t: 489, setup: "Asking designers for help, since computers would sell by the million however they looked:",
         quote: "It doesn’t really matter, because people are going to just suck this stuff up so fast that they’re going to do it no matter what it looks like. And it doesn’t cost any more money to make it look great. There are going to be these objects, this new object that’s going to be in everyone’s working environment… And we have a shot at putting a great object there, or if we don’t, we’re going to put one more piece-of-junk object there.",
@@ -142,14 +143,14 @@ window.SHAPES = [
     name: 'Put authority where the answers are.',
     meaning: 'Stop managing. Start trusting.',
     changed: "From hiring stars to how a team decides. Gone from the short late interviews.",
-    counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1995: 4, 1998: 0, 2008: 0 },
+    counts: { 1981: 1, 1983: 3, 1986: 1, 1991: 0, '1991-12': 2, 1992: 4, 1995: 4, 1997: 1, 1998: 0, 2008: 0 },
     moments: [
       { talk: 1995, t: 1818, setup: "Asked whether professionalism has a dark side, he says companies just get confused:",
         quote: "Companies get confused. When they start getting bigger, they want to replicate their initial success, and a lot of them think, well, somehow there's some magic in the process of how that success was created. So they start to try to institutionalize process across the company, and before very long people get very confused that the process is the content. … In my career I found that the best people are the ones that really understand the content, and they're a pain in the butt to manage.",
         key: "the best people are the ones that really understand the content, and they're a pain in the butt to manage.", note: "" },
-      { talk: 1992, t: 3199, setup: "Asked how NeXT resolves conflict, he explains why he never tells people to just buy in:",
-        quote: "Sooner or later you're paying somebody to do what they think is right, but then you're trying to get him to do what they think isn't right, and it ends, sooner or later it outs, and you end up having that conflict. So I've always felt that the best way is to get everybody in a room and talk it through until you agree. Now, that's not everybody in the company, but that's everybody that's really involved in that decision that needs to execute it.",
-        key: "get everybody in a room and talk it through until you agree.", lead: true, note: "" },
+      { talk: 1997, t: 199, setup: "Introducing Think Different to Apple staff, on what Apple stands for beyond making boxes:",
+        quote: "Apple's about something more than that. Apple, at the core, its core value is that we believe that people with passion can change the world for the better. That's what we believe. And we've had the opportunity to work with people like that. … And we believe that in this world people can change it for the better, and that those people that are crazy enough to think they can change the world are the ones that actually do.",
+        key: "people with passion can change the world for the better.", lead: true, note: "" },
       { talk: '1991-12', t: 593, setup: "Asked what requests he says yes to now; he says the question has it backwards:",
         quote: "Authority should be vested in the people doing the work to improve their own processes, to teach them how to measure them, to understand them, and to improve them. And they should not have to ask for permission to improve their processes. So I think a lot of the philosophy behind this quality stuff carries with it a flattening of the traditional hierarchical organization and a distribution of authority to the people who are best in the position to decide what should happen to improve these processes: the people doing the work themselves.",
         key: "they should not have to ask for permission to improve their processes.", note: "The permission that matters is permission not to ask." }
@@ -162,7 +163,7 @@ window.SHAPES = [
     name: 'Don\'t let success slow you down.',
     meaning: 'Earn tomorrow\'s success.',
     changed: "Loudest in 1986 and 1992, the years outside Apple.",
-    counts: { 1981: 1, 1983: 3, 1986: 4, 1991: 3, 1992: 5, 1995: 3, 1998: 0, 2008: 0 },
+    counts: { 1981: 1, 1983: 3, 1986: 4, 1991: 3, 1992: 5, 1995: 3, 1997: 1, 1998: 0, 2008: 0 },
     moments: [
       { talk: 1983, t: 3096, setup: "On what happens to a company once it has something to lose:",
         quote: "We started with nothing. So whenever you start with nothing, you always can shoot for the moon. You have nothing to lose. And the thing that happens is when you start to get something, it’s very easy to go into cover-your-ass mode. … What we’re trying to do is to realize the very amazing time that we’re in and not go into that mode.",

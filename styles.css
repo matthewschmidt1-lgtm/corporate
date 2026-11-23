@@ -2122,3 +2122,8 @@ main:focus { outline: none; }
 @media (hover: none), (max-width: 860px) { .nav-sub { display: none; } }
 @media (prefers-reduced-motion: reduce) { .nav-sub { transition: none; } }
 .tl-film { margin-left: 6px; font-size: 13px; color: var(--clay); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+/* think differently: his own words on passion */
+.td-pull { margin: clamp(40px, 6vw, 64px) 0 clamp(40px, 6vw, 64px); padding-left: 24px; border-left: 3px solid var(--copper); }
+.td-pull .pull { margin: 0 0 14px; color: var(--dark-ink); font-size: clamp(24px, 3.4vw, 36px); max-width: 22em; }
+.td-pull .tk-t { color: var(--copper); } .td-pull .tk-pull-src { color: var(--dark-mute); }
