@@ -2121,3 +2121,4 @@ main:focus { outline: none; }
 }
 @media (hover: none), (max-width: 860px) { .nav-sub { display: none; } }
 @media (prefers-reduced-motion: reduce) { .nav-sub { transition: none; } }
+.tl-film { margin-left: 6px; font-size: 13px; color: var(--clay); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }

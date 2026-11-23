@@ -216,7 +216,14 @@
     T.forEach(function (t) {
       var li = mk('li');
       li.appendChild(mk('span', 'tl-y', String(t.year)));
-      li.appendChild(mk('span', 'tl-v', t.venue));
+      var v = mk('span', 'tl-v', t.venue);
+      if (t.film) {
+        var f = out(mk('a', 'tl-film', 'Full film to rent'));
+        f.href = t.film;
+        v.appendChild(document.createTextNode(' '));
+        v.appendChild(f);
+      }
+      li.appendChild(v);
       li.appendChild(mk('span', 'tl-c', (t.captionType === 'auto' ? 'Auto captions' : 'Channel captions') + ', ' + t.runtime));
       var a = out(mk('a', 'tl-w', 'Watch'));
       a.href = t.url;
