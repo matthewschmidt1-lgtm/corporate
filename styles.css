@@ -2130,3 +2130,5 @@ main:focus { outline: none; }
 #think-differently .closer { max-width: none; }
 /* the closing two sentences, one per line on desktop */
 #think-differently .closer { grid-column: 1 / -1; font-size: clamp(24px, calc((100vw - 64px) / 27.5), 36px); }
+.note-src { display: flex; align-items: center; gap: 0 10px; margin: -4px 0 0; font-size: 14px; color: var(--mute); }
+.note-src .tk-t { min-height: 32px; }
