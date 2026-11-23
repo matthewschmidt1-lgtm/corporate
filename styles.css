@@ -2127,3 +2127,6 @@ main:focus { outline: none; }
 .td-pull { margin: clamp(40px, 6vw, 64px) 0 clamp(40px, 6vw, 64px); padding-left: 24px; border-left: 3px solid var(--copper); }
 .td-pull .pull { margin: 0 0 14px; color: var(--dark-ink); font-size: clamp(24px, 3.4vw, 36px); max-width: 22em; }
 .td-pull .tk-t { color: var(--copper); } .td-pull .tk-pull-src { color: var(--dark-mute); }
+#think-differently .closer { max-width: none; }
+/* the closing two sentences, one per line on desktop */
+#think-differently .closer { grid-column: 1 / -1; font-size: clamp(24px, calc((100vw - 64px) / 27.5), 36px); }
