@@ -160,7 +160,7 @@
   }
 
   // The lessons, in motion: each panel plays once when it is well in view, and again on Replay
-  var mls = document.querySelectorAll('.ml, .seed-anim, .river-anim, .bike-anim, .watch-anim, .sk-anim, .ib-anim, .sum-anim, .ib-roots > li');
+  var mls = document.querySelectorAll('.ml, .seed-anim, .river-anim, .bike-anim, .watch-anim, .sk-anim, .ib-anim, .sum-anim, .fw-anim, .ib-roots > li');
   if (mls.length) {
     var playPanel = function (el) { el.classList.remove('play'); void el.offsetWidth; el.classList.add('play'); };
     if ('IntersectionObserver' in window) {
