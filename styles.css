@@ -2163,3 +2163,6 @@ main:focus { outline: none; }
 .way-k { margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--clay); }
 .way-line { margin: 0 0 clamp(28px, 4vw, 40px); max-width: 20em; font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
 .hero-index .lead { margin-bottom: 0; }
+/* bridging lines: larger and upright so they read easily, especially on phones */
+.st-bridge { margin: 0 0 10px; font-size: 17px; font-style: normal; font-weight: 500; line-height: 1.45; letter-spacing: -0.005em; color: var(--clay); }
+@media (max-width: 700px) { .st-bridge { font-size: 17px; margin-top: 4px; } }
