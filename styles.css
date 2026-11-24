@@ -2166,3 +2166,4 @@ main:focus { outline: none; }
 /* bridging lines: larger and upright so they read easily, especially on phones */
 .st-bridge { margin: 0 0 10px; font-size: 17px; font-style: normal; font-weight: 500; line-height: 1.45; letter-spacing: -0.005em; color: var(--clay); }
 @media (max-width: 700px) { .st-bridge { font-size: 17px; margin-top: 4px; } }
+.way-lead { margin: 0 0 18px; max-width: 30em; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; letter-spacing: -0.015em; color: var(--mute); }
