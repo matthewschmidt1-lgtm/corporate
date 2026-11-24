@@ -2132,3 +2132,28 @@ main:focus { outline: none; }
 #think-differently .closer { grid-column: 1 / -1; font-size: clamp(24px, calc((100vw - 64px) / 27.5), 36px); }
 .note-src { display: flex; align-items: center; gap: 0 10px; margin: -4px 0 0; font-size: 14px; color: var(--mute); }
 .note-src .tk-t { min-height: 32px; }
+
+
+
+/* the corporate speed trap: one piece after the hero, the CEO's way in */
+.st .lead { max-width: 36em; }
+.st-line { margin: clamp(32px, 5vw, 48px) 0 0; font-size: clamp(26px, 3.6vw, 40px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; color: var(--clay); }
+.st-k { margin: clamp(56px, 8vw, 88px) 0 16px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--clay); }
+.st-q { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(42, 38, 33, .18); counter-reset: stq; }
+.st-q li { counter-increment: stq; display: grid; grid-template-columns: 220px 1fr; gap: 6px 32px; padding: 22px 0; border-bottom: 1px solid rgba(42, 38, 33, .18); }
+.st-label { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); padding-top: 5px; }
+.st-label::before { content: counter(stq) "  "; white-space: pre; color: var(--copper); }
+.st-ask { margin: 0 0 6px; max-width: 30em; font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+.st-more { margin: 0; max-width: 40em; font-size: 16px; line-height: 1.55; color: var(--mute); }
+@media (max-width: 700px) { .st-q li { grid-template-columns: 1fr; } .st-label { padding-top: 0; } }
+.st-block .st-k { margin-top: clamp(64px, 9vw, 104px); }
+.st-h { margin: 0 0 24px; max-width: 24em; font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
+.st .bill-cols, .st-vrt li { justify-content: start; }
+.st-fine { margin: 14px 0 0; font-size: 14px; color: var(--mute); }
+.st-body { max-width: 38em; font-size: 18px; line-height: 1.6; color: var(--ink); }
+.st-end { margin-top: clamp(64px, 9vw, 104px); padding-left: 24px; border-left: 3px solid var(--copper); }
+.st-end .st-k { margin-top: 0; }
+.st-big { margin: 0; max-width: 20em; font-size: clamp(26px, 3.8vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); }
+.st-pull { margin: clamp(64px, 9vw, 104px) 0 16px; max-width: 22em; }
+.st-credit { margin: 0; font-size: 15px; color: var(--mute); }
+.st-credit a { color: var(--clay); text-underline-offset: 3px; }
