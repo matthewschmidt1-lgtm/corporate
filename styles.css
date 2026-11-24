@@ -2148,8 +2148,6 @@ main:focus { outline: none; }
 @media (max-width: 700px) { .st-q li { grid-template-columns: 1fr; } .st-label { padding-top: 0; } }
 .st-block .st-k { margin-top: clamp(64px, 9vw, 104px); }
 .st-h { margin: 0 0 24px; max-width: 24em; font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
-.st .bill-cols, .st-vrt li { justify-content: start; }
-.st-fine { margin: 14px 0 0; font-size: 14px; color: var(--mute); }
 .st-body { max-width: 38em; font-size: 18px; line-height: 1.6; color: var(--ink); }
 .st-end { margin-top: clamp(64px, 9vw, 104px); padding-left: 24px; border-left: 3px solid var(--copper); }
 .st-end .st-k { margin-top: 0; }
