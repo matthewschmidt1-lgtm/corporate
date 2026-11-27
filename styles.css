@@ -2248,3 +2248,12 @@ main:focus { outline: none; }
   .fw-light, .fw-glow { opacity: 1; }
   .fw-sprout { transform: none; }
 }
+
+/* Field guide: two halves, build then stop */
+.fg-half { margin-top: clamp(48px,7vw,72px); }
+.fg-stop { margin-top: clamp(72px,10vw,112px); padding-top: clamp(48px,7vw,72px); border-top: 1px solid var(--line); }
+.fg-k { display: flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--clay); margin-bottom: 14px; }
+.fg-k span { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--copper); color: #F3EEE4; font-size: 13px; letter-spacing: 0; }
+.fg-h { font-size: clamp(24px,3.2vw,34px); line-height: 1.2; max-width: 22em; margin-bottom: 16px; }
+.fg-half + .notes { margin-top: 24px; }
+.fg-stop .lead { margin-top: 8px; }
